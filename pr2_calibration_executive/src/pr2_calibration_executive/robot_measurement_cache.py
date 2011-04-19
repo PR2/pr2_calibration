@@ -111,19 +111,15 @@ class RobotMeasurementCache:
         while len(cur_cache) > self._laser_sizes[laser_id]:
             cur_cache.pop(0)
 
-    def request_robot_measurement(self, interval_start, interval_end):
+    def request_robot_measurement(self, interval_start, interval_end, min_duration = rospy.Duration(2,0)):
         #print "in request_robot_measurement()"
         # Compute the center of the req interval
         req_duration = interval_end   - interval_start
         req_center   = interval_start + rospy.Duration(req_duration.to_sec()*.5)
 
-
-        # Hardcoding a minimum duration
-        min_duration = rospy.Duration(2,0)
         if req_duration < min_duration:
             #print "Minimum duration of [%.2fs] not yet reached" % min_duration.to_seconds()
             return None
-
 
         # Extract the cam measurements closest to the center of the interval
         cam_measurements = dict( [ (x, None) for x in self._cam_caches.keys() ] )
