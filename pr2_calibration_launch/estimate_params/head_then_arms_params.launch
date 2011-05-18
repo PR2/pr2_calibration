@@ -74,10 +74,11 @@
           - wide_right_rect
           - tilt_laser
           - prosilica_rect
+          - kinect_rect
         </rosparam>
         <param name="output_filename" type="string" value="head_laser_calibrated" />
       </group>
-      
+
       <group ns="B - 01 - Locking Head Sensors. Estimating Arm Joint Offsets">
         <param name="free_params" textfile="$(find pr2_calibration_launch)/estimate_params/config_pr2_beta/free_arms_only_1.yaml" />
         <param name="use_cov" type="bool" value="True" />

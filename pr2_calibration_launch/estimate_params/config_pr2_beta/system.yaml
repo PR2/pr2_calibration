@@ -78,6 +78,10 @@
     high_def_frame_joint: [0, -0.109, 0.035, 0, 0, 0]
     high_def_optical_frame_joint: [0, 0, 0, -1.2091995761561452, 1.2091995761561452, -1.2091995761561452]
 
+    # Kinect RGB Frames
+    openni_rgb_frame_joint: [0, -0.109, 0.035, 0, 0, 0]
+    openni_rgb_optical_frame_joint: [0, 0, 0, -1.2091995761561452, 1.2091995761561452, -1.2091995761561452]
+
   rectified_cams:
     wide_left_rect:
       baseline_shift: 0.0
@@ -109,6 +113,13 @@
       cx_shift: 0.0
       cy_shift: 0.0
       cov: {u: 0.25, v: 0.25}
+    kinect_rect:
+      baseline_shift: 0.0
+      f_shift: 0.0
+      cx_shift: 0.0
+      cy_shift: 0.0
+      cov: {u: 0.25, v: 0.25}
+   
     forearm_left_rect:
       baseline_shift: 0.0
       f_shift: 0.0

@@ -43,6 +43,7 @@ import rosbag
 import yaml
 import os.path
 import numpy
+import rosrecord
 
 import stat
 import os

@@ -15,6 +15,9 @@
   <include file="$(find pr2_calibration_launch)/capture_data/monocam_viewer.launch"
            ns="prosilica" />
 
+  <include file="$(find pr2_calibration_launch)/capture_data/monocam_viewer.launch"
+           ns="camera/rgb" />
+
   <include file="$(find pr2_calibration_launch)/capture_data/double_stereo_viewer.launch" />
 
   <include file="$(find pr2_calibration_launch)/capture_data/monocam_viewer.launch"

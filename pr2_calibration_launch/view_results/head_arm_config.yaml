@@ -65,3 +65,17 @@
   plot_ops:
     color: r
     marker: s
+
+- name: "Kinect: Left Arm"
+  3d: left_arm_chain
+  cam: kinect_rect
+  plot_ops:
+    color: r
+    marker: o
+
+- name: "Kinect: Right Arm"
+  3d: right_arm_chain
+  cam: kinect_rect
+  plot_ops:
+    color: r
+    marker: s

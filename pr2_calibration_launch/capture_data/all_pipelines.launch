@@ -25,6 +25,13 @@
         name="forearm_r_throttle"
         args="messages r_forearm_cam/image_rect 2" />
 
+  <include file="$(find pr2_calibration_launch)/capture_data/monocam_pipeline.launch"
+           ns="camera/rgb" />
+  <node type="throttle"
+        pkg="topic_tools"
+        name="kinect_throttle"
+        args="messages camera/rgb/image_mono 2 camera/rgb/image_rect_throttle" />
+
   <include file="$(find pr2_calibration_launch)/capture_data/intersection.launch" />
   <include file="$(find pr2_calibration_launch)/capture_data/laser_pipelines.launch" />
 
