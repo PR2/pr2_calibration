@@ -4,6 +4,8 @@ camera_measurements:
 - {cam_id: wide_right_rect, config: cb_7x6}
 - {cam_id: narrow_right_rect, config: cb_7x6}
 - {cam_id: prosilica_rect, config: cb_7x6}
+- {cam_id: kinect_head, config: cb_7x6}
+- {cam_id: kinect_torso, config: cb_7x6}
 joint_commands:
 #- controller: head_traj_controller
 #  segments:

@@ -33,3 +33,17 @@
   plot_ops:
     color: m
     marker: o
+
+- name: "Tilt Laser: KinectHead"
+  3d: tilt_laser
+  cam: kinect_head
+  plot_ops:
+    color: m
+    marker: o
+
+- name: "Tilt Laser: KinectTorso"
+  3d: tilt_laser
+  cam: kinect_torso
+  plot_ops:
+    color: m
+    marker: o

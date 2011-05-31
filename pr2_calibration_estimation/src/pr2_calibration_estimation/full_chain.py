@@ -59,9 +59,19 @@ class FullChainRobotParams:
         self.calc_block = FullChainCalcBlock()
 
     def update_config(self, robot_params):
+        # for transform_name in self._config_dict["before_chain"]:
+        #     print "transform_name: ", transform_name
+        # for transform_name2 in robot_params.transforms:
+        #     print "transform_name2: ", transform_name2
         before_chain_Ts = [robot_params.transforms[transform_name] for transform_name in self._config_dict["before_chain"]]
-        chain           = robot_params.dh_chains[ self._config_dict["chain_id"] ]
-        dh_link_num     = self._config_dict["dh_link_num"]
+#        if self._config_dict["chain_id"] == 'NULL':
+        if self._config_dict["chain_id"] == None:
+            chain = None
+            dh_link_num = None
+        else:
+#            print "self._config_dict[chain_id] ", self._config_dict["chain_id"]
+            chain           = robot_params.dh_chains[ self._config_dict["chain_id"] ]
+            dh_link_num     = self._config_dict["dh_link_num"]
         after_chain_Ts  = [robot_params.transforms[transform_name] for transform_name in self._config_dict["after_chain"]]
         self.calc_block.update_config(before_chain_Ts, chain, dh_link_num, after_chain_Ts)
 
@@ -80,8 +90,9 @@ class FullChainCalcBlock:
             pose = pose * before_chain_T.transform
 
         # Apply the DH Chain
-        dh_T = self._chain.fk(chain_state, self._dh_link_num)
-        pose = pose * dh_T
+        if self._chain is not None:
+            dh_T = self._chain.fk(chain_state, self._dh_link_num)
+            pose = pose * dh_T
 
         # Apply the 'after chain' transforms
         for after_chain_T in self._after_chain_Ts:

@@ -25,6 +25,20 @@
         name="forearm_r_throttle"
         args="messages r_forearm_cam/image_rect 2" />
 
+  <include file="$(find pr2_calibration_launch)/capture_data/monocam_pipeline.launch"
+           ns="kinect_head/camera/rgb" />
+  <node type="throttle"
+        pkg="topic_tools"
+        name="kinect_head_throttle"
+        args="messages kinect_head/camera/rgb/image_mono 2 kinect_head/camera/rgb/image_rect_throttle" />
+
+  <include file="$(find pr2_calibration_launch)/capture_data/monocam_pipeline.launch"
+           ns="kinect_torso/camera/rgb" />
+  <node type="throttle"
+        pkg="topic_tools"
+        name="kinect_torso_throttle"
+        args="messages kinect_torso/camera/rgb/image_mono 2 kinect_torso/camera/rgb/image_rect_throttle" />
+
   <include file="$(find pr2_calibration_launch)/capture_data/intersection.launch" />
   <include file="$(find pr2_calibration_launch)/capture_data/laser_pipelines.launch" />
 

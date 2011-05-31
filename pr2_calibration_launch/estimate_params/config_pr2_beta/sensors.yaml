@@ -41,6 +41,22 @@
         dh_link_num:  1  # Connects after head pan
         after_chain:  [head_chain_tip_adj, head_plate_frame_joint, high_def_frame_joint, high_def_optical_frame_joint]
 
+    - sensor_id:    kinect_head
+      camera_id:    kinect_head
+      chain:
+        before_chain: [head_pan_joint]
+        chain_id:     head_chain
+        dh_link_num:  1  # Connects after head pan
+        after_chain:  [head_chain_tip_adj, head_plate_frame_joint, kinect_head_rgb_frame_joint, kinect_head_rgb_optical_frame_joint]
+
+    - sensor_id:    kinect_torso
+      camera_id:    kinect_torso
+      chain:
+        before_chain: [kinect_torso_rgb_frame_joint, kinect_torso_rgb_optical_frame_joint]
+        chain_id:     NULL
+        after_chain:  []
+
+
     - camera_id: forearm_left_rect
       sensor_id: forearm_left_rect
       chain:

@@ -51,6 +51,12 @@
     high_def_frame_joint:              [ 0, 0, 0, 0, 0, 0 ]
     high_def_optical_frame_joint:      [ 0, 0, 0, 0, 0, 0 ]
 
+    kinect_head_rgb_frame_joint:            [ 0, 0, 0, 0, 0, 0 ]
+    kinect_head_rgb_optical_frame_joint:    [ 0, 0, 0, 0, 0, 0 ]
+
+    kinect_torso_rgb_frame_joint:            [ 1, 1, 1, 1, 1, 1 ]
+    kinect_torso_rgb_optical_frame_joint:    [ 0, 0, 0, 0, 0, 0 ]
+
     l_forearm_roll_adj:                [ 0, 0, 0, 0, 0, 0 ]
     l_forearm_cam_frame_joint:         [ 1, 1, 1, 1, 1, 1 ]
     l_forearm_cam_optical_frame_joint: [ 0, 0, 0, 0, 0, 0 ]

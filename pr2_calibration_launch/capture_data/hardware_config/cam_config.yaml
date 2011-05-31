@@ -279,3 +279,81 @@ prosilica_rect:
         subpixel_zero_zone: 1
       led_detector:
         active: False
+
+kinect_head:
+  cb_detector_config:  /kinect_head/camera/rgb/cb_detector_config
+  led_detector_config: /kinect_head/camera/rgb/led_detector
+  settler_config:      /kinect_head/camera/rgb/monocam_settler_config
+
+  configs:
+    cb_7x6:
+      settler:
+        tolerance: 2.00
+        ignore_failures: True
+        max_step: 1.0
+        cache_size: 100
+      cb_detector:
+        active: True
+        num_x: 7
+        num_y: 6
+        width_scaling: 1
+        height_scaling: 1
+        subpixel_window: 4
+        subpixel_zero_zone: 1
+      led_detector:
+        active: False
+    small_cb_4x5:
+      settler:
+        tolerance: 2.00
+        ignore_failures: True
+        max_step: 1.0
+        cache_size: 100
+      cb_detector:
+        active: True
+        num_x: 4
+        num_y: 5
+        width_scaling: 1
+        height_scaling: 1
+        subpixel_window: 4
+        subpixel_zero_zone: 1
+      led_detector:
+        active: False
+
+kinect_torso:
+  cb_detector_config:  /kinect_torso/camera/rgb/cb_detector_config
+  led_detector_config: /kinect_torso/camera/rgb/led_detector
+  settler_config:      /kinect_torso/camera/rgb/monocam_settler_config
+
+  configs:
+    cb_7x6:
+      settler:
+        tolerance: 2.00
+        ignore_failures: True
+        max_step: 1.0
+        cache_size: 100
+      cb_detector:
+        active: True
+        num_x: 7
+        num_y: 6
+        width_scaling: 1
+        height_scaling: 1
+        subpixel_window: 4
+        subpixel_zero_zone: 1
+      led_detector:
+        active: False
+    small_cb_4x5:
+      settler:
+        tolerance: 2.00
+        ignore_failures: True
+        max_step: 1.0
+        cache_size: 100
+      cb_detector:
+        active: True
+        num_x: 4
+        num_y: 5
+        width_scaling: 1
+        height_scaling: 1
+        subpixel_window: 4
+        subpixel_zero_zone: 1
+      led_detector:
+        active: False
