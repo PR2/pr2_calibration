@@ -34,6 +34,7 @@
 
 //! \author Vijay Pradeep
 
+#include <ros/console.h>
 #include <laser_cb_detector/cv_laser_bridge.h>
 
 using namespace laser_cb_detector;

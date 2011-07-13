@@ -33,6 +33,7 @@
 *********************************************************************/
 
 #include "joint_states_settler/joint_states_deflater.h"
+#include <ros/console.h>
 
 using namespace std;
 using namespace joint_states_settler;

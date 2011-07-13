@@ -35,6 +35,7 @@
 //! \author Vijay Pradeep
 
 #include <laser_joint_processor/laser_joint_processor.h>
+#include <ros/console.h>
 
 using namespace laser_joint_processor;
 using namespace std;

@@ -35,6 +35,7 @@
 //! \author Vijay Pradeep / vpradeep@willowgarage.com
 
 #include <laser_joint_processor/joint_image_interpolator.h>
+#include <ros/console.h>
 
 using namespace laser_joint_processor;
 using namespace std;

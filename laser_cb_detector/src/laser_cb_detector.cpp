@@ -35,6 +35,7 @@
 //! \author Vijay Pradeep
 
 #include <laser_cb_detector/laser_cb_detector.h>
+#include <ros/console.h>
 #include <cv_bridge/CvBridge.h>
 //#include <highgui.h>
 

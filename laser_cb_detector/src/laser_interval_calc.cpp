@@ -35,6 +35,7 @@
 //! \author Vijay Pradeep
 
 #include <laser_cb_detector/laser_interval_calc.h>
+#include <ros/console.h>
 #include <vector>
 #include <algorithm>
 

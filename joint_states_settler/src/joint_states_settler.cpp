@@ -37,6 +37,7 @@
 #include <sstream>
 #include <joint_states_settler/joint_states_settler.h>
 #include <settlerlib/interval_calc.h>
+#include <ros/console.h>
 
 using namespace joint_states_settler;
 

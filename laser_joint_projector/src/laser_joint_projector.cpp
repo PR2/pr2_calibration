@@ -35,6 +35,7 @@
 //! \author Vijay Pradeep / vpradeep@willowgarage.com
 
 #include <cstdio>
+#include <ros/console.h>
 #include <laser_joint_projector/laser_joint_projector.h>
 #include <calibration_msgs/JointStateCalibrationPattern.h>
 

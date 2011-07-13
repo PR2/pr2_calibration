@@ -35,6 +35,7 @@
 //! \author Vijay Pradeep
 
 #include <boost/thread.hpp>
+#include <ros/console.h>
 #include <ros/ros.h>
 #include <actionlib/server/simple_action_server.h>
 #include <image_cb_detector/image_cb_detector_old.h>

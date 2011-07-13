@@ -34,6 +34,7 @@
 
 //! \author Vijay Pradeep
 
+#include <ros/console.h>
 #include <ros/ros.h>
 #include <laser_cb_detector/laser_cb_detector.h>
 #include <sstream>

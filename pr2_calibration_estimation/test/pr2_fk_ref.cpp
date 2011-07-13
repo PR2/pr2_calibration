@@ -35,6 +35,7 @@
 //! \author Vijay Pradeep / vpradeep@willowgarage.com
 
 
+#include <ros/console.h>
 #include <ros/ros.h>
 #include <kdl_parser/kdl_parser.hpp>
 #include <pr2_calibration_estimation/FkTest.h>

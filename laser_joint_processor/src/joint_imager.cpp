@@ -34,6 +34,7 @@
 
 #include <cstdio>
 #include <laser_joint_processor/joint_imager.h>
+#include <ros/console.h>
 
 using namespace laser_joint_processor;
 using namespace std;

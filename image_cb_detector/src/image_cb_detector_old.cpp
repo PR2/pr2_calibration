@@ -34,6 +34,7 @@
 
 //! \author Vijay Pradeep
 
+#include <ros/console.h>
 #include <ros/ros.h>
 #include <image_cb_detector/image_cb_detector_old.h>
 

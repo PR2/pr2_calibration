@@ -35,6 +35,7 @@
 //! \author Vijay Pradeep / vpradeep@willowgarage.com
 
 
+#include <ros/console.h>
 #include <ros/ros.h>
 #include <laser_joint_projector/laser_joint_projector.h>
 #include <kdl_parser/kdl_parser.hpp>
