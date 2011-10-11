@@ -53,9 +53,9 @@
     head_chain_tip_adj:      [   0, 0, 0, pi/2, 0, 0]      # Doesn't correspond to URDF! From dh head_chain to head_pan_link frame
 
     head_plate_frame_joint:    [   .0232, .0, .0645, 0, 0, 0] # head_tilt_link -> head_plate_frame
-    double_stereo_frame_joint: [ 0, 0, .003, 0, 0, 0]         # head_plate_frame -> sensor_mount_link -> double_stereo_link
-    wide_stereo_frame_joint:   [ 0, .03, .0305, 0, 0, 0  ]    # double_stereo_link -> wide_stereo_link
-    narrow_stereo_frame_joint: [ 0, .06, .0305, 0, 0, 0  ]    # double_stereo_link -> narrow_stereo_link
+    double_stereo_frame_joint: [ 0, 0, .00, 0, 0, 0]         # head_plate_frame -> sensor_mount_link -> double_stereo_link
+    wide_stereo_frame_joint:   [ 0.045, .03, .0501, 0, 0, 0  ]    # double_stereo_link -> wide_stereo_link
+    narrow_stereo_frame_joint: [ 0.045, .06, .0501, 0, 0, 0  ]    # double_stereo_link -> narrow_stereo_link
     wide_stereo_optical_frame_joint:    [0, 0, 0, -1.2091995761561452, 1.2091995761561452, -1.2091995761561452] # wide_stereo_link -> wide_stereo_optical_frame
     narrow_stereo_optical_frame_joint:  [0, 0, 0, -1.2091995761561452, 1.2091995761561452, -1.2091995761561452] # narrow_stereo_link -> narrow_stereo_optical_frame
 
