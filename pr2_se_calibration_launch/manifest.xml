@@ -1,0 +1,16 @@
+<package>
+  <description brief="pr2_se_calibration_launch">
+
+     pr2_se_calibration_launch 
+
+  </description>
+  <author>Adam Leeper, Vijay Pradeep</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/pr2_se_calibration_launch</url>
+
+  <depend package="pr2_calibration_launch" />
+
+</package>
+
+

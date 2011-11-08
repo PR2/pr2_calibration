@@ -1,0 +1,38 @@
+
+  camera_chains:
+    - sensor_id:    prosilica_rect
+      camera_id:    prosilica_rect
+      chain:
+        before_chain: [head_pan_joint]
+        chain_id:     head_chain
+        dh_link_num:  1  # Connects after head pan
+        after_chain:  [head_chain_tip_adj, head_plate_frame_joint, head_mount_joint, head_mount_prosilica_joint,
+                        head_mount_prosilica_optical_frame_joint]
+
+    - sensor_id:    kinect_rect
+      camera_id:    kinect_rect
+      chain:
+        before_chain: [head_pan_joint]
+        chain_id:     head_chain
+        dh_link_num:  1  # Connects after head pan
+        after_chain:  [head_chain_tip_adj, head_plate_frame_joint, head_mount_joint, head_mount_kinect_ir_joint, 
+                       head_mount_kinect_rgb_joint, head_mount_kinect_rgb_optical_frame_joint]
+
+    - camera_id: forearm_right_rect
+      sensor_id: forearm_right_rect
+      chain:
+        before_chain: [r_shoulder_pan_joint]
+        chain_id:     right_arm_chain
+        after_chain:  [r_forearm_roll_adj, r_forearm_cam_frame_joint, r_forearm_cam_optical_frame_joint]
+        dh_link_num:  4
+
+  tilting_lasers:
+    - sensor_id: tilt_laser
+      laser_id:  tilt_laser
+
+  chains:
+    - sensor_id:    right_arm_chain
+      before_chain: [r_shoulder_pan_joint]
+      chain_id:     right_arm_chain
+      after_chain:  [right_arm_tip_adj, right_arm_cb]
+      dh_link_num:  6

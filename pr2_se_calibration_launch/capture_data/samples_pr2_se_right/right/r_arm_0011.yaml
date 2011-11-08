@@ -1,0 +1,19 @@
+camera_measurements:
+- {cam_id: kinect_rect, config: small_cb_4x5}
+- {cam_id: prosilica_rect, config: small_cb_4x5}
+joint_commands:
+- controller: head_traj_controller
+  segments:
+  - duration: 2.0
+    positions: [-0.36107371565258672, 1.2752624455686663]
+- controller: r_arm_controller
+  segments:
+  - duration: 2.0
+    positions: [-0.95817555396895826, 0.067422153714250393, -1.7003630264968681, -1.487347495592622,
+      -0.81437129008999232, -1.312180771965155, 6.1699098336976324]
+joint_measurements:
+- {chain_id: head_chain, config: tight_tol}
+- {chain_id: right_arm_chain, config: tight_tol}
+laser_measurements: []
+sample_id: r_arm_0011
+target: {chain_id: right_arm_chain, target_id: small_cb_4x5}

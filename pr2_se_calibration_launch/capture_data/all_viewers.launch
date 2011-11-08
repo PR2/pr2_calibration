@@ -1,0 +1,29 @@
+<launch>
+
+  <!-- TODO Add support for right OR left arm -->
+
+  <!-- Hack to create the directory -->
+  <param name="mkdir_tmp" command="mkdir -m 777 -p /tmp/pr2_calibration" />
+  <param name="mkdir_tmp" command="mkdir -m 777 -p /tmp/pr2_calibration/cb_fail" />
+
+  <param name="r_forearm_cam/annotated_viewer/filename_format" type="string" value="/tmp/pr2_calibration/cb_fail/cb_r_forearm_%04i.jpg" />
+  <param name="camera/rgb/annotated_viewer/filename_format"    type="string" value="/tmp/pr2_calibration/cb_fail/cb_kinect_%04i.jpg" />
+  <param name="tilt_laser/laser_cb_viewer/filename_format"           type="string" value="/tmp/pr2_calibration/cb_fail/cb_laser_5x4_%04i.jpg" />
+  <param name="tilt_laser_7x6/laser_cb_viewer/filename_format"       type="string" value="/tmp/pr2_calibration/cb_fail/cb_laser_7x6_%04i.jpg" />
+
+  <include file="$(find pr2_calibration_launch)/capture_data/monocam_viewer.launch"
+           ns="r_forearm_cam" />
+
+  <include file="$(find pr2_calibration_launch)/capture_data/monocam_viewer.launch"
+           ns="camera/rgb" />
+
+  <include file="$(find pr2_calibration_launch)/capture_data/monocam_viewer.launch"
+           ns="prosilica" />
+
+  <include file="$(find pr2_calibration_launch)/capture_data/laser_view.launch"
+           ns="tilt_laser"/>
+
+  <include file="$(find pr2_calibration_launch)/capture_data/laser_view.launch"
+           ns="tilt_laser_7x6"/>
+
+</launch>
