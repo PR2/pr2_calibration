@@ -180,8 +180,12 @@ using namespace laser_joint_processor;
 
 void spinFunc(ros::CallbackQueue* queue)
 {
-  ros::SingleThreadedSpinner spinner;
-  spinner.spin(queue);
+  static const double timeout = 0.01;
+
+  while (ros::ok())
+  {
+    queue->callAvailable(ros::WallDuration(timeout));
+  }
 }
 
 int main(int argc, char** argv)
