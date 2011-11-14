@@ -58,15 +58,16 @@ def update_joint(str_in, name, xyz=None, rpy=None, ref_shift=None):
         if xyz_span is not None:
             changelist.append((xyz_span, "%.10f %.10f %.10f" % tuple(xyz)))
 
-    if ref_shift is not None:
-        calibration_span = find_atomic_elem_span(str_in, 'calibration', *joint_span)
-        rising_span = find_attr_span(str_in, 'rising', *calibration_span)
-        falling_span = find_attr_span(str_in, 'falling', *calibration_span)
-        reference_position_span = find_attr_span(str_in, 'reference_position', *calibration_span)
-        for cur_cal_span in [rising_span, falling_span, reference_position_span]:
-            if cur_cal_span is not None:
-                orig_val = float(str_in[cur_cal_span[0]:cur_cal_span[1]])
-                changelist.append((cur_cal_span, "%.10f" % (orig_val + ref_shift)))
+# TODO: bring this back?
+#    if ref_shift is not None:
+#        calibration_span = find_atomic_elem_span(str_in, 'calibration', *joint_span)
+#        rising_span = find_attr_span(str_in, 'rising', *calibration_span)
+#        falling_span = find_attr_span(str_in, 'falling', *calibration_span)
+#        reference_position_span = find_attr_span(str_in, 'reference_position', *calibration_span)
+#        for cur_cal_span in [rising_span, falling_span, reference_position_span]:
+#            if cur_cal_span is not None:
+#                orig_val = float(str_in[cur_cal_span[0]:cur_cal_span[1]])
+#                changelist.append((cur_cal_span, "%.10f" % (orig_val + ref_shift)))
 
     return changelist
 

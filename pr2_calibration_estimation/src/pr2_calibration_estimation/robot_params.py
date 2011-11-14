@@ -102,7 +102,8 @@ class RobotParams:
         cur_index = 0
 
         self.dh_chains,      cur_index = init_primitive_dict(cur_index, config_dict["dh_chains"],      DhChain)
-        self.tilting_lasers, cur_index = init_primitive_dict(cur_index, config_dict["tilting_lasers"], TiltingLaser)
+        try: self.tilting_lasers, cur_index = init_primitive_dict(cur_index, config_dict["tilting_lasers"], TiltingLaser)
+        except: self.tilting_lasers = dict()
         self.transforms,     cur_index = init_primitive_dict(cur_index, config_dict["transforms"],     SingleTransform)
         self.rectified_cams, cur_index = init_primitive_dict(cur_index, config_dict["rectified_cams"], RectifiedCamera)
         self.checkerboards,  cur_index = init_primitive_dict(cur_index, config_dict["checkerboards"],   Checkerboard)
@@ -114,7 +115,8 @@ class RobotParams:
         free_list = [0] * self.length
         #import code; code.interact(local=locals())
         update_primitive_free(free_list, self.dh_chains,      free_dict["dh_chains"])
-        update_primitive_free(free_list, self.tilting_lasers, free_dict["tilting_lasers"])
+        try: update_primitive_free(free_list, self.tilting_lasers, free_dict["tilting_lasers"])
+        except: pass
         update_primitive_free(free_list, self.transforms,     free_dict["transforms"])
         update_primitive_free(free_list, self.rectified_cams, free_dict["rectified_cams"])
         update_primitive_free(free_list, self.checkerboards,  free_dict["checkerboards"])

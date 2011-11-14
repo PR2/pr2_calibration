@@ -54,6 +54,10 @@ class CaptureExecutive:
         self.chain_config      = yaml.load(open(config_dir + "/chain_config.yaml"))
         self.laser_config      = yaml.load(open(config_dir + "/laser_config.yaml"))
         self.controller_config = yaml.load(open(config_dir + "/controller_config.yaml"))
+        
+        # Not all robots have lasers.... :(
+        if self.laser_config == None:
+            self.laser_config = dict()
 
         self.cache = RobotMeasurementCache()
         self.lock = threading.Lock()
@@ -99,7 +103,10 @@ class CaptureExecutive:
         # Set up the cache with only the sensors we care about
         cam_ids   = [x["cam_id"]   for x in next_configuration["camera_measurements"]]
         chain_ids = [x["chain_id"] for x in next_configuration["joint_measurements"]]
-        laser_ids = [x["laser_id"] for x in next_configuration["laser_measurements"]]
+        try:
+            laser_ids = [x["laser_id"] for x in next_configuration["laser_measurements"]]
+        except:
+            laser_ids = list()
         self.cache.reconfigure(cam_ids, chain_ids, laser_ids)
 
 
