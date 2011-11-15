@@ -93,6 +93,7 @@ class CameraChainBundler:
                     M_chain = None
                 else:
                     print "else cur_config[chain][chain_id]: ", cur_config["chain"]["chain_id"]
+                    break
                 cur_sensor = CameraChainSensor(cur_config, M_cam, M_chain)
                 sensors.append(cur_sensor)
             else:
