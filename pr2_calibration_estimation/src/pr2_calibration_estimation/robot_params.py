@@ -73,6 +73,7 @@ def inflate_primitive_dict(param_vec, primitive_dict):
 # their configuration, into the specified parameter vector
 def deflate_primitive_dict(param_vec, primitive_dict):
     for key, elem in primitive_dict.items():
+        #print elem, elem.start, elem.end
         param_vec[elem.start:elem.end,0] = elem.deflate()
 
 # Iterate over config dictionary and determine which parameters should be free,
