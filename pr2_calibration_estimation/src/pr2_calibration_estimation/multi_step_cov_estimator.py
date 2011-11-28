@@ -192,6 +192,9 @@ if __name__ == '__main__':
         previous_pose_guesses = numpy.array(yaml.load(config['initial_poses']))
     else:
         previous_pose_guesses = numpy.zeros([msg_count,6])
+        #for i in range(msg_count):
+        #    previous_pose_guesses[i][0] = 0.4
+        #    previous_pose_guesses[i][2] = 1.0
 
     # Check if we can write to all of our output files
     output_filenames = []

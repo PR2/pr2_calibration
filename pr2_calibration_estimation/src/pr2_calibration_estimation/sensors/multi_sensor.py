@@ -99,6 +99,7 @@ class MultiSensor:
             sensor.update_config(robot_params)
 
     def compute_residual(self, target_pts):
+        #print self.sensors
         r_list = [sensor.compute_residual(target_pts) for sensor in self.sensors]
         if len(r_list) == 0:
             return array([])

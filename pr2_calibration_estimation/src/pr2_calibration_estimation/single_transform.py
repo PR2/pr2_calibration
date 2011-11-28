@@ -55,37 +55,32 @@ class SingleTransform:
         return param_vec.T.tolist()[0]
 
     # Convert column vector of params into config
-    def inflate(self, param):
-        assert(param.size == 6)
+    def inflate(self, p):
+        assert(p.size == 6)
 
-        self._config = param.copy()  # Once we can back compute p from T, we don't need _config
+        self._config = p.copy()  # Once we can back compute p from T, we don't need _config
 
-        r = float(param[3])
-        y = float(param[5])
-        p = float(param[4])
+        # Init output matrix
+        T = matrix( zeros((4,4,), float))
+        T[3,3] = 1.0
+        
+        # Copy position into matrix
+        T[0:3,3] = p[0:3,0]
+        
+        # Renormalize the rotation axis to be unit length
+        U,S,Vt = numpy.linalg.svd(p[3:6,0])
+        a = U[:,0]
+        rot_angle = S[0]*Vt[0,0]
+        
+        # Build rotation matrix
+        c = cos(rot_angle)
+        s = sin(rot_angle)
+        R = matrix( [ [   a[0,0]**2+(1-a[0,0]**2)*c, a[0,0]*a[1,0]*(1-c)-a[2,0]*s, a[0,0]*a[2,0]*(1-c)+a[1,0]*s],
+                      [a[0,0]*a[1,0]*(1-c)+a[2,0]*s,    a[1,0]**2+(1-a[1,0]**2)*c, a[1,0]*a[2,0]*(1-c)-a[0,0]*s],
+                      [a[0,0]*a[2,0]*(1-c)-a[1,0]*s, a[1,0]*a[2,0]*(1-c)+a[0,0]*s,    a[2,0]**2+(1-a[2,0]**2)*c] ] )
 
-        T_roll =  matrix([ [ 1,   0,       0,    0 ],
-                           [ 0, cos(r), -sin(r), 0 ],
-                           [ 0, sin(r),  cos(r), 0 ],
-                           [ 0,   0,       0,    1 ] ])
-
-        T_pitch = matrix([ [  cos(p), 0, sin(p), 0 ],
-                           [    0,    1,   0,    0 ],
-                           [ -sin(p), 0, cos(p), 0 ],
-                           [    0,    0,   0,    1 ] ])
-
-        T_yaw =   matrix([ [ cos(y), -sin(y), 0, 0 ],
-                           [ sin(y),  cos(y), 0, 0 ],
-                           [   0,       0,    1, 0 ],
-                           [   0,       0,    0, 1 ] ])
-
-
-        T_trans = matrix([ [ 1, 0, 0, param[0] ],
-                           [ 0, 1, 0, param[1] ],
-                           [ 0, 0, 1, param[2] ],
-                           [ 0, 0, 0, 1 ] ])
-
-        self.transform =  T_yaw* T_pitch * T_roll * T_trans
+        T[0:3,0:3] = R
+        self.transform = T
 
     # Take transform, and convert into 6 param vector
     def deflate(self):
