@@ -1,7 +1,7 @@
 <launch>
   <machine name="c1" address="c1" ros-root="$(env ROS_ROOT)" ros-package-path="$(env ROS_PACKAGE_PATH)" />
   <node type="pr2_exec.py"
-        pkg="pr2_calibration_executive"
+        pkg="pr2_calibration_launch"
         name="calibration_exec"
         args="$(find pr2_calibration_launch)/capture_data/samples_pr2_beta $(find pr2_calibration_launch)/capture_data/hardware_config"
         output="screen"
@@ -66,7 +66,7 @@
 
   </node>
 
-  <node type="urdf_pub.py" pkg="pr2_calibration_launch" name="urdf_pub"/>
+  <node type="urdf_pub.py" pkg="calibration_launch" name="urdf_pub"/>
 
   <node type="record" pkg="rosbag" name="robot_measurement_recorder" output="screen"
         args="--output-name /tmp/pr2_calibration/cal_measurements robot_measurement robot_description"

@@ -19,8 +19,4 @@
     <remap from="interval" to="request_interval" />
   </node>
 
-
-
-
-
 </launch>

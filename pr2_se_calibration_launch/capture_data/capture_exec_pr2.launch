@@ -35,10 +35,9 @@
     <remap from="tilt_laser_7x6/laser_image"    to="tilt_laser_7x6/cb_annotated_image"/>
     <remap from="tilt_laser_7x6/joint_features" to="tilt_laser_7x6/joint_state_features" />
 
-
   </node>
 
-  <node type="urdf_pub.py" pkg="pr2_calibration_launch" name="urdf_pub"/>
+  <node type="urdf_pub.py" pkg="calibration_launch" name="urdf_pub"/>
 
   <node type="record" pkg="rosbag" name="robot_measurement_recorder" output="screen"
         args="-O /tmp/pr2_calibration/cal_measurements robot_measurement robot_description" >

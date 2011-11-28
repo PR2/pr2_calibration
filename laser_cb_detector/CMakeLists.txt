@@ -23,9 +23,6 @@ rosbuild_add_library(${PROJECT_NAME} src/cv_laser_bridge.cpp
 rosbuild_add_executable(laser_cb_detector_node src/laser_cb_detector_node.cpp)
 target_link_libraries(laser_cb_detector_node ${PROJECT_NAME})
 
-rosbuild_add_executable(image_annotator src/image_annotator.cpp)
-target_link_libraries(image_annotator ${PROJECT_NAME})
-
 rosbuild_add_executable(laser_interval_calc_node src/laser_interval_calc_node.cpp)
 target_link_libraries(laser_interval_calc_node ${PROJECT_NAME})
 

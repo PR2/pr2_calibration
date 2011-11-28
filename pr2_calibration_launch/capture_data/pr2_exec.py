@@ -35,7 +35,7 @@ import roslib; roslib.load_manifest('pr2_calibration_launch')
 import rospy
 import yaml
 import sys
-import pr2_calibration_executive.capture_exec
+import capture_executive.capture_exec
 import time
 from calibration_msgs.msg import RobotMeasurement
 import os
@@ -49,7 +49,7 @@ rospy.init_node("pr2_capture_executive_node")
 samples_dir = rospy.myargv()[1]
 config_dir = rospy.myargv()[2]
 
-executive = pr2_calibration_executive.capture_exec.CaptureExecutive(config_dir)
+executive = capture_executive.capture_exec.CaptureExecutive(config_dir)
 time.sleep(1.0)
 
 left_sample_names  = [x for x in os.listdir(samples_dir + "/left/")  if ".yaml" in x]

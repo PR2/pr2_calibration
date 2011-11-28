@@ -18,7 +18,7 @@
     </node>
 
     <node type="image_annotator"
-          pkg="laser_cb_detector"
+          pkg="image_cb_detector"
           name="cb_annotator"
           output="screen">
       <remap from="annotated" to="image_rect_annotated" />

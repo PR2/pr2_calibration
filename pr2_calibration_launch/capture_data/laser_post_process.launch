@@ -1,7 +1,7 @@
 <launch>
     <!-- ImageAnnotator -->
    <node type="image_annotator"
-         pkg="laser_cb_detector"
+         pkg="image_cb_detector"
          name="cb_annotator" >
      <remap from="features" to="laser_checkerboard"/>
      <remap from="image" to="cb_image" />
