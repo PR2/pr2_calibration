@@ -2,9 +2,7 @@
 
   <group ns="calibration_config" clear_params="true">
 
-    <group ns="sensors">
-      <param name="all"    textfile="$(find pr2_calibration_launch)/estimate_params/config_pr2_beta/sensors.yaml" />
-    </group>
+    <rosparam file="$(find pr2_calibration_launch)/estimate_params/config_pr2_beta/system.yaml" command="load" />
 
     <group ns="cal_steps">
 
@@ -99,8 +97,6 @@
       </group>
 
     </group>
-
-    <param name="initial_system" textfile="$(find pr2_calibration_launch)/estimate_params/config_pr2_beta/system.yaml" />
 
   </group>
 

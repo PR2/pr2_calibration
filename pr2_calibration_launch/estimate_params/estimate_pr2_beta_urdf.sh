@@ -16,7 +16,7 @@ rm robot_calibrated.xml
 echo "Success"
 
 roslaunch pr2_calibration_launch head_then_arms_params.launch
-rosrun pr2_calibration_estimation multi_step_cov_estimator.py /tmp/pr2_calibration/cal_measurements.bag /tmp/pr2_calibration __name:=cal_cov_estimator
+rosrun calibration_estimation multi_step_cov_estimator.py /tmp/pr2_calibration/cal_measurements.bag /tmp/pr2_calibration __name:=cal_cov_estimator
 
 est_return_val=$?
 
