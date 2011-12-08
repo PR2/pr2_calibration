@@ -8,15 +8,15 @@
   <!-- Cameras -->
   <include file="$(find pr2_calibration_launch)/capture_data/double_stereo_pipeline.launch" />
 
-  <include file="$(find pr2_calibration_launch)/capture_data/monocam_pipeline.launch" ns="l_forearm_cam" />
+  <include file="$(find calibration_launch)/capture_data/monocam_pipeline.launch" ns="l_forearm_cam" />
 
-  <include file="$(find pr2_calibration_launch)/capture_data/monocam_pipeline.launch" ns="r_forearm_cam" />
+  <include file="$(find calibration_launch)/capture_data/monocam_pipeline.launch" ns="r_forearm_cam" />
 
-  <include file="$(find pr2_calibration_launch)/capture_data/monocam_pipeline.launch" ns="kinect_head/camera/rgb" >
+  <include file="$(find calibration_launch)/capture_data/monocam_pipeline.launch" ns="kinect_head/camera/rgb" >
     <arg name="image_topic" value="image_mono"/>
   </include>
 
-  <include file="$(find pr2_calibration_launch)/capture_data/monocam_pipeline.launch" ns="kinect_torso/camera/rgb" >
+  <include file="$(find calibration_launch)/capture_data/monocam_pipeline.launch" ns="kinect_torso/camera/rgb" >
     <arg name="image_topic" value="image_mono"/>
   </include>
 
