@@ -1,7 +1,8 @@
 <launch>
   <machine name="c1" address="c1" ros-root="$(env ROS_ROOT)" ros-package-path="$(env ROS_PACKAGE_PATH)" default="True"/>
 
-  <include file="$(find pr2_calibration_launch)/capture_data/controllers.launch" />
+  <node type="pr2_controller_manager" pkg="pr2_controller_manager" name="cal_controller_starter"
+        args="start r_arm_controller l_arm_controller" output="screen"/>
 
   <include file="$(find pr2_calibration_launch)/capture_data/joint_settlers.launch" />
 

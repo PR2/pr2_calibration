@@ -25,10 +25,12 @@
   <include file="$(find calibration_launch)/capture_data/annotated_viewer.launch" ns="r_forearm_cam" />
 
   <include file="$(find calibration_launch)/capture_data/annotated_viewer.launch" ns="tilt_laser">
+    <arg name="image_topic" value="cb_annotated_image"/>
     <arg name="autosize" value="False"/>
   </include>
 
   <include file="$(find calibration_launch)/capture_data/annotated_viewer.launch" ns="tilt_laser_7x6">
+    <arg name="image_topic" value="cb_annotated_image"/>
     <arg name="autosize" value="False"/>
   </include>
 
