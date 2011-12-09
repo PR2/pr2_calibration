@@ -1,7 +1,7 @@
 
   transforms:
-    right_arm_cb:                   [ 1, 1, 1, 0, 1, 1 ]
-    left_arm_cb:                    [ 1, 1, 1, 0, 1, 1 ]
+    right_arm_chain_cb:             [ 1, 1, 1, 0, 1, 1 ]
+    left_arm_chain_cb:              [ 1, 1, 1, 0, 1, 1 ]
     high_def_frame_joint:           [ 1, 1, 1, 1, 1, 1 ]
     kinect_head_rgb_frame_joint:    [ 1, 1, 1, 1, 1, 1 ]
     kinect_torso_rgb_frame_joint:   [ 1, 1, 1, 1, 1, 1 ]

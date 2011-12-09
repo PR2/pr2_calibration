@@ -2,8 +2,8 @@
   transforms:
     r_arm_wrist_roll_joint:     [0, 0, 0, 1, 0, 0]
     l_arm_wrist_roll_joint:     [0, 0, 0, 1, 0, 0]
-    right_arm_cb:               [1, 1, 1, 0, 1, 1]
-    left_arm_cb:                [1, 1, 1, 0, 1, 1]
+    right_arm_chain_cb:         [1, 1, 1, 0, 1, 1]
+    left_arm_chain_cb:          [1, 1, 1, 0, 1, 1]
 
   chains:
     right_arm_chain:
