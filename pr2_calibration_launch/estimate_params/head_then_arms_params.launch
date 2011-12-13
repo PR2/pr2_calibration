@@ -71,8 +71,6 @@
           - wide_right_rect
           - tilt_laser
           - prosilica_rect
-          - kinect_head
-          - kinect_torso
         </rosparam>
         <param name="output_filename" type="string" value="head_laser_calibrated" />
       </group>
@@ -91,7 +89,6 @@
           - right_arm_chain
           - forearm_left_rect
           - forearm_right_rect
-          - kinect_torso
         </rosparam>
         <param name="output_filename" type="string" value="system_calibrated" />
       </group>
