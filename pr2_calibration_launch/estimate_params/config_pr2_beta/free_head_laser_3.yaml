@@ -1,7 +1,7 @@
 
   transforms:
-    r_arm_wrist_roll_joint:     [0, 0, 0, 1, 0, 0]
-    l_arm_wrist_roll_joint:     [0, 0, 0, 1, 0, 0]
+    r_wrist_roll_joint:         [0, 0, 0, 1, 0, 0]
+    l_wrist_roll_joint:         [0, 0, 0, 1, 0, 0]
     head_pan_joint:             [0, 0, 0, 0, 0, 1]
     laser_tilt_mount_joint:     [0, 0, 0, 0, 1, 0]
     laser_tilt_joint:           [0, 0, 1, 0, 0, 1]
