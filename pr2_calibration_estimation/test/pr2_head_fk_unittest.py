@@ -39,8 +39,8 @@ import unittest
 import rospy
 import time
 
-from pr2_calibration_estimation.full_chain import FullChainRobotParams
-from pr2_calibration_estimation.robot_params import RobotParams
+from calibration_estimation.full_chain import FullChainRobotParams
+from calibration_estimation.urdf_params import UrdfParams
 from sensor_msgs.msg import JointState
 
 import yaml
@@ -50,37 +50,19 @@ import numpy
 
 class LoadData(unittest.TestCase):
     def setUp(self):
-
-
-
-        #config_filename = "config/system.yaml"
-        #f = open(config_filename)
-        f = rospy.get_param("system")
-        all_config = yaml.load(f)
-
-        self.robot_params = RobotParams()
-        self.robot_params.configure(all_config)
-
+        config = yaml.load(open(rospy.get_param('config_file')))
+        self.robot_params = UrdfParams(rospy.get_param('robot_description'), config)
 
         rospy.wait_for_service('fk', 3.0)
         self._fk_ref = rospy.ServiceProxy('fk', FkTest)
-        #f.close()
 
     def loadCommands(self, param_name):
-        #f = open(filename)
-        #cmds = [ [ float(y) for y in x.split()] for x in f.readlines()]
-        #f.close()
-
         command_str = rospy.get_param(param_name)
-
-
         cmds = [ [float(y) for y in x.split()] for x in command_str.strip().split('\n')]
-
         return cmds
 
     def getExpected(self, root, tip, cmd):
         resp = self._fk_ref(root, tip, cmd)
-        #print resp
         T = matrix(zeros((4,4)), float)
         T[0:3, 0:3] = reshape( matrix(resp.rot, float), (3,3))
         T[3,3] = 1.0;
@@ -104,164 +86,110 @@ class TestPR2Fk(LoadData):
 
             self.assertAlmostEqual(numpy.linalg.norm(expected_T-actual_T), 0.0, 6)
 
+
     def test_head_tilt_link(self):
         print ""
-
-        config_str = '''
-        before_chain: [head_pan_joint]
-        chain_id:     head_chain
-        after_chain:  [head_chain_tip_adj]
-        dh_link_num:  1
-        '''
-
-        full_chain = FullChainRobotParams(yaml.load(config_str))
+        full_chain = FullChainRobotParams('head_chain','head_tilt_link')
         full_chain.update_config(self.robot_params)
-
         cmds = self.loadCommands('head_commands')
-
         self.run_test(full_chain, 'torso_lift_link', 'head_tilt_link', cmds)
+
 
     def test_head_plate(self):
         print ""
-        config_str = '''
-        before_chain: [head_pan_joint]
-        chain_id:     head_chain
-        after_chain:  [head_chain_tip_adj, head_plate_frame_joint]
-        dh_link_num:  1'''
-        full_chain = FullChainRobotParams(yaml.load(config_str))
+        full_chain = FullChainRobotParams('head_chain','head_plate_frame')
         full_chain.update_config(self.robot_params)
         cmds = self.loadCommands('head_commands')
         self.run_test(full_chain, 'torso_lift_link', 'head_plate_frame', cmds)
 
+
     def test_double_stereo(self):
         print ""
-        config_str = '''
-        before_chain: [head_pan_joint]
-        chain_id:     head_chain
-        after_chain:  [head_chain_tip_adj, head_plate_frame_joint, double_stereo_frame_joint]
-        dh_link_num:  1 '''
-        full_chain = FullChainRobotParams(yaml.load(config_str))
+        full_chain = FullChainRobotParams('head_chain','double_stereo_link')
         full_chain.update_config(self.robot_params)
         cmds = self.loadCommands('head_commands')
         self.run_test(full_chain, 'torso_lift_link', 'double_stereo_link', cmds)
 
+
     def test_wide_stereo(self):
         print ""
-        config_str = '''
-        before_chain: [head_pan_joint]
-        chain_id:     head_chain
-        after_chain:  [head_chain_tip_adj, head_plate_frame_joint, double_stereo_frame_joint, wide_stereo_frame_joint]
-        dh_link_num:  1 '''
-        full_chain = FullChainRobotParams(yaml.load(config_str))
+        full_chain = FullChainRobotParams('head_chain','wide_stereo_link')
         full_chain.update_config(self.robot_params)
         cmds = self.loadCommands('head_commands')
         self.run_test(full_chain, 'torso_lift_link', 'wide_stereo_link', cmds)
 
+
     def test_wide_stereo_optical(self):
         print ""
-        config_str = '''
-        before_chain: [head_pan_joint]
-        chain_id:     head_chain
-        after_chain:  [head_chain_tip_adj, head_plate_frame_joint, double_stereo_frame_joint, wide_stereo_frame_joint, wide_stereo_optical_frame_joint]
-        dh_link_num:  1 '''
-        full_chain = FullChainRobotParams(yaml.load(config_str))
+        full_chain = FullChainRobotParams('head_chain','wide_stereo_optical_frame')
         full_chain.update_config(self.robot_params)
         cmds = self.loadCommands('head_commands')
         self.run_test(full_chain, 'torso_lift_link', 'wide_stereo_optical_frame', cmds)
 
+
     def test_narrow_stereo(self):
         print ""
-        config_str = '''
-        before_chain: [head_pan_joint]
-        chain_id:     head_chain
-        after_chain:  [head_chain_tip_adj, head_plate_frame_joint, double_stereo_frame_joint, narrow_stereo_frame_joint]
-        dh_link_num:  1 '''
-        full_chain = FullChainRobotParams(yaml.load(config_str))
+        full_chain = FullChainRobotParams('head_chain','narrow_stereo_link')
         full_chain.update_config(self.robot_params)
         cmds = self.loadCommands('head_commands')
         self.run_test(full_chain, 'torso_lift_link', 'narrow_stereo_link', cmds)
 
+
     def test_narrow_stereo_optical(self):
         print ""
-        config_str = '''
-        before_chain: [head_pan_joint]
-        chain_id:     head_chain
-        after_chain:  [head_chain_tip_adj, head_plate_frame_joint, double_stereo_frame_joint, narrow_stereo_frame_joint, narrow_stereo_optical_frame_joint]
-        dh_link_num:  1 '''
-        full_chain = FullChainRobotParams(yaml.load(config_str))
+        full_chain = FullChainRobotParams('head_chain','narrow_stereo_optical_frame')
         full_chain.update_config(self.robot_params)
         cmds = self.loadCommands('head_commands')
         self.run_test(full_chain, 'torso_lift_link', 'narrow_stereo_optical_frame', cmds)
 
+
     def test_high_def(self):
         print ""
-        config_str = '''
-        before_chain: [head_pan_joint]
-        chain_id:     head_chain
-        after_chain:  [head_chain_tip_adj, head_plate_frame_joint, high_def_frame_joint]
-        dh_link_num:  1 '''
-        full_chain = FullChainRobotParams(yaml.load(config_str))
+        full_chain = FullChainRobotParams('head_chain','high_def_frame')
         full_chain.update_config(self.robot_params)
         cmds = self.loadCommands('head_commands')
         self.run_test(full_chain, 'torso_lift_link', 'high_def_frame', cmds)
 
+
     def test_high_def_optical(self):
         print ""
-        config_str = '''
-        before_chain: [head_pan_joint]
-        chain_id:     head_chain
-        after_chain:  [head_chain_tip_adj, head_plate_frame_joint, high_def_frame_joint, high_def_optical_frame_joint]
-        dh_link_num:  1 '''
-        full_chain = FullChainRobotParams(yaml.load(config_str))
+        full_chain = FullChainRobotParams('head_chain','high_def_optical_frame')
         full_chain.update_config(self.robot_params)
         cmds = self.loadCommands('head_commands')
         self.run_test(full_chain, 'torso_lift_link', 'high_def_optical_frame', cmds)
 
-    def test_kinect_head_def(self):
-        print ""
-        config_str = '''
-        before_chain: [head_pan_joint]
-        chain_id:     head_chain
-        after_chain:  [head_chain_tip_adj, head_plate_frame_joint, kinect_head_rgb_frame_joint]
-        dh_link_num:  1 '''
-        full_chain = FullChainRobotParams(yaml.load(config_str))
-        full_chain.update_config(self.robot_params)
-        cmds = self.loadCommands('head_commands')
-        self.run_test(full_chain, 'torso_lift_link', 'kinect_head_rgb_frame', cmds)
 
-    def test_kinect_head_optical(self):
-        print ""
-        config_str = '''
-        before_chain: [head_pan_joint]
-        chain_id:     head_chain
-        after_chain:  [head_chain_tip_adj, head_plate_frame_joint, kinect_head_rgb_frame_joint, kinect_head_rgb_optical_frame_joint]
-        dh_link_num:  1 '''
-        full_chain = FullChainRobotParams(yaml.load(config_str))
-        full_chain.update_config(self.robot_params)
-        cmds = self.loadCommands('head_commands')
-        self.run_test(full_chain, 'torso_lift_link', 'kinect_head_rgb_optical_frame', cmds)
+#    def test_kinect_head_def(self):
+#        print ""
+#        full_chain = FullChainRobotParams('head_chain','kinect_head_rgb_frame')
+#        full_chain.update_config(self.robot_params)
+#        cmds = self.loadCommands('head_commands')
+#        self.run_test(full_chain, 'torso_lift_link', 'kinect_head_rgb_frame', cmds)
 
-    def test_kinect_torso_def(self):
-        print ""
-        config_str = '''
-        before_chain: [kinect_torso_rgb_frame_joint, kinect_torso_rgb_optical_frame_joint]
-        chain_id:     NULL
-        after_chain:  [] '''
-        full_chain = FullChainRobotParams(yaml.load(config_str))
-        full_chain.update_config(self.robot_params)
-        cmds = self.loadCommands('head_commands')
-        self.run_test(full_chain, 'torso_lift_link', 'kinect_torso_rgb_frame', cmds)
 
-    def test_kinect_torso_optical(self):
-        print ""
-        config_str = '''
-        before_chain: [kinect_torso_rgb_frame_joint, kinect_torso_rgb_optical_frame_joint]
-        chain_id:     NULL
-        after_chain:  [] '''
-        full_chain = FullChainRobotParams(yaml.load(config_str))
-        full_chain.update_config(self.robot_params)
-        cmds = self.loadCommands('head_commands')
-        self.run_test(full_chain, 'torso_lift_link', 'kinect_torso_rgb_optical_frame', cmds)
+#    def test_kinect_head_optical(self):
+#        print ""
+#        full_chain = FullChainRobotParams('head_chain','kinect_head_rgb_optical_frame')
+#        full_chain.update_config(self.robot_params)
+#        cmds = self.loadCommands('head_commands')
+#        self.run_test(full_chain, 'torso_lift_link', 'kinect_head_rgb_optical_frame', cmds)
+
+
+#    def test_kinect_torso_def(self):
+#        print ""
+#        full_chain = FullChainRobotParams('head_chain','kinect_torso_rgb_frame')
+#        full_chain.update_config(self.robot_params)
+#        cmds = self.loadCommands('head_commands')
+#        self.run_test(full_chain, 'torso_lift_link', 'kinect_torso_rgb_frame', cmds)
+
+
+#    def test_kinect_torso_optical(self):
+#        print ""
+#        full_chain = FullChainRobotParams('head_chain','kinect_torso_rgb_optical_frame')
+#        full_chain.update_config(self.robot_params)
+#        cmds = self.loadCommands('head_commands')
+#        self.run_test(full_chain, 'torso_lift_link', 'kinect_torso_rgb_optical_frame', cmds)
+
 
     def check_tilt_laser(self, cmd):
         actual_T = self.robot_params.tilting_lasers["tilt_laser"].compute_pose([cmd])
@@ -275,6 +203,8 @@ class TestPR2Fk(LoadData):
         self.assertAlmostEqual(numpy.linalg.norm(expected_T-actual_T), 0.0, 6)
 
     def test_tilt_laser(self):
+        # need to update params
+        self.robot_params.tilting_lasers['tilt_laser'].update_config(self.robot_params)
         print ""
         self.check_tilt_laser(0)
         self.check_tilt_laser(1)

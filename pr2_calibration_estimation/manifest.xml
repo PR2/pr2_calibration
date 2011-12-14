@@ -8,6 +8,7 @@
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/pr2_calibration_estimation</url>
 
+  <depend package="calibration_estimation"/>
   <depend package="rospy"/>
   <depend package="rostest"/>
 

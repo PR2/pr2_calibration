@@ -39,8 +39,8 @@ import unittest
 import rospy
 import time
 
-from pr2_calibration_estimation.full_chain import FullChainRobotParams
-from pr2_calibration_estimation.robot_params import RobotParams
+from calibration_estimation.full_chain import FullChainRobotParams
+from calibration_estimation.urdf_params import UrdfParams
 from sensor_msgs.msg import JointState
 
 import yaml
@@ -50,37 +50,19 @@ import numpy
 
 class LoadData(unittest.TestCase):
     def setUp(self):
-
-
-
-        #config_filename = "config/system.yaml"
-        #f = open(config_filename)
-        f = rospy.get_param("system")
-        all_config = yaml.load(f)
-
-        self.robot_params = RobotParams()
-        self.robot_params.configure(all_config)
-
+        config = yaml.load(open(rospy.get_param('config_file')))
+        self.robot_params = UrdfParams(rospy.get_param('robot_description'), config)
 
         rospy.wait_for_service('fk', 3.0)
         self._fk_ref = rospy.ServiceProxy('fk', FkTest)
-        #f.close()
 
     def loadCommands(self, param_name):
-        #f = open(filename)
-        #cmds = [ [ float(y) for y in x.split()] for x in f.readlines()]
-        #f.close()
-
         command_str = rospy.get_param(param_name)
-
-
         cmds = [ [float(y) for y in x.split()] for x in command_str.strip().split('\n')]
-
         return cmds
 
     def getExpected(self, root, tip, cmd):
         resp = self._fk_ref(root, tip, cmd)
-        #print resp
         T = matrix(zeros((4,4)), float)
         T[0:3, 0:3] = reshape( matrix(resp.rot, float), (3,3))
         T[3,3] = 1.0;
@@ -107,70 +89,33 @@ class TestPR2LeftArmFk(LoadData):
 
     def test_left_arm_fk(self):
         print ""
-
-        config_str = '''
-        before_chain: [l_shoulder_pan_joint]
-        chain_id:     left_arm_chain
-        after_chain:  [left_arm_tip_adj]
-        dh_link_num:  6
-        '''
-
-        full_chain = FullChainRobotParams(yaml.load(config_str))
+        full_chain = FullChainRobotParams('left_arm_chain','l_wrist_roll_link')
         full_chain.update_config(self.robot_params)
-
         cmds = self.loadCommands('l_arm_commands')
-
         self.run_test(full_chain, 'torso_lift_link', 'l_wrist_roll_link', cmds)
+
 
     def test_left_forearm_roll_fk(self):
         print ""
-
-        config_str = '''
-        before_chain: [l_shoulder_pan_joint]
-        chain_id:     left_arm_chain
-        after_chain:  [l_forearm_roll_adj]
-        dh_link_num:  4
-        '''
-
-        full_chain = FullChainRobotParams(yaml.load(config_str))
+        full_chain = FullChainRobotParams('left_arm_chain','l_forearm_roll_link')
         full_chain.update_config(self.robot_params)
-
         cmds = self.loadCommands('l_arm_commands')
-
         self.run_test(full_chain, 'torso_lift_link', 'l_forearm_roll_link', cmds)
+
 
     def test_left_forearm_cam_fk(self):
         print ""
-
-        config_str = '''
-        before_chain: [l_shoulder_pan_joint]
-        chain_id:     left_arm_chain
-        after_chain:  [l_forearm_roll_adj, l_forearm_cam_frame_joint]
-        dh_link_num:  4
-        '''
-
-        full_chain = FullChainRobotParams(yaml.load(config_str))
+        full_chain = FullChainRobotParams('left_arm_chain','l_forearm_cam_frame')
         full_chain.update_config(self.robot_params)
-
         cmds = self.loadCommands('l_arm_commands')
-
         self.run_test(full_chain, 'torso_lift_link', 'l_forearm_cam_frame', cmds)
+
 
     def test_right_forearm_cam_optical_fk(self):
         print ""
-
-        config_str = '''
-        before_chain: [l_shoulder_pan_joint]
-        chain_id:     left_arm_chain
-        after_chain:  [l_forearm_roll_adj, l_forearm_cam_frame_joint, l_forearm_cam_optical_frame_joint]
-        dh_link_num:  4
-        '''
-
-        full_chain = FullChainRobotParams(yaml.load(config_str))
+        full_chain = FullChainRobotParams('left_arm_chain','l_forearm_cam_optical_frame')
         full_chain.update_config(self.robot_params)
-
         cmds = self.loadCommands('l_arm_commands')
-
         self.run_test(full_chain, 'torso_lift_link', 'l_forearm_cam_optical_frame', cmds)
 
 if __name__ == '__main__':
