@@ -44,6 +44,8 @@ import math
 import sys
 import yaml
 
+from calibration_estimation.cal_bag_helpers import *
+
 def usage():
     print "Usage: ./baseline_updater camera:=[camera_namespace] [calibration_bagfile] [system_filename] [config_camera_name]"
     print "    camera_namespace: Ros name to prepend onto the call to set_calibration"
@@ -63,20 +65,7 @@ def main():
     system_filename = argv[2]
     config_cam_name = argv[3]
 
-
-    # ****** Look for cam info in the calibration bagfile ******
-    cam_info = None
-    bag = rosbag.Bag(bag_filename)
-    for topic, msg, t in bag.read_messages():
-        if topic == "robot_measurement":
-            for cam_measurement in msg.M_cam:
-                if cam_measurement.camera_id == config_cam_name:
-                    print "Found a sample with camera [%s] in it" % cam_measurement.camera_id
-                    cam_info = cam_measurement.cam_info
-                    break
-            if cam_info != None:
-                break
-
+    cam_info = get_cam_info(bag_filename, config_cam_name)
     if cam_info == None:
         print "Could not find a camera of the name [%s]" % config_cam_name
         sys.exit(-1)

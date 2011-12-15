@@ -44,11 +44,12 @@ import yaml
 import os.path
 import numpy
 from numpy import kron, ones, eye, array, matrix, diag
-import multi_step_cov_estimator as est_helpers
-import opt_runner
-from sensors.multi_sensor import MultiSensor
-from robot_params import RobotParams
-from single_transform import SingleTransform
+from calibration_estimation.cal_bag_helpers import *
+import calibration_estimation.multi_step_cov_estimator as est_helpers
+import calibration_estimation.opt_runner as opt_runner
+from calibration_estimation.sensors.multi_sensor import MultiSensor
+from calibration_estimation.urdf_params import UrdfParams
+from calibration_estimation.single_transform import SingleTransform
 from visualization_msgs.msg import Marker, MarkerArray
 import geometry_msgs.msg
 
@@ -79,6 +80,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     loop_list = yaml.load(open(loop_list_filename))
+    robot_description = get_robot_description(bag_filename)
 
     config_param_name = "calibration_config"
     if not rospy.has_param(config_param_name):
@@ -91,8 +93,7 @@ if __name__ == '__main__':
     if sensors_name not in config.keys():
         rospy.logerr("Could not find namespace [%s/%s]. Please populate this namespace with sensors.", (config_param_name, sensors_name))
         sys.exit(1)
-    sensors_dump = [yaml.load(x) for x in config[sensors_name].values()]
-    all_sensors_dict = est_helpers.build_sensor_defs(sensors_dump)
+    all_sensors_dict = est_helpers.build_sensor_defs(config[sensors_name])
     all_sensor_types = list(set([x['sensor_type'] for x in all_sensors_dict.values()]))
 
     # Load all the calibration steps.
@@ -102,48 +103,11 @@ if __name__ == '__main__':
 
     # Load the resulting system definition
     system_def_dict = yaml.load(open(output_dir + "/" + cur_step["output_filename"] + ".yaml"))
+    system_def = UrdfParams(robot_description, system_def_dict)
     cb_poses = yaml.load(open(output_dir + "/" + cur_step["output_filename"] + "_poses.yaml"))
     free_dict = yaml.load(cur_step["free_params"])
 
-    # Build the sensor definition subset for this step
-    #sensor_defs = est_helpers.load_requested_sensors(all_sensors_dict, cur_step['sensors'])
-
-
-#    sensor_3d_name = 'tilt_laser'
-#    loop_list1 = [(sensor_3d_name, 'narrow_right_rect', {'color':'b', 'marker':'o'}),
-#                 (sensor_3d_name, 'narrow_left_rect',  {'color':'b', 'marker':'s'}),
-#                 (sensor_3d_name, 'wide_left_rect',    {'color':'r', 'marker':'o'}),
-#                 (sensor_3d_name, 'wide_right_rect',   {'color':'r', 'marker':'s'})]
-#    #loop_list1 = []
-#
-#    sensor_3d_name = 'right_arm_chain'
-#    loop_list2r= [(sensor_3d_name, 'narrow_right_rect', {'color':'g', 'marker':'s'}),
-#                 (sensor_3d_name, 'narrow_left_rect',  {'color':'g', 'marker':'s'}),
-#                 (sensor_3d_name, 'wide_left_rect',    {'color':'y', 'marker':'s'}),
-#                 (sensor_3d_name, 'wide_right_rect',   {'color':'y', 'marker':'s'})]
-#
-#    sensor_3d_name = 'left_arm_chain'
-#    loop_list2l= [(sensor_3d_name, 'narrow_right_rect', {'color':'g', 'marker':'o'}),
-#                 (sensor_3d_name, 'narrow_left_rect',  {'color':'g', 'marker':'o'}),
-#                 (sensor_3d_name, 'wide_left_rect',    {'color':'y', 'marker':'o'}),
-#                 (sensor_3d_name, 'wide_right_rect',   {'color':'y', 'marker':'o'})]
-#
-#    loop_list2 = loop_list2r + loop_list2l
-#    #loop_list2 = []
-#
-#    loop_list3 = [('right_arm_chain', 'forearm_right_rect', {'color':'c', 'marker':'o'}),
-#                 ( 'right_arm_chain', 'forearm_left_rect',  {'color':'m', 'marker':'o'}),
-#                 ( 'left_arm_chain',  'forearm_right_rect', {'color':'m', 'marker':'s'}),
-#                 ( 'left_arm_chain',  'forearm_left_rect',  {'color':'c', 'marker':'s'})]
-#    #loop_list3 = []
-#
-#    loop_list = loop_list1 + loop_list2 + loop_list3
-    #loop_list = loop_list[0:1]
-
-#    loop_list = [('tilt_laser', 'narrow_right_rect', {'color':'b', 'marker':'o'})]
-
     scatter_list = []
-
     marker_count = 0
     for cur_loop in loop_list:
         marker_count += 1
@@ -178,11 +142,8 @@ if __name__ == '__main__':
         print "Sample Indices:"
         print ", ".join(["%u" % i for i in sample_ind])
 
-        system_def = RobotParams()
-        system_def.configure(system_def_dict)
         for ms in multisensors:
             ms.update_config(system_def)
-
 
         error_calc = opt_runner.ErrorCalc(system_def, free_dict, multisensors_pruned, False)
         opt_all_vec = opt_runner.build_opt_vector(system_def, free_dict, numpy.array(cb_poses_pruned))
@@ -199,8 +160,6 @@ if __name__ == '__main__':
             rms_error = numpy.sqrt( numpy.mean(error_cat**2) )
             print "  %s: %.6f" % (sensor_id, rms_error)
 
-
-
         # Calculate loop errors
         chain_sensors = [[s for s in ms.sensors if s.sensor_id == cur_loop['3d']][0]  for ms in multisensors_pruned]
         cam_sensors   = [[s for s in ms.sensors if s.sensor_id == cur_loop['cam']][0] for ms in multisensors_pruned]
@@ -211,7 +170,7 @@ if __name__ == '__main__':
         points_list_guess = [ geometry_msgs.msg.Point(cur_pt[0, 0], cur_pt[0, 1], cur_pt[0, 2]) for cur_pt in list(numpy.concatenate(cb_points,1).T)]
 
         m = Marker()
-        m.header.frame_id = "/torso_lift_link"
+        m.header.frame_id = system_def.base_link
         m.ns = "uncal_sensor"
         m.id = marker_count
         m.type = Marker.SPHERE_LIST
@@ -236,15 +195,11 @@ if __name__ == '__main__':
 
         #fk_points = cb_points
 
-        #import code; code.interact(local=locals())
-
         cam_Js   = [s.compute_expected_J(fk) for s,fk in zip(cam_sensors, fk_points)]
         cam_covs = [matrix(array(s.compute_cov(fk)) * kron(eye(s.get_residual_length()/2),ones([2,2]))) for s,fk in zip(cam_sensors, fk_points)]
         fk_covs  = [matrix(array(s.compute_cov(None)) * kron(eye(s.get_residual_length()/3),ones([3,3]))) for s in chain_sensors]
 
         full_covs = [matrix(cam_J)*fk_cov*matrix(cam_J).T + cam_cov for cam_J, cam_cov, fk_cov in zip(cam_Js, cam_covs, fk_covs)]
-
-        #import code; code.interact(local=locals())
 
         proj_points = [s.compute_expected(pts) for (s,pts) in zip(cam_sensors,fk_points)]
         meas_points = [s.get_measurement() for s in cam_sensors]
@@ -253,7 +208,6 @@ if __name__ == '__main__':
 
 
         r = numpy.concatenate(proj_points) - numpy.concatenate(meas_points)
-
 
         bearing_list = []
         #for ms in multisensors_pruned:
@@ -294,5 +248,3 @@ if __name__ == '__main__':
     plt.show()
 
     sys.exit(0)
-
-    #import code; code.interact(local=locals())
