@@ -34,7 +34,7 @@
 
 # author: Vijay Pradeep
 
-import roslib; roslib.load_manifest('pr2_calibration_propagation')
+import roslib; roslib.load_manifest('pr2_calibration_launch')
 import sensor_msgs.msg
 import sensor_msgs.srv
 import rospy
