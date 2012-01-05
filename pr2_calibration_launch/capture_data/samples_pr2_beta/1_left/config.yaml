@@ -1,0 +1,4 @@
+group: "Left Arm"
+prompt: "Please put the checkerboard in the left hand (open/close the gripper with the joystick's left/right D-Pad buttons)."
+finish: "Skipping left arm samples"
+repeat: False

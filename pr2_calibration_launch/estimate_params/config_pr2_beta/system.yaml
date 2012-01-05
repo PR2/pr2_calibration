@@ -74,7 +74,7 @@ sensors:
       cov: {u: 0.25, v: 0.25}
     kinect_head:
       chain_id: head_chain  #TODO: get rid of this
-      frame_id: kinect_head_rgb_optical_frame
+      frame_id: head_mount_kinect_rgb_optical_frame
       baseline_shift: 0.0
       f_shift: 0.0
       cx_shift: 0.0
@@ -82,7 +82,7 @@ sensors:
       cov: {u: 0.25, v: 0.25}
 #    kinect_torso:
 #      chain_id: NULL
-#      frame_id: kinect_torso_rgb_optical_frame
+#      frame_id: torso_mount_kinect_rgb_optical_frame
 #      baseline_shift: 0.0
 #      f_shift: 0.0
 #      cx_shift: 0.0

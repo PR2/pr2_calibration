@@ -3,27 +3,26 @@ camera_measurements:
 - {cam_id: wide_left_rect, config: small_cb_4x5}
 - {cam_id: wide_right_rect, config: small_cb_4x5}
 - {cam_id: narrow_right_rect, config: small_cb_4x5}
-- {cam_id: prosilica_rect, config: small_cb_4x5}
-#- {cam_id: kinect_head, config: small_cb_4x5}
+- {cam_id: kinect_torso, config: small_cb_4x5}
 joint_commands:
 - controller: head_traj_controller
   segments:
   - duration: 2.0
-    positions: [0.60590850312235134, 0.178233023213661]
+    positions: [0.040212385965949338, 1.0784040382222566]
 - controller: l_arm_controller
   segments:
   - duration: 2.0
-    positions: [0.47366928213473342, 0.21140271283803219, 0.40998773869839361, -0.7422126441016047,
-      -0.41100355278372719, -1.0664423912426462, -4.6819917841317036]
+    positions: [0.4861052747382813, 1.0944045202023303, 0.56777688784636171, -1.5710249667723011,
+      1.5253698357993346, -1.6463292783300418, -6.300958701037608]
 - controller: r_arm_controller
   segments:
   - duration: 2.0
-    positions: [-1.7491875901719594, -0.13332159881262076, -0.0084592534681983324,
-      -1.5611805583982215, 0.41279681247919975, -0.14938480126345122, 0.032035474438973352]
+    positions: [-1.7389900762370503, 0.24532527700291842, -0.033314251555530701, -1.5530733985607439,
+      0.41279681247919975, -0.14799251582026429, 0.030730206835985582]
 joint_measurements:
 - {chain_id: head_chain, config: tight_tol}
 - {chain_id: left_arm_chain, config: tight_tol}
 laser_measurements:
 - {config: small_cb_4x5, laser_id: tilt_laser}
-sample_id: l_arm_0001
+sample_id: l_arm_0010
 target: {chain_id: left_arm_chain, target_id: small_cb_4x5}

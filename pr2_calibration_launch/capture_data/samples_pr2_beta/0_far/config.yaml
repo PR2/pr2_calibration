@@ -1,0 +1,4 @@
+group: Far
+prompt: "Please place the large 7x6 checkerboard approx 3m in front of the robot in view of the head cameras and tilting laser"
+finish: "Done collecting far samples"
+repeat: True

@@ -1,16 +1,16 @@
 camera_measurements:
 - {cam_id: forearm_left_rect, config: small_cb_4x5}
-#- {cam_id: kinect_torso, config: small_cb_4x5}
+- {cam_id: kinect_torso, config: small_cb_4x5}
 joint_commands:
 - controller: head_traj_controller
   segments:
   - duration: 2.0
-    positions: [0.38788197296321975, 0.49605748000182831]
+    positions: [0.38840557173881801, 0.49605748000182831]
 - controller: l_arm_controller
   segments:
   - duration: 2.0
-    positions: [0.33239640615842969, 0.051687498016821945, 1.8073196956855824, -0.77102201566692674,
-      1.220515687569883, -1.3772266075140498, -4.3974869556004554]
+    positions: [0.33090408704600394, 0.040013398628407179, 1.8076404053383217, -0.76913999641894082,
+      1.1787500907915769, -1.3908448995052243, -4.8180006683630339]
 - controller: r_arm_controller
   segments:
   - duration: 2.0
@@ -20,5 +20,5 @@ joint_measurements:
 - {chain_id: head_chain, config: tight_tol}
 - {chain_id: left_arm_chain, config: tight_tol}
 laser_measurements: []
-sample_id: l_arm_0017
+sample_id: l_arm_0016
 target: {chain_id: left_arm_chain, target_id: small_cb_4x5}
