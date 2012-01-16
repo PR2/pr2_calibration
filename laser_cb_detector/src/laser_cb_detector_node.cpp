@@ -50,8 +50,6 @@ using namespace std;
   ROS_INFO(ss.str().c_str());\
 }
 
-
-
 laser_cb_detector::ConfigGoal getParamConfig(ros::NodeHandle &n)
 {
   laser_cb_detector::ConfigGoal config;

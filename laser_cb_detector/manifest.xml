@@ -6,7 +6,7 @@
   <author>Vijay Pradeep</author>
   <license>BSD</license>
   <review status="unreviewed" notes=""/>
-  <url>http://pr.willowgarage.com/wiki/laser_cb_detector</url>
+  <url>http://www.ros.org/wiki/laser_cb_detector</url>
 
   <!-- ROS -->
   <depend package="roscpp"/>
@@ -16,8 +16,9 @@
   <!-- common_msgs -->
   <depend package="actionlib_msgs" />
 
-  <!-- robot_calibration -->
+  <!-- calibration -->
   <depend package="calibration_msgs"/>
+  <depend package="image_cb_detector"/>
 
   <!-- opencv -->
   <depend package="opencv2" />

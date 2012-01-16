@@ -41,6 +41,7 @@
 #include <calibration_msgs/DenseLaserSnapshot.h>
 #include <laser_cb_detector/ConfigAction.h>
 #include <laser_cb_detector/cv_laser_bridge.h>
+#include <image_cb_detector/image_cb_detector.h>
 #include <calibration_msgs/CalibrationPattern.h>
 #include <sensor_msgs/Image.h>
 
@@ -63,6 +64,7 @@ private:
   bool configured_;
   ConfigGoal config_;
   CvLaserBridge bridge_;
+  image_cb_detector::ImageCbDetector detector_;
 };
 
 }

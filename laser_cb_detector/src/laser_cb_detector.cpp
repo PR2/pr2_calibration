@@ -1,7 +1,7 @@
 /*********************************************************************
  * Software License Agreement (BSD License)
  *
- *  Copyright (c) 2008, Willow Garage, Inc.
+ *  Copyright (c) 2008-2012, Willow Garage, Inc.
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -42,108 +42,48 @@
 using namespace std;
 using namespace laser_cb_detector;
 
-LaserCbDetector::LaserCbDetector() : configured_(false)
-{
-
-}
-
-
+LaserCbDetector::LaserCbDetector() : configured_(false) {}
 
 bool LaserCbDetector::configure(const ConfigGoal& config)
 {
   config_ = config;
+  image_cb_detector::ConfigGoal image_cfg;
+  // TODO: setup message
 
+  image_cfg.num_x = config.num_x;
+  image_cfg.num_y = config.num_y;
+  image_cfg.spacing_x = config.spacing_x;
+  image_cfg.spacing_y = config.spacing_y;
+
+  image_cfg.width_scaling = config.width_scaling;
+  image_cfg.height_scaling = config.height_scaling;
+
+  image_cfg.subpixel_window = config.subpixel_window;
+  image_cfg.subpixel_zero_zone = config.subpixel_zero_zone;
+
+  detector_.configure(image_cfg);
   return true;
 }
-
 
 bool LaserCbDetector::detect(const calibration_msgs::DenseLaserSnapshot& snapshot,
                              calibration_msgs::CalibrationPattern& result)
 {
-
   // ***** Convert the snapshot into an image, based on intensity window in config *****
   if(!bridge_.fromIntensity(snapshot, config_.min_intensity, config_.max_intensity))
     return false;
   IplImage* image = bridge_.toIpl();
 
-  // ***** Resize the image based on scaling parameters in config *****
-  const int scaled_width  = (int) (.5 + image->width  * config_.width_scaling);
-  const int scaled_height = (int) (.5 + image->height * config_.height_scaling);
-  IplImage* image_scaled = cvCreateImage(cvSize( scaled_width, scaled_height),
-                                         image->depth,
-                                         image->nChannels);
-  cvResize(image, image_scaled, CV_INTER_LINEAR);
-
   if (config_.flip_horizontal)
   {
     ROS_DEBUG("Flipping image");
-    cvFlip(image_scaled, NULL, 1);
+    cvFlip(image, NULL, 1);
   }
   else
     ROS_DEBUG("Not flipping image");
 
-  //if(!cvSaveImage("/u/vpradeep/scratch/image.png", image)) printf("Could not save\n");
-  //if(!cvSaveImage("/u/vpradeep/scratch/image_flipped.png", image_scaled)) printf("Could not save flipped\n");
-
-  // ***** Allocate vector for found corners *****
-  vector<CvPoint2D32f> cv_corners;
-  cv_corners.resize(config_.num_x*config_.num_y);
-
-  // ***** Do the actual checkerboard extraction *****
-  CvSize board_size = cvSize(config_.num_x, config_.num_y);
-  int num_corners ;
-  int found = cvFindChessboardCorners( image_scaled, board_size, &cv_corners[0], &num_corners,
-                                       CV_CALIB_CB_ADAPTIVE_THRESH) ;
-
-  if(found)
-  {
-    ROS_DEBUG("Found checkerboard");
-
-
-    CvSize subpixel_window    = cvSize(config_.subpixel_window,
-                                       config_.subpixel_window);
-    CvSize subpixel_zero_zone = cvSize(config_.subpixel_zero_zone,
-                                       config_.subpixel_zero_zone);
-
-    // Subpixel fine-tuning stuff
-    cvFindCornerSubPix(image_scaled, &cv_corners[0], num_corners,
-                       subpixel_window,
-                       subpixel_zero_zone,
-                       cvTermCriteria(CV_TERMCRIT_ITER,20,1e-2));
-  }
-  else
-    ROS_DEBUG("Did not find checkerboard");
-  cvReleaseImage(&image_scaled);
-
-  // ***** Downscale the detected corners and generate the CalibrationPattern message *****
-  result.header.stamp    = snapshot.header.stamp;
-  result.header.frame_id = snapshot.header.frame_id;
-
-  result.object_points.resize(config_.num_x * config_.num_y);
-  for (unsigned int i=0; i < config_.num_y; i++)
-  {
-    for (unsigned int j=0; j < config_.num_x; j++)
-    {
-      result.object_points[i*config_.num_x + j].x = j*config_.spacing_x;
-      result.object_points[i*config_.num_x + j].y = i*config_.spacing_y;
-      result.object_points[i*config_.num_x + j].z = 0.0;
-    }
-  }
-
-  result.image_points.resize(num_corners);
-
-  for (int i=0; i < num_corners; i++)
-  {
-    if (config_.flip_horizontal)
-      result.image_points[i].x = image->width - (cv_corners[i].x / config_.width_scaling) - 1;
-    else
-      result.image_points[i].x = cv_corners[i].x / config_.width_scaling;
-    result.image_points[i].y = cv_corners[i].y / config_.height_scaling;
-  }
-
-  result.success = found;
-
-  return true;
+  sensor_msgs::CvBridge cvbridge_;
+  sensor_msgs::Image::Ptr ros_image = cvbridge_.cvToImgMsg(image);
+  return detector_.detect(ros_image, result);
 }
 
 bool LaserCbDetector::getImage(const calibration_msgs::DenseLaserSnapshot& snapshot, sensor_msgs::Image& ros_image)
@@ -163,3 +103,4 @@ bool LaserCbDetector::getImage(const calibration_msgs::DenseLaserSnapshot& snaps
 
   return true;
 }
+
