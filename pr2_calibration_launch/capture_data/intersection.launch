@@ -14,9 +14,8 @@
     <remap from="forearm_right_rect" to="r_forearm_cam/settled_interval" />
     <remap from="forearm_left_rect" to="l_forearm_cam/settled_interval" />
     <remap from="prosilica_rect" to="prosilica/settled_interval" />
-    <remap from="kinect_head" to="kinect_head/camera/rgb/settled_interval" />	
-    <remap from="kinect_torso" to="kinect_torso/camera/rgb/settled_interval" />	
-    <remap from="interval" to="request_interval" />
+    <remap from="kinect_head" to="kinect_head/camera/rgb/settled_interval" />
+    <remap from="kinect_torso" to="kinect_torso/camera/rgb/settled_interval" />
   </node>
 
 </launch>

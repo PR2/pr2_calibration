@@ -4,7 +4,13 @@
   <node type="pr2_controller_manager" pkg="pr2_controller_manager" name="cal_controller_starter"
         args="start r_arm_controller l_arm_controller" output="screen"/>
 
-  <include file="$(find pr2_calibration_launch)/capture_data/joint_settlers.launch" />
+  <!-- Chains -->
+  <include file="$(find calibration_launch)/capture_data/chain_settler.launch" ns="right_arm_chain" />
+
+  <include file="$(find calibration_launch)/capture_data/chain_settler.launch" ns="left_arm_chain" />
+
+  <include file="$(find calibration_launch)/capture_data/chain_settler.launch" ns="head_chain" />
+
 
   <!-- Cameras -->
   <include file="$(find pr2_calibration_launch)/capture_data/double_stereo_pipeline.launch" />
