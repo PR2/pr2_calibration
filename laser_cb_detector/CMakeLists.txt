@@ -20,14 +20,17 @@ rosbuild_add_library(${PROJECT_NAME} src/cv_laser_bridge.cpp
                                      src/laser_cb_detector.cpp
                                      src/laser_interval_calc.cpp)
 
+rosbuild_add_boost_directories()
 rosbuild_add_executable(laser_cb_detector_node src/laser_cb_detector_node.cpp)
 target_link_libraries(laser_cb_detector_node ${PROJECT_NAME})
 
 rosbuild_add_executable(image_annotator src/image_annotator.cpp)
 target_link_libraries(image_annotator ${PROJECT_NAME})
+rosbuild_link_boost(image_annotator signals)
 
 rosbuild_add_executable(laser_interval_calc_node src/laser_interval_calc_node.cpp)
 target_link_libraries(laser_interval_calc_node ${PROJECT_NAME})
+rosbuild_link_boost(laser_interval_calc_node signals)
 
 
 rosbuild_genmsg()
@@ -36,8 +39,6 @@ rosbuild_genmsg()
 #common commands for building c++ executables and libraries
 #rosbuild_add_library(${PROJECT_NAME} src/example.cpp)
 #target_link_libraries(${PROJECT_NAME} another_library)
-#rosbuild_add_boost_directories()
-#rosbuild_link_boost(${PROJECT_NAME} thread)
 #rosbuild_add_executable(example examples/example.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
 
