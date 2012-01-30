@@ -9,7 +9,7 @@
   <group ns="prosilica">
     <node pkg="image_proc" type="image_proc" name="image_proc" />
 
-    <node type="image_cb_detector_action_old"
+    <node type="image_cb_detector_action"
           pkg="image_cb_detector"
           name="cb_detector">
       <remap from="image" to="image_rect" />
