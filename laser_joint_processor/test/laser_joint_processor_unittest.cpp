@@ -108,9 +108,9 @@ protected:
     EXPECT_TRUE(success);
   }
 
-  calibration_msgs::ImagePoint Point(float x, float y)
+  geometry_msgs::Point Point(float x, float y)
   {
-    calibration_msgs::ImagePoint point;
+    geometry_msgs::Point point;
     point.x = x;
     point.y = y;
     return point;

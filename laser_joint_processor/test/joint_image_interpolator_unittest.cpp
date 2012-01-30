@@ -98,7 +98,7 @@ protected:
   }
 
   IplImage* source_image_;
-  vector<calibration_msgs::ImagePoint> image_points_;
+  vector<geometry_msgs::Point> image_points_;
   JointImageInterpolator interp_;
   vector<float> positions_;
   vector<float> velocities_;

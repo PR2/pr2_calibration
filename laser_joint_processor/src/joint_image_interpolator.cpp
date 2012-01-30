@@ -40,7 +40,7 @@
 using namespace laser_joint_processor;
 using namespace std;
 
-bool JointImageInterpolator::interp(const std::vector <calibration_msgs::ImagePoint>& points,
+bool JointImageInterpolator::interp(const std::vector <geometry_msgs::Point>& points,
                                     IplImage* image, std::vector<float>& positions, std::vector<float>& velocities)
 {
   const unsigned int N = points.size();
@@ -90,7 +90,7 @@ bool JointImageInterpolator::interp(const std::vector <calibration_msgs::ImagePo
 }
 
 
-bool laser_joint_processor::interpSnapshot(const std::vector <calibration_msgs::ImagePoint>& points,
+bool laser_joint_processor::interpSnapshot(const std::vector <geometry_msgs::Point>& points,
                                            const calibration_msgs::DenseLaserSnapshot& snapshot,
                                            std::vector<float>& angles,
                                            std::vector<float>& ranges)

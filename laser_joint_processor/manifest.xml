@@ -10,6 +10,7 @@
   <url>http://ros.org/wiki/laser_joint_processor</url>
 
   <!-- ROS -->
+  <depend package="geometry_msgs" />
   <depend package="message_filters" />
   
   <!-- robot_calibration -->

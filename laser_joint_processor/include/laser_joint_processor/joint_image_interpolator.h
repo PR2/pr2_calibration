@@ -38,7 +38,7 @@
 #define LASER_JOINT_PROCESSOR_INTERP_FEATURES_H_
 
 #include <opencv/cv.h>
-#include <calibration_msgs/ImagePoint.h>
+#include <geometry_msgs/Point.h>
 #include <calibration_msgs/DenseLaserSnapshot.h>
 
 namespace laser_joint_processor
@@ -47,13 +47,13 @@ namespace laser_joint_processor
 class JointImageInterpolator
 {
 public:
-  bool interp(const std::vector <calibration_msgs::ImagePoint>& points,
+  bool interp(const std::vector<geometry_msgs::Point>& points,
               IplImage* image, std::vector<float>& positions, std::vector<float>& velocities);
 
 };
 
 
-bool interpSnapshot(const std::vector <calibration_msgs::ImagePoint>& points,
+bool interpSnapshot(const std::vector<geometry_msgs::Point>& points,
                     const calibration_msgs::DenseLaserSnapshot& snapshot,
                     std::vector<float>& pointing_angles,
                     std::vector<float>& ranges);

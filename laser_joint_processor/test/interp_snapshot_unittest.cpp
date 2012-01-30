@@ -70,15 +70,15 @@ protected:
     ASSERT_TRUE(result);
   }
 
-  calibration_msgs::ImagePoint Point(float x, float y)
+  geometry_msgs::Point Point(float x, float y)
   {
-    calibration_msgs::ImagePoint point;
+    geometry_msgs::Point point;
     point.x = x;
     point.y = y;
     return point;
   }
 
-  std::vector <calibration_msgs::ImagePoint> points_;
+  std::vector <geometry_msgs::Point> points_;
   vector<float> angles_;
   vector<float> ranges_;
   calibration_msgs::DenseLaserSnapshot snapshot_;
