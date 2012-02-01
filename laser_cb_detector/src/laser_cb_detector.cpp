@@ -83,7 +83,14 @@ bool LaserCbDetector::detect(const calibration_msgs::DenseLaserSnapshot& snapsho
 
   sensor_msgs::CvBridge cvbridge_;
   sensor_msgs::Image::Ptr ros_image = cvbridge_.cvToImgMsg(image);
-  return detector_.detect(ros_image, result);
+  if(detector_.detect(ros_image, result)){
+    if (config_.flip_horizontal){
+      for(int i=0; i < result.image_points.size(); i++)
+        result.image_points[i].x = image->width - result.image_points[i].x - 1;
+    }
+    return true;
+  }else
+    return false;
 }
 
 bool LaserCbDetector::getImage(const calibration_msgs::DenseLaserSnapshot& snapshot, sensor_msgs::Image& ros_image)

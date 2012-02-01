@@ -127,6 +127,7 @@ void snapshotCallback(ros::Publisher* pub, ros::Publisher* image_pub, LaserCbDet
     ROS_ERROR("Error during checkerboard detection. (This error is worse than simply not seeing a checkerboard");
   else
   {
+    result.header.stamp = msg->header.stamp;
     pub->publish(result);
   }
 

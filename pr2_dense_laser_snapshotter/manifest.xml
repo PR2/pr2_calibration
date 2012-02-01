@@ -7,15 +7,10 @@
   <author>Vijay Pradeep</author>
   <license>BSD</license>
   <review status="unreviewed" notes=""/>
-  <url>http://pr.willowgarage.com/wiki/pr2_dense_laser_snapshotter</url>
+  <url>http://www.ros.org/wiki/pr2_dense_laser_snapshotter</url>
 
   <depend package="dense_laser_assembler"/>
   <depend package="pr2_msgs"/>
-  
-  
-  <platform os="ubuntu" version="9.04"/>
-  <platform os="ubuntu" version="9.10"/>
-  <platform os="ubuntu" version="10.04"/>
 </package>
 
 
