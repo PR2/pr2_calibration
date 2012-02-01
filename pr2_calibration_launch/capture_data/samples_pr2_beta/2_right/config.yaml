@@ -2,3 +2,4 @@ group: "Right Arm"
 prompt: "Please put the checkerboard in the right hand (open/close the gripper with the joystick's square/circle buttons)."
 finish: "Skipping right arm samples"
 repeat: False
+require: r_wrist_roll_joint
