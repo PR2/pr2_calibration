@@ -3,8 +3,8 @@
     right_arm_chain_cb:             [ 1, 1, 1, 0, 1, 1 ]
     left_arm_chain_cb:              [ 1, 1, 1, 0, 1, 1 ]
     high_def_frame_joint:           [ 1, 1, 1, 1, 1, 1 ]
-    kinect_head_rgb_frame_joint:    [ 1, 1, 1, 1, 1, 1 ]
-    kinect_torso_rgb_frame_joint:   [ 1, 1, 1, 1, 1, 1 ]
+    head_mount_kinect_rgb_joint:    [ 1, 1, 1, 1, 1, 1 ]
+    torso_mount_kinect_rgb_joint:   [ 1, 1, 1, 1, 1, 1 ]
 
   chains:
     right_arm_chain:
