@@ -25,14 +25,14 @@ rosbuild_add_library(${PROJECT_NAME} src/joint_imager.cpp
                                      src/laser_joint_processor.cpp
                                      src/joint_image_interpolator.cpp)
 
+rosbuild_add_boost_directories()
 rosbuild_add_executable(laser_joint_processor_node src/laser_joint_processor_node.cpp)
 target_link_libraries(laser_joint_processor_node ${PROJECT_NAME})
+rosbuild_link_boost(laser_joint_processor_node thread signals)
 
 #common commands for building c++ executables and libraries
 #rosbuild_add_library(${PROJECT_NAME} src/example.cpp)
 #target_link_libraries(${PROJECT_NAME} another_library)
-#rosbuild_add_boost_directories()
-#rosbuild_link_boost(${PROJECT_NAME} thread)
 #rosbuild_add_executable(example examples/example.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
 
