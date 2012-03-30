@@ -281,9 +281,9 @@ prosilica_rect:
         active: False
 
 kinect_head:
-  cb_detector_config:  /kinect_head/camera/rgb/cb_detector_config
-  led_detector_config: /kinect_head/camera/rgb/led_detector
-  settler_config:      /kinect_head/camera/rgb/monocam_settler_config
+  cb_detector_config:  /kinect_head/rgb/cb_detector_config
+  led_detector_config: /kinect_head/rgb/led_detector
+  settler_config:      /kinect_head/rgb/monocam_settler_config
 
   configs:
     cb_7x6:
@@ -320,9 +320,9 @@ kinect_head:
         active: False
 
 kinect_torso:
-  cb_detector_config:  /kinect_torso/camera/rgb/cb_detector_config
-  led_detector_config: /kinect_torso/camera/rgb/led_detector
-  settler_config:      /kinect_torso/camera/rgb/monocam_settler_config
+  cb_detector_config:  /kinect_torso/rgb/cb_detector_config
+  led_detector_config: /kinect_torso/rgb/led_detector
+  settler_config:      /kinect_torso/rgb/monocam_settler_config
 
   configs:
     cb_7x6:
