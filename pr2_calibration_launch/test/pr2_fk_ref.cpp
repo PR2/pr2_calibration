@@ -38,12 +38,12 @@
 #include <ros/console.h>
 #include <ros/ros.h>
 #include <kdl_parser/kdl_parser.hpp>
-#include <pr2_calibration_estimation/FkTest.h>
+#include <pr2_calibration_launch/FkTest.h>
 #include <kdl/tree.hpp>
 #include <kdl/chainfksolverpos_recursive.hpp>
 
 using namespace std;
-using namespace pr2_calibration_estimation;
+using namespace pr2_calibration_launch;
 
 bool fk(KDL::Tree* tree, FkTest::Request& req, FkTest::Response& resp)
 {
