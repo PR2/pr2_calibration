@@ -7,15 +7,15 @@
         output="screen"
         machine="c1">
 
-    <remap from="kinect_head/camera_info" to="kinect_head/camera/rgb/camera_info"/>
-    <remap from="kinect_head/image_rect"  to="kinect_head/camera/rgb/image_mono"/>
-    <remap from="kinect_head/image"       to="kinect_head/camera/rgb/image_mono"/>
-    <remap from="kinect_head/features"    to="kinect_head/camera/rgb/features"/>
+    <remap from="kinect_head/camera_info" to="kinect_head/rgb/camera_info"/>
+    <remap from="kinect_head/image_rect"  to="kinect_head/rgb/image_mono"/>
+    <remap from="kinect_head/image"       to="kinect_head/rgb/image_mono"/>
+    <remap from="kinect_head/features"    to="kinect_head/rgb/features"/>
 
-    <remap from="kinect_torso/camera_info" to="kinect_torso/camera/rgb/camera_info"/>
-    <remap from="kinect_torso/image_rect"  to="kinect_torso/camera/rgb/image_mono"/>
-    <remap from="kinect_torso/image"       to="kinect_torso/camera/rgb/image_mono"/>
-    <remap from="kinect_torso/features"    to="kinect_torso/camera/rgb/features"/>
+    <remap from="kinect_torso/camera_info" to="kinect_torso/rgb/camera_info"/>
+    <remap from="kinect_torso/image_rect"  to="kinect_torso/rgb/image_mono"/>
+    <remap from="kinect_torso/image"       to="kinect_torso/rgb/image_mono"/>
+    <remap from="kinect_torso/features"    to="kinect_torso/rgb/features"/>
 
     <remap from="prosilica_rect/camera_info" to="prosilica/camera_info"/>
     <remap from="prosilica_rect/image_rect"  to="prosilica/image_rect"/>
