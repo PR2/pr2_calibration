@@ -14,9 +14,9 @@
 
   <include file="$(find calibration_launch)/capture_data/annotated_viewer.launch" ns="prosilica" />
 
-  <include file="$(find calibration_launch)/capture_data/annotated_viewer.launch" ns="kinect_head/camera/rgb" />
+  <include file="$(find calibration_launch)/capture_data/annotated_viewer.launch" ns="kinect_head/rgb" />
 
-  <include file="$(find calibration_launch)/capture_data/annotated_viewer.launch" ns="kinect_torso/camera/rgb" />
+  <include file="$(find calibration_launch)/capture_data/annotated_viewer.launch" ns="kinect_torso/rgb" />
 
   <include file="$(find pr2_calibration_launch)/capture_data/double_stereo_viewer.launch" />
 

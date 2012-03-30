@@ -1,5 +1,5 @@
 <launch>
-  <machine name="c1" address="c1" ros-root="$(env ROS_ROOT)" ros-package-path="$(env ROS_PACKAGE_PATH)" default="True"/>
+  <machine name="c1" address="c1" env-loader="/opt/ros/fuerte/env.sh" default="True"/>
 
   <node type="pr2_controller_manager" pkg="pr2_controller_manager" name="cal_controller_starter"
         args="start r_arm_controller l_arm_controller" output="screen"/>
@@ -19,19 +19,19 @@
 
   <include file="$(find calibration_launch)/capture_data/monocam_pipeline.launch" ns="r_forearm_cam" />
 
-  <include file="$(find calibration_launch)/capture_data/monocam_pipeline.launch" ns="kinect_head/camera/rgb" >
+  <include file="$(find calibration_launch)/capture_data/monocam_pipeline.launch" ns="kinect_head/rgb" >
     <arg name="image_topic" value="image_mono"/>
   </include>
 
-  <include file="$(find calibration_launch)/capture_data/monocam_pipeline.launch" ns="kinect_torso/camera/rgb" >
+  <include file="$(find calibration_launch)/capture_data/monocam_pipeline.launch" ns="kinect_torso/rgb" >
     <arg name="image_topic" value="image_mono"/>
   </include>
 
   <include file="$(find pr2_calibration_launch)/capture_data/intersection.launch" />
   <include file="$(find pr2_calibration_launch)/capture_data/laser_pipelines.launch" />
 
-  <machine name="c2" address="c2" ros-root="$(env ROS_ROOT)" ros-package-path="$(env ROS_PACKAGE_PATH)" default="True"/>  
+  <machine name="c2" address="c2" env-loader="/opt/ros/fuerte/env.sh" default="True"/>  
   <include file="$(find pr2_calibration_launch)/capture_data/prosilica.launch" />
-  <machine name="c1" address="c1" ros-root="$(env ROS_ROOT)" ros-package-path="$(env ROS_PACKAGE_PATH)" default="True"/>
+  <machine name="c1" address="c1" env-loader="/opt/ros/fuerte/env.sh" default="True"/>
 
 </launch>
