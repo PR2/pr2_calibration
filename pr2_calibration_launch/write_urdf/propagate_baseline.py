@@ -77,7 +77,7 @@ def main():
 
     # ****** Get the baseline shift from the yaml ******
     system_dict = yaml.load(open(system_filename))
-    cam_dict = system_dict['rectified_cams']
+    cam_dict = system_dict['sensors']['rectified_cams']
     target_cam_dict = cam_dict[config_cam_name]
     baseline_shift = target_cam_dict['baseline_shift']
 
