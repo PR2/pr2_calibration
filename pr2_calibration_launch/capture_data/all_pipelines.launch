@@ -32,6 +32,7 @@
 
   <machine name="c2" address="c2" env-loader="/opt/ros/fuerte/env.sh" default="True"/>  
   <include file="$(find pr2_calibration_launch)/capture_data/prosilica.launch" />
+  <include file="$(find pr2_calibration_launch)/capture_data/prosilica_kinect.launch" />
   <machine name="c1" address="c1" env-loader="/opt/ros/fuerte/env.sh" default="True"/>
 
 </launch>
