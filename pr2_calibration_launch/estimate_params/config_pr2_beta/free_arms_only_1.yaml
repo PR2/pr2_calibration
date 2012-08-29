@@ -16,7 +16,7 @@
     l_wrist_flex_joint:             [0, 0, 0, 0, 1, 0]
     l_wrist_roll_joint:             [0, 0, 0, 1, 0, 0]
 
-    kinect_torso_rgb_frame_joint:   [1, 1, 1, 1, 1, 1]
+    head_mount_kinect_rgb_joint:    [1, 1, 1, 1, 1, 1]
     l_forearm_cam_frame_joint:      [1, 1, 1, 1, 1, 1]
     r_forearm_cam_frame_joint:      [1, 1, 1, 1, 1, 1]
     right_arm_chain_cb:             [1, 1, 1, 0, 1, 1]
