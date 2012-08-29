@@ -79,7 +79,7 @@ sensors:
       f_shift: 0.0
       cx_shift: 0.0
       cy_shift: 0.0
-      cov: {u: 0.25, v: 0.25} #TODO: update for low-resolution prosilica
+      cov: {u: 0.125, v: 0.125} #TODO: update for low-resolution prosilica
 # there is a point-cloud based version, but it may not work
     kinect_head:
       chain_id: head_chain  #TODO: get rid of this
