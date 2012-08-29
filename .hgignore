@@ -3,5 +3,8 @@ build
 /srv_gen/
 /bin
 /msg/.*\.py$
+/srv/.*\.py$
 /lib/.*\.so$
 .*\.pyc$
+laser_cb_detector/src/laser_cb_detector/__init__.py
+pr2_calibration_launch/src/pr2_calibration_launch/__init__.py
