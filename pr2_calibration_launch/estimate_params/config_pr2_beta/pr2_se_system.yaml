@@ -1,0 +1,132 @@
+base_link: torso_lift_link
+
+sensors:
+  chains: 
+    right_arm_chain:
+      root: torso_lift_link
+      tip: r_wrist_roll_link
+      cov:
+        joint_angles: [0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001]
+      gearing: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+    left_arm_chain:
+      root: torso_lift_link
+      tip: l_wrist_roll_link
+      cov:
+        joint_angles: [0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001]
+      gearing: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+    head_chain:
+      root: torso_lift_link
+      tip: head_tilt_link
+      cov:
+       joint_angles: [0.0002, 0.0002]
+      gearing: [1.0, 1.0]
+
+  tilting_lasers:
+    tilt_laser:
+      joint: laser_tilt_mount_joint
+      frame_id: laser_tilt_link
+      gearing: 1.0
+      cov:
+        bearing: 0.0005
+        range: 0.005
+        tilt: 0.0005
+
+  rectified_cams:
+    wide_left_rect:
+      chain_id: head_chain  #TODO: get rid of this
+      frame_id: wide_stereo_optical_frame
+      baseline_shift: 0.0
+      f_shift: 0.0
+      cx_shift: 0.0
+      cy_shift: 0.0
+      cov: {u: 0.125, v: 0.125}
+    wide_right_rect:
+      chain_id: head_chain  #TODO: get rid of this
+      frame_id: wide_stereo_optical_frame
+      baseline_shift: 0.0
+      f_shift: 0.0
+      cx_shift: 0.0
+      cy_shift: 0.0
+      cov: {u: 0.125, v: 0.125}
+    narrow_left_rect:
+      chain_id: head_chain  #TODO: get rid of this
+      frame_id: narrow_stereo_optical_frame
+      baseline_shift: 0.0
+      f_shift: 0.0
+      cx_shift: 0.0
+      cy_shift: 0.0
+      cov: {u: 0.125, v: 0.125}
+    narrow_right_rect:
+      chain_id: head_chain  #TODO: get rid of this
+      frame_id: narrow_stereo_optical_frame
+      baseline_shift: 0.0
+      f_shift: 0.0
+      cx_shift: 0.0
+      cy_shift: 0.0
+      cov: {u: 0.125, v: 0.125}
+    prosilica_rect:
+      chain_id: head_chain  #TODO: get rid of this
+      frame_id: high_def_optical_frame
+      baseline_shift: 0.0
+      f_shift: 0.0
+      cx_shift: 0.0
+      cy_shift: 0.0
+      cov: {u: 0.25, v: 0.25}
+    prosilica_kinect:
+      chain_id: head_chain  #TODO: get rid of this
+      frame_id: head_mount_prosilica_optical_frame
+      baseline_shift: 0.0
+      f_shift: 0.0
+      cx_shift: 0.0
+      cy_shift: 0.0
+      cov: {u: 0.25, v: 0.25} #TODO: update for low-resolution prosilica
+# there is a point-cloud based version, but it may not work
+    kinect_head:
+      chain_id: head_chain  #TODO: get rid of this
+      frame_id: head_mount_kinect_rgb_optical_frame
+      baseline_shift: 0.0
+      f_shift: 0.0
+      cx_shift: 0.0
+      cy_shift: 0.0
+      cov: {u: 0.25, v: 0.25}
+#    kinect_torso:
+#      chain_id: NULL
+#      frame_id: torso_mount_kinect_rgb_optical_frame
+#      baseline_shift: 0.0
+#      f_shift: 0.0
+#      cx_shift: 0.0
+#      cy_shift: 0.0
+#      cov: {u: 0.25, v: 0.25}
+    forearm_left_rect:
+      chain_id: left_arm_chain  #TODO: get rid of this
+      frame_id: l_forearm_cam_optical_frame
+      baseline_shift: 0.0
+      f_shift: 0.0
+      cx_shift: 0.0
+      cy_shift: 0.0
+      cov: {u: 0.125, v: 0.125}
+    forearm_right_rect:
+      chain_id: right_arm_chain  #TODO: get rid of this
+      frame_id: r_forearm_cam_optical_frame
+      baseline_shift: 0.0
+      f_shift: 0.0
+      cx_shift: 0.0
+      cy_shift: 0.0
+      cov: {u: 0.125, v: 0.125}
+
+transforms:
+  right_arm_chain_cb: [ 0.25, 0, 0, -pi/2, 0, 0]
+  left_arm_chain_cb:  [ 0.25, 0, 0, pi/2, 0, 0]
+
+checkerboards:
+  small_cb_4x5:
+    corners_x: 4
+    corners_y: 5
+    spacing_x: 0.0245
+    spacing_y: 0.0245
+  large_cb_7x6:
+    corners_x: 7
+    corners_y: 6
+    spacing_x: 0.108
+    spacing_y: 0.108
+
