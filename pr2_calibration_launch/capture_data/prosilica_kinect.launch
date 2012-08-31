@@ -1,16 +1,19 @@
 <launch>
-
-  <node pkg="polled_camera" type="poller" name="prosilica_kinect_poller"
-        args="0.5" output="screen">
-    <remap from="camera" to="prosilica_kinect" />
-    <remap from="output" to="prosilica_kinect" />
-  </node>
+  <arg name="image_topic" default="image_rect"/>
+  <arg name="frequency" default="2"/>
 
   <group ns="prosilica_kinect">
+
+    <node type="throttle"
+          pkg="topic_tools"
+          name="throttle"
+          args="messages $(arg image_topic) $(arg frequency) image_rect_throttle" />
+                                
     <node type="image_cb_detector_action"
           pkg="image_cb_detector"
+          output="screen"
           name="cb_detector">
-      <remap from="image" to="image_rect" />
+      <remap from="image" to="image_rect_throttle" />
     </node>
 
     <node type="image_annotator"
@@ -18,7 +21,7 @@
           name="cb_annotator"
           output="screen">
       <remap from="annotated" to="image_rect_annotated" />
-      <remap from="image" to="image_rect" />
+      <remap from="image" to="image_rect_throttle" />
       <param name="marker_size" type="int" value="4" />
       <param name="scaling" type="double" value="0.5" />
     </node>

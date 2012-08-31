@@ -1,5 +1,5 @@
 <launch>
-  <machine name="c1" address="c1" env-loader="/opt/ros/fuerte/env.sh"/>
+  <machine name="c1" address="c1" env-loader="$(env ROS_ENV_LOADER)"/>
   <node type="capture_exec.py"
         pkg="calibration_launch"
         name="calibration_exec"
