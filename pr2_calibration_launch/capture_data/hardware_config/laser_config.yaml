@@ -7,12 +7,53 @@
 # nodes themselves.
 
 tilt_laser:
-  laser_cb_detector_config:  /none
-  configs: []
+  cb_detector_config:  /tile_laser/cb_detector_config
+  settler_config:      /tilt_laser/settler_config
 
-tilt_laser_8x6:
-  laser_cb_detector_config:  /none
-  configs: []
+  configs: 
+    cb_7x6:
+      settler:
+        tolerance: 2.00
+        ignore_failures: False
+        max_step: 45.0
+        cache_size: 10
+      cb_detector:
+        active: True
+        num_x: 7
+        num_y: 6
+        spacing_x: 0.108
+        spacing_y: 0.108
+        width_scaling: 2
+        height_scaling: 2
+        subpixel_window: 6
+        subpixel_zero_zone: 2
+        flip_horizontal: 1
+        min_intensity: 1500
+        max_intensity: 3000
+      led_detector:
+        active: False
+    small_cb_4x5:
+      settler:
+        tolerance: 2.00
+        ignore_failures: False
+        max_step: 45.0
+        cache_size: 10
+      cb_detector:
+        active: True
+        num_x: 4
+        num_y: 5
+        spacing_x: 0.108
+        spacing_y: 0.108
+        width_scaling: 2
+        height_scaling: 2
+        subpixel_window: 6
+        subpixel_zero_zone: 2
+        flip_horizontal: 1
+        min_intensity: 2500
+        max_intensity: 5000
+      led_detector:
+        active: False
+
 
 tilt_laser_7x6:
   laser_cb_detector_config:  /none
