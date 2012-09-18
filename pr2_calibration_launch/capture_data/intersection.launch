@@ -18,7 +18,6 @@
     <remap from="kinect_head" to="kinect_head/rgb/settled_interval" />
     <remap from="kinect_torso" to="kinect_torso/rgb/settled_interval" />
     <remap from="tilt_laser" to="tilt_laser/settled_interval" />
-    <remap from="tilt_laser_7x6" to="tilt_laser_7x6/settled_interval" />
   </node>
 
 </launch>

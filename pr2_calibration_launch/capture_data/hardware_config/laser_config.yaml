@@ -7,7 +7,7 @@
 # nodes themselves.
 
 tilt_laser:
-  cb_detector_config:  /tile_laser/cb_detector_config
+  cb_detector_config:  /tilt_laser/cb_detector_config
   settler_config:      /tilt_laser/settler_config
 
   configs: 
@@ -53,8 +53,3 @@ tilt_laser:
         max_intensity: 5000
       led_detector:
         active: False
-
-
-tilt_laser_7x6:
-  laser_cb_detector_config:  /none
-  configs: []

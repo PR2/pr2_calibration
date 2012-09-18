@@ -57,13 +57,6 @@
     <remap from="tilt_laser/snapshot"       to="tilt_laser/dense_laser_snapshot"/>
     <remap from="tilt_laser/laser_image"    to="tilt_laser/cb_image"/>
     <remap from="tilt_laser/joint_features" to="tilt_laser/joint_state_features" />
-
-    <remap from="tilt_laser_7x6/image_features" to="tilt_laser_7x6/laser_checkerboard"/>
-    <remap from="tilt_laser_7x6/laser_interval" to="tilt_laser_7x6/laser_checkerboard_interval"/>
-    <remap from="tilt_laser_7x6/snapshot"       to="tilt_laser_7x6/dense_laser_snapshot"/>
-    <remap from="tilt_laser_7x6/laser_image"    to="tilt_laser_7x6/cb_annotated_image"/>
-    <remap from="tilt_laser_7x6/joint_features" to="tilt_laser_7x6/joint_state_features" />
-
   </node>
 
   <node type="urdf_pub.py" pkg="calibration_launch" name="urdf_pub"/>
