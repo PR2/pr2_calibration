@@ -36,4 +36,12 @@
     <remap from="laser_interval" to="laser_checkerboard_interval"/>
   </node>
 
+  <node type="monocam_settler_action"
+        pkg="monocam_settler"
+        name="laser_settler"
+        output="screen" >
+    <remap from="features" to="laser_checkerboard"/>
+    <remap from="monocam_settler_config" to="settler_config"/>
+  </node>
+
 </launch>
