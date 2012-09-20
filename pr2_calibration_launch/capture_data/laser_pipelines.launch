@@ -14,8 +14,7 @@
    <!-- Dense Laser Snapshotter -->
    <node type="dense_laser_snapshotter"
          pkg="pr2_dense_laser_snapshotter"
-         name="dense_laser_snapshotter"
-         output="screen" >
+         name="dense_laser_snapshotter" >
        <remap from="scan" to="/tilt_scan"/>
        <remap from="laser_tilt_controller/laser_scanner_signal" to="/laser_tilt_controller/laser_scanner_signal"/>
    </node>

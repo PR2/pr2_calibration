@@ -11,7 +11,7 @@
    <!-- Laser Joint Processor -->
    <node type="laser_joint_processor_node"
           pkg="laser_joint_processor"
-          name="laser_joint_processor"  output="screen" >
+          name="laser_joint_processor" >
       <remap from="snapshot" to="dense_laser_snapshot" />
       <remap from="features" to="laser_checkerboard" />
       <remap from="joint_features" to="joint_state_features" />
@@ -29,8 +29,7 @@
   <!-- Interval Calc -->
   <node type="laser_interval_calc_node"
         pkg="laser_cb_detector"
-        name="laser_interval_calc"
-        output="screen" >
+        name="laser_interval_calc" >
     <remap from="snapshot" to="dense_laser_snapshot"/>
     <remap from="features" to="laser_checkerboard"/>
     <remap from="laser_interval" to="laser_checkerboard_interval"/>
@@ -38,8 +37,7 @@
 
   <node type="monocam_settler_action"
         pkg="monocam_settler"
-        name="laser_settler"
-        output="screen" >
+        name="laser_settler" >
     <remap from="features" to="laser_checkerboard"/>
     <remap from="monocam_settler_config" to="settler_config"/>
   </node>
