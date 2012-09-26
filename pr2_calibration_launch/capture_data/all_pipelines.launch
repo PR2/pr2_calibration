@@ -2,7 +2,7 @@
   <machine name="c1" address="c1" env-loader="$(env ROS_ENV_LOADER)" default="True"/>
 
   <node type="pr2_controller_manager" pkg="pr2_controller_manager" name="cal_controller_starter"
-        args="start r_arm_controller l_arm_controller" output="screen"/>
+        args="start r_arm_controller l_arm_controller"/>
 
   <!-- Chains -->
   <include file="$(find calibration_launch)/capture_data/chain_settler.launch" ns="right_arm_chain" />

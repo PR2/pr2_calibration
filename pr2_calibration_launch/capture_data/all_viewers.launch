@@ -10,7 +10,6 @@
   <param name="l_forearm_cam/annotated_viewer/filename_format"       type="string" value="/tmp/pr2_calibration/cb_fail/cb_l_forearm_%04i.jpg" />
   <param name="r_forearm_cam/annotated_viewer/filename_format"       type="string" value="/tmp/pr2_calibration/cb_fail/cb_r_forearm_%04i.jpg" />
   <param name="tilt_laser/annotated_viewer/filename_format"          type="string" value="/tmp/pr2_calibration/cb_fail/cb_laser_5x4_%04i.jpg" />
-  <param name="tilt_laser_7x6/annotated_viewer/filename_format"      type="string" value="/tmp/pr2_calibration/cb_fail/cb_laser_7x6_%04i.jpg" />
 
   <include file="$(find calibration_launch)/capture_data/annotated_viewer.launch" ns="prosilica" />
   <include file="$(find calibration_launch)/capture_data/annotated_viewer.launch" ns="prosilica_kinect" />
@@ -27,12 +26,7 @@
 
   <include file="$(find calibration_launch)/capture_data/annotated_viewer.launch" ns="tilt_laser">
     <arg name="image_topic" value="cb_annotated_image"/>
-    <arg name="autosize" value="False"/>
-  </include>
-
-  <include file="$(find calibration_launch)/capture_data/annotated_viewer.launch" ns="tilt_laser_7x6">
-    <arg name="image_topic" value="cb_annotated_image"/>
-    <arg name="autosize" value="False"/>
+    <!--<arg name="autosize" value="False"/>-->
   </include>
 
 </launch>
