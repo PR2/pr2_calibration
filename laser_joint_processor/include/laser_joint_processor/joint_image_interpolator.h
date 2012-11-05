@@ -37,7 +37,7 @@
 #ifndef LASER_JOINT_PROCESSOR_INTERP_FEATURES_H_
 #define LASER_JOINT_PROCESSOR_INTERP_FEATURES_H_
 
-#include <opencv/cv.h>
+#include <opencv2/core/core.hpp>
 #include <geometry_msgs/Point.h>
 #include <calibration_msgs/DenseLaserSnapshot.h>
 
@@ -48,7 +48,7 @@ class JointImageInterpolator
 {
 public:
   bool interp(const std::vector<geometry_msgs::Point>& points,
-              IplImage* image, std::vector<float>& positions, std::vector<float>& velocities);
+              cv::Mat_<cv::Vec2f> image, std::vector<float>& positions, std::vector<float>& velocities);
 
 };
 

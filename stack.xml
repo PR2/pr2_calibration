@@ -16,6 +16,7 @@
   <depend stack="geometry" /> <!-- kdl, tf -->
   <depend stack="image_common" /> <!-- image_transport -->
   <depend stack="image_pipeline" /> <!-- stereo_image_proc, image_view -->
+  <depend stack="kdl" /> <!-- kdl -->
   <depend stack="pr2_apps" /> <!-- pr2_teleop -->
   <depend stack="pr2_common" /> <!-- pr2_msgs -->
   <depend stack="pr2_controllers" /> <!-- robot_mechanism_controllers -->

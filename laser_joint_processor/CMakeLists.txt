@@ -16,14 +16,12 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 #set the default path for built libraries to the "lib" directory
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
-#uncomment if you have defined messages
-#rosbuild_genmsg()
-#uncomment if you have defined services
-#rosbuild_gensrv()
-
+find_package(OpenCV)
+include_directories(SYSTEM ${OpenCV_INCLUDE_DIRS})
 rosbuild_add_library(${PROJECT_NAME} src/joint_imager.cpp
                                      src/laser_joint_processor.cpp
                                      src/joint_image_interpolator.cpp)
+target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBRARIES})
 
 rosbuild_add_boost_directories()
 rosbuild_add_executable(laser_joint_processor_node src/laser_joint_processor_node.cpp)

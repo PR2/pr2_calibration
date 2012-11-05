@@ -35,10 +35,10 @@
 #ifndef LASER_JOINT_PROCESSOR_JOINT_IMAGER_H_
 #define LASER_JOINT_PROCESSOR_JOINT_IMAGER_H_
 
+#include <opencv2/core/core.hpp>
 #include <settlerlib/sorted_deque.h>
 #include <joint_states_settler/deflated_joint_states.h>
 #include <calibration_msgs/DenseLaserSnapshot.h>
-#include <opencv/cv.h>
 
 namespace laser_joint_processor
 {
@@ -55,10 +55,10 @@ public:
 
   void displayImage(unsigned int i);
   void writeImage(unsigned int i, const std::string& filename);
-  IplImage* getJointImage(unsigned int index) const;
+  cv::Mat_<cv::Vec2f> getJointImage(unsigned int index) const;
 
 protected:
-  std::vector< IplImage* > images;
+  std::vector<cv::Mat_<cv::Vec2f> > images;
 
   bool interpPosition(const ros::Time& target,
                       const settlerlib::SortedDeque<joint_states_settler::DeflatedJointStates>& cache,

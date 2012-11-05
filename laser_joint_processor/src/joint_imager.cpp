@@ -48,9 +48,6 @@ JointImager::JointImager()
 
 JointImager::~JointImager()
 {
-  // Deallocate everything
-  for (unsigned int i=0; i<images.size(); i++)
-    cvReleaseImage(&images[i]);
 }
 
 bool JointImager::update(const calibration_msgs::DenseLaserSnapshot& snapshot,
@@ -92,18 +89,18 @@ bool JointImager::update(const calibration_msgs::DenseLaserSnapshot& snapshot,
 
       // Populate position field [Channel 0] in each joint image
       for (unsigned int k=0;k<num_channels;k++)
-        *(((float*)(images[k]->imageData + images[k]->widthStep*i))+2*j + 0) = cur_positions[k];
+        images[k](i,j)[0] = cur_positions[k];
     }
     ros::Time scan_start_time = snapshot.scan_start[i];
     ros::Time scan_end_time   = snapshot.scan_start[i] + ros::Duration(snapshot.time_increment * (snapshot.readings_per_scan-1));
 
     for (unsigned int k=0; k<num_channels; k++)
     {
-      float start_pos = *(((float*)(images[k]->imageData + images[k]->widthStep*i))+2*0 + 0);
-      float end_pos   = *(((float*)(images[k]->imageData + images[k]->widthStep*i))+2*(snapshot.readings_per_scan-1) + 0);
+      float start_pos = images[k](i,0)[0];
+      float end_pos   = images[k](i,snapshot.readings_per_scan-1)[0];
       float vel = (end_pos - start_pos) / (scan_end_time-scan_start_time).toSec();
       // Walk along image row, populating the velocity channel. (Every other float is a velocity).
-      float* vel_ptr = (float*)(images[k]->imageData + images[k]->widthStep*i) + 2*0 + 1;
+      float* vel_ptr = &images[k](i,0)[1];
       for (unsigned int j=0; j<snapshot.readings_per_scan; j++)
       {
         *vel_ptr = vel;
@@ -149,13 +146,13 @@ bool JointImager::update(const calibration_msgs::DenseLaserSnapshot& snapshot,
 
 void JointImager::displayImage(unsigned int i)
 {
-  IplImage* image = getJointImage(i);
+  cv::Mat_<cv::Vec2f> image = getJointImage(i);
 
-  for (int i=0; i<image->height; i++)
+  for (int i=0; i<image.rows; i++)
   {
-    for (int j=0; j<image->width; j++)
+    for (int j=0; j<image.cols; j++)
     {
-      printf("%5.2f  ", *((float*)(image->imageData + i*image->widthStep) + j*image->nChannels));
+      printf("%5.2f  ", image(i,j)[0]);
     }
     printf("\n");
   }
@@ -168,13 +165,13 @@ void JointImager::writeImage(unsigned int i, const string& filename)
   if (file)
     printf("About to write to file %s\n", filename.c_str());
 
-  IplImage* image = getJointImage(i);
+  cv::Mat_<cv::Vec2f> image = getJointImage(i);
 
-  for (int i=0; i<image->height; i++)
+  for (int i=0; i<image.rows; i++)
   {
-    for (int j=0; j<image->width; j++)
+    for (int j=0; j<image.cols; j++)
     {
-      fprintf(file, "% 3.2f  ", *((float*)(image->imageData + i*image->widthStep) + j*image->nChannels));
+      fprintf(file, "% 3.2f  ", image(i,j)[0]);
     }
     fprintf(file, "\n");
   }
@@ -258,19 +255,15 @@ bool JointImager::computeVelocity(const ros::Time& start, const ros::Time& end,
 
 void JointImager::allocateImages(unsigned int height, unsigned int width, unsigned int channels)
 {
-  // Deallocate everything
-  for (unsigned int i=0; i<images.size(); i++)
-    cvReleaseImage(&images[i]);
-
   images.resize(channels);
 
-  CvSize image_size = cvSize(width, height);
+  cv::Size image_size = cvSize(width, height);
 
   for (unsigned int i=0; i<channels; i++)
-    images[i] = cvCreateImage(image_size, IPL_DEPTH_32F, 2);
+    images[i] = cv::Mat_<cv::Vec2f>(image_size);
 }
 
-IplImage* JointImager::getJointImage(unsigned int index) const
+cv::Mat_<cv::Vec2f> JointImager::getJointImage(unsigned int index) const
 {
   return images[index];
 }
