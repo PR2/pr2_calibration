@@ -62,7 +62,7 @@ bool JointImageInterpolator::interp(const std::vector <geometry_msgs::Point>& po
   cv::Mat_<cv::Vec2f> dest_mat(N, 1);
 
   // Perform the OpenCV interpolation
-  cv::remap(image, dest_mat, map_x_mat, map_y_mat, CV_INTER_LINEAR+CV_WARP_FILL_OUTLIERS);
+  cv::remap(image, dest_mat, map_x_mat, map_y_mat, cv::INTER_LINEAR, cv::BORDER_WRAP);
 
   // Copy results into output vectors
   positions.resize(N);
@@ -111,10 +111,11 @@ bool laser_joint_processor::interpSnapshot(const std::vector <geometry_msgs::Poi
   } 
 
   // Allocate Destination Image
-  cv::Mat_<float> ranges_mat(N, 1);
+  ranges.resize(N);
+  cv::Mat_<float> ranges_mat(N, 1, &ranges[0]);
 
   // Perform the OpenCV interpolation
-  cv::remap(range_image, ranges_mat, map_x_mat, map_y_mat, CV_INTER_LINEAR+CV_WARP_FILL_OUTLIERS);
+  cv::remap(range_image, ranges_mat, map_x_mat, map_y_mat, cv::INTER_LINEAR, cv::BORDER_WRAP);
 
   // Do angle interp manually
   angles.resize(N);
