@@ -6,7 +6,7 @@
      is the tutorial for calibrating the PR2. All of the internal APIs are not
      considered to be stable.
   </description>
-  <author>Maintained by Vijay Pradeep</author>
+  <author>Maintained by Devon Ash</author>
   <license>BSD</license>  
   <review status="API and Doc Reviewed" notes=""/>
   <url>http://ros.org/wiki/pr2_calibration</url>
