@@ -1,0 +1,46 @@
+<package>
+  <name>dense_laser_assembler</name>
+  <version>1.0.0</version>
+  <description>Stores streaming data from a laser sensor in a
+    dense representation. This allows the user to do 'image-like'
+    processing on the data, and can also be used for very fast approx
+    neighborhood searches.  This package is still experimental and unstable.
+    Expect its APIs to change.</description>
+  <maintainer email="dash@clearpathrobotics.com">Devon Ash</maintainer>
+  <license>BSD</license>
+
+  <url type="website">http://www.ros.org/wiki/dense_laser_assembler</url>
+  <!-- <url type="bugtracker"></url> -->
+
+  <author>Vijay Pradeep</author>
+
+  <!-- Dependencies which this package needs to build itself. -->
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- Dependencies needed to compile this package. -->
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>calibration_msgs</build_depend>
+  <build_depend>settlerlib</build_depend>
+
+  <!-- Dependencies needed after this package is compiled. -->
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>calibration_msgs</run_depend>
+  <run_depend>settlerlib</run_depend>
+
+  <!-- Dependencies needed only for running tests. -->
+  <!-- <test_depend>roscpp</test_depend> -->
+  <!-- <test_depend>std_msgs</test_depend> -->
+  <!-- <test_depend>sensor_msgs</test_depend> -->
+  <!-- <test_depend>calibration_msgs</test_depend> -->
+  <!-- <test_depend>settlerlib</test_depend> -->
+
+<export>
+    <cpp lflags="-L${prefix}/lib -ldense_laser_assembler" cflags="-I${prefix}/include"/>
+</export>
+
+</package>
+
