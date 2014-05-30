@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(laser_joint_processor)
 # Load catkin and all dependencies required for this package
 # TODO: remove all from COMPONENTS that are not catkin packages.
-find_package(catkin REQUIRED COMPONENTS geometry_msgs message_filters settlerlib joint_states_settler OpenCV)
+find_package(catkin REQUIRED COMPONENTS geometry_msgs message_filters settlerlib joint_states_settler)
 find_package(Boost REQUIRED COMPONENTS signals thread)
 
 
@@ -19,12 +19,12 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 # CATKIN_MIGRATION: removed during catkin migration
 # include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 
-# Set the build type.  Options are:
-#  Coverage       : w/ debug symbols, w/o optimization, w/ code-coverage
-#  Debug          : w/ debug symbols, w/o optimization
-#  Release        : w/o debug symbols, w/ optimization
-#  RelWithDebInfo : w/ debug symbols, w/ optimization
-#  MinSizeRel     : w/o debug symbols, w/ optimization, stripped binaries
+# Set the build type. Options are:
+# Coverage : w/ debug symbols, w/o optimization, w/ code-coverage
+# Debug : w/ debug symbols, w/o optimization
+# Release : w/o debug symbols, w/ optimization
+# RelWithDebInfo : w/ debug symbols, w/ optimization
+# MinSizeRel : w/o debug symbols, w/ optimization, stripped binaries
 #set(ROS_BUILD_TYPE RelWithDebInfo)
 
 
@@ -63,7 +63,7 @@ target_link_libraries(laser_joint_processor_node ${Boost_LIBRARIES} ${OpenCV_LIB
 
 ## Generate added messages and services with any dependencies listed here
 #generate_messages(
-#    #TODO DEPENDENCIES geometry_msgs std_msgs
+# #TODO DEPENDENCIES geometry_msgs std_msgs
 #)
 
 # catkin_package parameters: http://ros.org/doc/groovy/api/catkin/html/dev_guide/generated_cmake_api.html#catkin-package
