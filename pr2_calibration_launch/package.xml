@@ -1,0 +1,85 @@
+<package>
+  <name>pr2_calibration_launch</name>
+  <version>1.0.0</version>
+  <description>Launch files and configuration files needed to run the calibration pipeline on PR2. This package is
+     still experimental. Expect large changes tp occur.</description>
+  <maintainer email="dash@clearpathrobotics.com">Devon Ash</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://www.ros.org/wiki/pr2_calibration_launch</url>
+  <!-- <url type="bugtracker"></url> -->
+
+  <author>Vijay Pradeep</author>
+
+  <!-- Dependencies which this package needs to build itself. -->
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- Dependencies needed to compile this package. -->
+  <build_depend>calibration_msgs</build_depend>
+  <build_depend>calibration_estimation</build_depend>
+  <build_depend>calibration_launch</build_depend>
+  <build_depend>pr2_dense_laser_snapshotter</build_depend>
+  <build_depend>laser_cb_detector</build_depend>
+  <build_depend>laser_joint_processor</build_depend>
+  <build_depend>laser_joint_projector</build_depend>
+  <build_depend>stereo_image_proc</build_depend>
+  <build_depend>image_cb_detector</build_depend>
+  <build_depend>monocam_settler</build_depend>
+  <build_depend>image_view</build_depend>
+  <build_depend>robot_mechanism_controllers</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>pr2_teleop</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>rostest</build_depend>
+  <build_depend>kdl</build_depend>
+  <build_depend>python_orocos_kdl</build_depend>
+  <build_depend>kdl_parser</build_depend>
+
+  <!-- Dependencies needed after this package is compiled. -->
+  <run_depend>calibration_msgs</run_depend>
+  <run_depend>calibration_estimation</run_depend>
+  <run_depend>calibration_launch</run_depend>
+  <run_depend>pr2_dense_laser_snapshotter</run_depend>
+  <run_depend>laser_cb_detector</run_depend>
+  <run_depend>laser_joint_processor</run_depend>
+  <run_depend>laser_joint_projector</run_depend>
+  <run_depend>stereo_image_proc</run_depend>
+  <run_depend>image_cb_detector</run_depend>
+  <run_depend>monocam_settler</run_depend>
+  <run_depend>image_view</run_depend>
+  <run_depend>robot_mechanism_controllers</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>pr2_teleop</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>rostest</run_depend>
+  <run_depend>kdl</run_depend>
+  <run_depend>python_orocos_kdl</run_depend>
+  <run_depend>kdl_parser</run_depend>
+
+  <!-- Dependencies needed only for running tests. -->
+  <!-- <test_depend>calibration_msgs</test_depend> -->
+  <!-- <test_depend>calibration_estimation</test_depend> -->
+  <!-- <test_depend>calibration_launch</test_depend> -->
+  <!-- <test_depend>pr2_dense_laser_snapshotter</test_depend> -->
+  <!-- <test_depend>laser_cb_detector</test_depend> -->
+  <!-- <test_depend>laser_joint_processor</test_depend> -->
+  <!-- <test_depend>laser_joint_projector</test_depend> -->
+  <!-- <test_depend>stereo_image_proc</test_depend> -->
+  <!-- <test_depend>image_cb_detector</test_depend> -->
+  <!-- <test_depend>monocam_settler</test_depend> -->
+  <!-- <test_depend>image_view</test_depend> -->
+  <!-- <test_depend>robot_mechanism_controllers</test_depend> -->
+  <!-- <test_depend>sensor_msgs</test_depend> -->
+  <!-- <test_depend>geometry_msgs</test_depend> -->
+  <!-- <test_depend>pr2_teleop</test_depend> -->
+  <!-- <test_depend>rospy</test_depend> -->
+  <!-- <test_depend>rostest</test_depend> -->
+  <!-- <test_depend>kdl</test_depend> -->
+  <!-- <test_depend>python_orocos_kdl</test_depend> -->
+  <!-- <test_depend>kdl_parser</test_depend> -->
+
+</package>
+
