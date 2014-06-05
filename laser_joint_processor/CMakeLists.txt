@@ -5,6 +5,7 @@ project(laser_joint_processor)
 # Load catkin and all dependencies required for this package
 # TODO: remove all from COMPONENTS that are not catkin packages.
 find_package(catkin REQUIRED COMPONENTS geometry_msgs message_filters settlerlib joint_states_settler)
+find_package(OpenCV REQUIRED)
 find_package(Boost REQUIRED COMPONENTS signals thread)
 
 
