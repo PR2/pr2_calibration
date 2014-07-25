@@ -57,7 +57,7 @@ include_directories(${orocos_kdl_INCLUDE_DIRS})
 catkin_package(
     DEPENDS calibration_msgs kdl_parser geometry_msgs roscpp_serialization laser_joint_projector
     CATKIN_DEPENDS # TODO
-    INCLUDE_DIRS ${catkin_INCLUDE_DIRS}# TODO include
+    INCLUDE_DIRS # TODO include
     LIBRARIES # TODO
 )
 add_library(${PROJECT_NAME} src/laser_joint_projector.cpp)
