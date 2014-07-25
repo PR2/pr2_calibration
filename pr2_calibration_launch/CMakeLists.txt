@@ -34,9 +34,9 @@ find_package(catkin REQUIRED COMPONENTS calibration_msgs calibration_estimation 
 #  rosbuild_init()
 
 #set the default path for built executables to the "bin" directory
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+#set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 #set the default path for built libraries to the "lib" directory
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+#set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 find_package(Eigen)
 include_directories(SYSTEM ${Eigen_INCLUDE_DIRS})
@@ -55,6 +55,7 @@ add_service_files(
 #generate_messages(
 #    #TODO DEPENDENCIES geometry_msgs std_msgs
 #)
+generate_messages()
 
 
 ## Generate added messages and services with any dependencies listed here
@@ -62,8 +63,8 @@ add_service_files(
 # catkin_package parameters: http://ros.org/doc/groovy/api/catkin/html/dev_guide/generated_cmake_api.html#catkin-package
 # TODO: fill in what other packages will need to use this package
 catkin_package(
-    DEPENDS calibration_msgs calibration_estimation calibration_launch pr2_dense_laser_snapshotter laser_cb_detector laser_joint_processor laser_joint_projector stereo_image_proc image_cb_detector monocam_settler image_view robot_mechanism_controllers sensor_msgs geometry_msgs pr2_teleop rospy rostest kdl python_orocos_kdl kdl_parser
-    CATKIN_DEPENDS # TODO
+    DEPENDS 
+    CATKIN_DEPENDS message_runtime# TODO
     INCLUDE_DIRS # TODO include
     LIBRARIES # TODO
 )

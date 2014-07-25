@@ -36,6 +36,7 @@
   <build_depend>kdl</build_depend>
   <build_depend>python_orocos_kdl</build_depend>
   <build_depend>kdl_parser</build_depend>
+  <build_depend>message_generation</build_depend>
 
   <!-- Dependencies needed after this package is compiled. -->
   <run_depend>calibration_msgs</run_depend>
@@ -58,6 +59,7 @@
   <run_depend>kdl</run_depend>
   <run_depend>python_orocos_kdl</run_depend>
   <run_depend>kdl_parser</run_depend>
+  <run_depend>message_runtime</run_depend>
 
   <!-- Dependencies needed only for running tests. -->
   <!-- <test_depend>calibration_msgs</test_depend> -->
