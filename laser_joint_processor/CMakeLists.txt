@@ -33,28 +33,18 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 # rosbuild_init()
 
 #set the default path for built executables to the "bin" directory
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+#set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 #set the default path for built libraries to the "lib" directory
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+#set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 #find_package(OpenCV)
 #find_package(OpenCV2)
 
-add_library(${PROJECT_NAME} src/joint_imager.cpp
-                                     src/laser_joint_processor.cpp
-                                     src/joint_image_interpolator.cpp)
-
-target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBRARIES} ${catkin_LIBRARIES})
 
 # CATKIN_MIGRATION: removed during catkin migration
 # rosbuild_add_boost_directories()
 
 
-add_executable(laser_joint_processor_node src/laser_joint_processor_node.cpp)
-target_link_libraries(laser_joint_processor_node ${PROJECT_NAME} ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
-
-
-target_link_libraries(laser_joint_processor_node ${Boost_LIBRARIES} ${OpenCV_LIBRARIES})
 
 #common commands for building c++ executables and libraries
 #add_library(${PROJECT_NAME} src/example.cpp)
@@ -76,6 +66,18 @@ catkin_package(
     LIBRARIES # TODO
 )
 
+add_library(${PROJECT_NAME} src/joint_imager.cpp
+                                     src/laser_joint_processor.cpp
+                                     src/joint_image_interpolator.cpp)
+
+target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBRARIES} ${catkin_LIBRARIES})
+
+add_executable(laser_joint_processor_node src/laser_joint_processor_node.cpp)
+target_link_libraries(laser_joint_processor_node ${PROJECT_NAME} ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+
+
+target_link_libraries(laser_joint_processor_node ${Boost_LIBRARIES} ${OpenCV_LIBRARIES})
+
 #catkin_add_gtest(joint_imager_unittest test/joint_imager_unittest.cpp)
 #target_link_libraries(joint_imager_unittest laser_joint_processor)
 
@@ -87,3 +89,4 @@ catkin_package(
 
 #catkin_add_gtest(laser_joint_processor_unittest test/#laser_joint_processor_unittest.cpp)
 #target_link_libraries(laser_joint_processor_unittest laser_joint_processor)
+
