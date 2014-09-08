@@ -33,7 +33,6 @@
   <build_depend>pr2_teleop</build_depend>
   <build_depend>rospy</build_depend>
   <build_depend>rostest</build_depend>
-  <build_depend>kdl</build_depend>
   <build_depend>python_orocos_kdl</build_depend>
   <build_depend>kdl_parser</build_depend>
   <build_depend>message_generation</build_depend>
@@ -56,7 +55,6 @@
   <run_depend>pr2_teleop</run_depend>
   <run_depend>rospy</run_depend>
   <run_depend>rostest</run_depend>
-  <run_depend>kdl</run_depend>
   <run_depend>python_orocos_kdl</run_depend>
   <run_depend>kdl_parser</run_depend>
   <run_depend>message_runtime</run_depend>
