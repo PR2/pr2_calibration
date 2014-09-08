@@ -2,8 +2,8 @@
 Changelog for package dense_laser_assembler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.1 (2014-09-08)
+------------------
 * Works with catkin_lint
 * Added hydro devel, compiles and makes in hydro
 * Removed executables
