@@ -2,6 +2,12 @@
 Changelog for package dense_laser_assembler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Added lib export for pr2_laser_snapshotter
+* Added dense_laser_assembler library outputs to CMakeList
+* Contributors: TheDash
+
 1.0.1 (2014-09-08)
 ------------------
 * Works with catkin_lint
