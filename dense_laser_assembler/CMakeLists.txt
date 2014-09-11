@@ -6,14 +6,14 @@ find_package(catkin REQUIRED COMPONENTS roscpp std_msgs sensor_msgs calibration_
 include_directories(include ${catkin_INCLUDE_DIRS} ${BOOST_INCLUDE_DIRS})
 
 
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+#set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+#set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 catkin_package(
-    DEPENDS roscpp std_msgs sensor_msgs calibration_msgs settlerlib roscpp_serialization
-    CATKIN_DEPENDS roscpp roscpp_serialization# TODO
+    DEPENDS 
+    CATKIN_DEPENDS roscpp roscpp_serialization calibration_msgs sensor_msgs settlerlib std_msgs# TODO
     INCLUDE_DIRS include/${PROJECT_NAME}/ include # TODO include
-    LIBRARIES dense_laser_assembler# TODO
+    LIBRARIES dense_laser_assembler
 )
 
 catkin_add_gtest(test test/dense_laser_assembler_unittest.cpp)
@@ -24,8 +24,12 @@ install(DIRECTORY include/${PROJECT_NAME}/
   PATTERN ".svn" EXCLUDE
 )
 
+
+install(PROGRAMS scripts/assembler_node.py scripts/laser_image_node.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+
 add_library(dense_laser_assembler src/dense_laser_assembler.cpp)
 target_link_libraries(dense_laser_assembler ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${roscpp_serialization_LIBRARIES})
+
 add_executable(dense_laser_imager src/dense_laser_imager.cpp)
 target_link_libraries(dense_laser_imager ${roscpp_serialization_LIBRARIES} ${catkin_LIBRARIES})
 
