@@ -2,6 +2,9 @@
 Changelog for package pr2_dense_laser_snapshotter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.0.3 (2014-09-11)
 ------------------
 * Added lib export for pr2_laser_snapshotter
