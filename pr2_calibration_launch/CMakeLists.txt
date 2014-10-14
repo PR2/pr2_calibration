@@ -2,7 +2,7 @@
 # Catkin CMake Standard: http://www.ros.org/doc/groovy/api/catkin/html/user_guide/standards.html
 
 # CATKIN_MIGRATION: removed during catkin migration
-# cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 2.8.3)
 project(pr2_calibration_launch)
 # Load catkin and all dependencies required for this package
 # TODO: remove all from COMPONENTS that are not catkin packages.
@@ -48,8 +48,7 @@ include_directories(SYSTEM ${Eigen_INCLUDE_DIRS})
 #uncomment if you have defined messages
 #uncomment if you have defined services
 add_service_files(
-  FILES
-  # TODO: List your msg files here
+  FILES FkTest.srv
 )
 ## Generate added messages and services with any dependencies listed here
 #generate_messages(
