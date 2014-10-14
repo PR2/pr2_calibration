@@ -2,6 +2,11 @@
 Changelog for package pr2_se_calibration_launch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Removed mainpage.dox for *
+* Contributors: TheDash
+
 1.0.4 (2014-09-17)
 ------------------
 * Added install destination; bugfix

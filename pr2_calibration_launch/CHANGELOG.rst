@@ -2,6 +2,12 @@
 Changelog for package pr2_calibration_launch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Removed mainpage.dox for *
+* fix for catkin make
+* Contributors: JSK applications, TheDash
+
 1.0.4 (2014-09-17)
 ------------------
 

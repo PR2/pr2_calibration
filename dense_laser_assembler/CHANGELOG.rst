@@ -2,6 +2,12 @@
 Changelog for package dense_laser_assembler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Changed lib destination for dense_laser_snapshotter
+* Removed mainpage.dox for *
+* Contributors: TheDash
+
 1.0.4 (2014-09-17)
 ------------------
 

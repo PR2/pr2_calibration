@@ -2,6 +2,11 @@
 Changelog for package laser_joint_processor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Removed mainpage.dox for *
+* Contributors: TheDash
+
 1.0.4 (2014-09-17)
 ------------------
 

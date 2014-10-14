@@ -2,6 +2,11 @@
 Changelog for package pr2_calibration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Added package.xml run depends for pr2_calibration
+* Contributors: dash
+
 1.0.4 (2014-09-17)
 ------------------
 
