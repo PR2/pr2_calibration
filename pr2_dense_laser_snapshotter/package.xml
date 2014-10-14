@@ -1,6 +1,6 @@
 <package>
   <name>pr2_dense_laser_snapshotter</name>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
   <description>Stores the data from a series of laser scan messages in a dense representation, allowing
      users to easily perform image-like operations on intensity or range data. This package is
      experimental. Expect APIs to change.</description>
