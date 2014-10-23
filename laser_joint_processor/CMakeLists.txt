@@ -60,8 +60,8 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 # catkin_package parameters: http://ros.org/doc/groovy/api/catkin/html/dev_guide/generated_cmake_api.html#catkin-package
 # TODO: fill in what other packages will need to use this package
 catkin_package(
-    DEPENDS  OpenCV
-    CATKIN_DEPENDS geometry_msgs message_filters settlerlib joint_states_settler 
+    DEPENDS geometry_msgs message_filters settlerlib joint_states_settler opencv2
+    CATKIN_DEPENDS # TODO
     INCLUDE_DIRS include/${PROJECT_NAME}# TODO include
     LIBRARIES # TODO
 )
