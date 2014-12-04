@@ -2,6 +2,9 @@
 Changelog for package laser_joint_projector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.0.5 (2014-10-14)
 ------------------
 * Removed mainpage.dox for *

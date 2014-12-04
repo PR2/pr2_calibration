@@ -2,6 +2,9 @@
 Changelog for package pr2_calibration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.0.5 (2014-10-14)
 ------------------
 * Added package.xml run depends for pr2_calibration

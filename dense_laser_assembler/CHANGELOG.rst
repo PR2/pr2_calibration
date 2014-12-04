@@ -2,6 +2,9 @@
 Changelog for package dense_laser_assembler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.0.5 (2014-10-14)
 ------------------
 * Changed lib destination for dense_laser_snapshotter
