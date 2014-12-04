@@ -2,8 +2,8 @@
 Changelog for package laser_joint_processor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.6 (2014-12-04)
+------------------
 * Changelogs
 * Revert "Fix dependency of laser_joint_processor"
 * Fix dependency of laser_joint_processor

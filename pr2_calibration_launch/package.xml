@@ -1,6 +1,6 @@
 <package>
   <name>pr2_calibration_launch</name>
-  <version>1.0.5</version>
+  <version>1.0.6</version>
   <description>Launch files and configuration files needed to run the calibration pipeline on PR2. This package is
      still experimental. Expect large changes tp occur.</description>
   <maintainer email="dash@clearpathrobotics.com">Devon Ash</maintainer>

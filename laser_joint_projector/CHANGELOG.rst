@@ -2,8 +2,8 @@
 Changelog for package laser_joint_projector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.6 (2014-12-04)
+------------------
 * Changelogs
 * Contributors: TheDash
 

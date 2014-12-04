@@ -2,8 +2,8 @@
 Changelog for package dense_laser_assembler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.6 (2014-12-04)
+------------------
 * Changelogs
 * Contributors: TheDash
 

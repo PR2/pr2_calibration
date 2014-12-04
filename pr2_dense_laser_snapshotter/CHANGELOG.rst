@@ -2,8 +2,8 @@
 Changelog for package pr2_dense_laser_snapshotter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.6 (2014-12-04)
+------------------
 * Changelogs
 * Contributors: TheDash
 
