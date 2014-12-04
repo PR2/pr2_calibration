@@ -4,6 +4,8 @@ Changelog for package dense_laser_assembler
 
 Forthcoming
 -----------
+* Changelogs
+* Contributors: TheDash
 
 1.0.5 (2014-10-14)
 ------------------

@@ -4,6 +4,8 @@ Changelog for package laser_joint_projector
 
 Forthcoming
 -----------
+* Changelogs
+* Contributors: TheDash
 
 1.0.5 (2014-10-14)
 ------------------

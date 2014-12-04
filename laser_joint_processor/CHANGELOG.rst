@@ -4,6 +4,10 @@ Changelog for package laser_joint_processor
 
 Forthcoming
 -----------
+* Changelogs
+* Revert "Fix dependency of laser_joint_processor"
+* Fix dependency of laser_joint_processor
+* Contributors: Devon Ash, Ryohei Ueda, TheDash
 
 1.0.5 (2014-10-14)
 ------------------
