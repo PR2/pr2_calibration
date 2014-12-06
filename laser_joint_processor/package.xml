@@ -1,6 +1,6 @@
 <package>
   <name>laser_joint_processor</name>
-  <version>1.0.5</version>
+  <version>1.0.6</version>
   <description>Computes joint angles associated with a specific set of detected checkerboard corners.
      This package is experimental and unstable.
      Expect its APIs to change.</description>

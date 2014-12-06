@@ -2,6 +2,13 @@
 Changelog for package laser_joint_processor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.6 (2014-12-04)
+------------------
+* Changelogs
+* Revert "Fix dependency of laser_joint_processor"
+* Fix dependency of laser_joint_processor
+* Contributors: Devon Ash, Ryohei Ueda, TheDash
+
 1.0.5 (2014-10-14)
 ------------------
 * Removed mainpage.dox for *

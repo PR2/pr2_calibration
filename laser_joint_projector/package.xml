@@ -1,6 +1,6 @@
 <package>
   <name>laser_joint_projector</name>
-  <version>1.0.5</version>
+  <version>1.0.6</version>
   <description>Projects laser readings into a point cloud, based on a set of recorded joint angles
      This package is experimental and unstable.
      Expect its APIs to change.</description>

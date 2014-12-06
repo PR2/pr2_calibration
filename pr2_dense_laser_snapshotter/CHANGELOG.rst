@@ -2,6 +2,11 @@
 Changelog for package pr2_dense_laser_snapshotter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.6 (2014-12-04)
+------------------
+* Changelogs
+* Contributors: TheDash
+
 1.0.5 (2014-10-14)
 ------------------
 * Removed mainpage.dox for *

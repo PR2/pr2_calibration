@@ -15,6 +15,8 @@ fi
 rm robot_calibrated.xml
 echo "Success"
 
+export PYTHONPATH=`rospack find pr2_calibration_launch`/pr2_urdf_parser_py:$PYTHONPATH
+
 roslaunch pr2_calibration_launch pr2_se_params.launch
 rosrun calibration_estimation multi_step_cov_estimator.py /tmp/pr2_calibration/cal_measurements.bag /tmp/pr2_calibration __name:=cal_cov_estimator
 
