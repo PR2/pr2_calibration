@@ -62,9 +62,14 @@ generate_messages()
 # catkin_package parameters: http://ros.org/doc/groovy/api/catkin/html/dev_guide/generated_cmake_api.html#catkin-package
 # TODO: fill in what other packages will need to use this package
 catkin_package(
-    DEPENDS 
+    DEPENDS
     CATKIN_DEPENDS message_runtime# TODO
     INCLUDE_DIRS # TODO include
     LIBRARIES # TODO
 )
 
+install(
+  DIRECTORY capture_data estimate_params
+  results view_results intrinsics pr2_urdf_parser_py verify_urdf
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  USE_SOURCE_PERMISSIONS)
