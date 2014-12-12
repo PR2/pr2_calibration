@@ -60,8 +60,8 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 # catkin_package parameters: http://ros.org/doc/groovy/api/catkin/html/dev_guide/generated_cmake_api.html#catkin-package
 # TODO: fill in what other packages will need to use this package
 catkin_package(
-    DEPENDS geometry_msgs message_filters settlerlib joint_states_settler opencv2
-    CATKIN_DEPENDS # TODO
+    DEPENDS
+    CATKIN_DEPENDS geometry_msgs message_filters settlerlib joint_states_settler
     INCLUDE_DIRS include/${PROJECT_NAME}# TODO include
     LIBRARIES # TODO
 )
@@ -89,4 +89,3 @@ target_link_libraries(laser_joint_processor_node ${Boost_LIBRARIES} ${OpenCV_LIB
 
 #catkin_add_gtest(laser_joint_processor_unittest test/#laser_joint_processor_unittest.cpp)
 #target_link_libraries(laser_joint_processor_unittest laser_joint_processor)
-
