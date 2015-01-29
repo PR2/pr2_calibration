@@ -2,7 +2,7 @@
 # Catkin CMake Standard: http://www.ros.org/doc/groovy/api/catkin/html/user_guide/standards.html
 cmake_minimum_required(VERSION 2.8.3)
 project(laser_joint_projector)
-find_package(catkin REQUIRED COMPONENTS calibration_msgs roscpp geometry_msgs roscpp_serialization)
+find_package(catkin REQUIRED COMPONENTS calibration_msgs roscpp geometry_msgs roscpp_serialization cmake_modules)
 
 find_package(kdl_parser REQUIRED)
 find_package(Eigen REQUIRED)
