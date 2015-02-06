@@ -2,6 +2,11 @@
 Changelog for package laser_joint_processor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix catkin_package macro of laser_joint_processor
+* Contributors: Ryohei Ueda
+
 1.0.6 (2014-12-04)
 ------------------
 * Changelogs
