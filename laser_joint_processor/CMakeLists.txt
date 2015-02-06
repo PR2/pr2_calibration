@@ -8,11 +8,12 @@ find_package(catkin REQUIRED COMPONENTS geometry_msgs message_filters settlerlib
 find_package(OpenCV REQUIRED)
 find_package(Boost REQUIRED COMPONENTS signals thread)
 
-
-
 include_directories(${Boost_INCLUDE_DIRS})
 include_directories(${OpenCV_INCLUDE_DIRS})
 include_directories(include ${catkin_INCLUDE_DIRS})
+
+
+
 # include_directories(include ${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS})
 # CATKIN_MIGRATION: removed during catkin migration
 # cmake_minimum_required(VERSION 2.4.6)

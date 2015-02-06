@@ -257,7 +257,7 @@ void JointImager::allocateImages(unsigned int height, unsigned int width, unsign
 {
   images.resize(channels);
 
-  cv::Size image_size = cvSize(width, height);
+  cv::Size image_size = cv::Size(width, height);
 
   for (unsigned int i=0; i<channels; i++)
     images[i] = cv::Mat_<cv::Vec2f>(image_size);

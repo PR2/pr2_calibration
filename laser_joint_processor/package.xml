@@ -20,14 +20,14 @@
   <build_depend>message_filters</build_depend>
   <build_depend>settlerlib</build_depend>
   <build_depend>joint_states_settler</build_depend>
-  <build_depend>opencv2</build_depend>
+  <build_depend>image_geometry</build_depend>
 
   <!-- Dependencies needed after this package is compiled. -->
+  <run_depend>image_geometry</run_depend>
   <run_depend>geometry_msgs</run_depend>
   <run_depend>message_filters</run_depend>
   <run_depend>settlerlib</run_depend>
   <run_depend>joint_states_settler</run_depend>
-  <run_depend>opencv2</run_depend>
 
   <!-- Dependencies needed only for running tests. -->
   <!-- <test_depend>geometry_msgs</test_depend> -->
@@ -35,5 +35,4 @@
   <!-- <test_depend>settlerlib</test_depend> -->
   <!-- <test_depend>joint_states_settler</test_depend> -->
   <!-- <test_depend>opencv2</test_depend> -->
-
 </package>
