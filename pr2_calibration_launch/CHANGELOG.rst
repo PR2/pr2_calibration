@@ -2,6 +2,11 @@
 Changelog for package pr2_calibration_launch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Install directories of pr2_calibration_launch
+* Contributors: Ryohei Ueda
+
 1.0.6 (2014-12-04)
 ------------------
 * Changelogs
