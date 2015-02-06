@@ -2,8 +2,8 @@
 Changelog for package laser_joint_processor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.7 (2015-02-06)
+------------------
 * Updated opencv dependencies and rosdep tag
 * Fix catkin_package macro of laser_joint_processor
 * Contributors: Ryohei Ueda, TheDash
