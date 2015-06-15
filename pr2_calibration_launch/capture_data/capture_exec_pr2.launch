@@ -1,5 +1,6 @@
 <launch>
   <machine name="c1" address="c1" env-loader="$(env ROS_ENV_LOADER)"/>
+  <env name="PYTHONPATH" value="$(find pr2_calibration_launch)/pr2_urdf_parser_py:$(env PYTHONPATH)" />
   <node type="capture_exec.py"
         pkg="calibration_launch"
         name="calibration_exec"
