@@ -2,6 +2,11 @@
 Changelog for package dense_laser_assembler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* updated maintainer; fixed cmake warnings; fixed compiler warnings
+* Contributors: David Feil-Seifer
+
 1.0.7 (2015-02-06)
 ------------------
 

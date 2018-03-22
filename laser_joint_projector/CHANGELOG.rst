@@ -2,6 +2,11 @@
 Changelog for package laser_joint_projector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* updated maintainer; fixed cmake warnings; fixed compiler warnings
+* Contributors: David Feil-Seifer
+
 1.0.7 (2015-02-06)
 ------------------
 * Added CMakeModules depend
