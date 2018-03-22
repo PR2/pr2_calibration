@@ -2,8 +2,8 @@
 Changelog for package pr2_dense_laser_snapshotter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.10 (2018-03-22)
+-------------------
 * updated maintainer; fixed cmake warnings; fixed compiler warnings
 * Contributors: David Feil-Seifer
 

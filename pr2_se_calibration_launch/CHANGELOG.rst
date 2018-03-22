@@ -2,8 +2,8 @@
 Changelog for package pr2_se_calibration_launch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.10 (2018-03-22)
+-------------------
 * updated maintainer; fixed cmake warnings; fixed compiler warnings
 * Contributors: David Feil-Seifer
 
