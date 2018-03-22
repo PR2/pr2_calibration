@@ -2,8 +2,8 @@
   <name>pr2_se_calibration_launch</name>
   <version>1.0.9</version>
   <description>pr2_se_calibration_launch</description>
-  <maintainer email="dash@clearpathrobotics.com">Devon Ash</maintainer>
-
+  <maintainer email="dave@cse.unr.edu">Dave Feil-Seifer</maintainer>
+  
   <license>BSD</license>
 
   <url type="website">http://ros.org/wiki/pr2_se_calibration_launch</url>

@@ -136,8 +136,8 @@ bool DenseLaserAssembler::flattenScanVec(const std::vector< sensor_msgs::LaserSc
   }
 
   ROS_DEBUG("Done building snapshot that is [%u rows] x [%u cols]", h, w) ;
-  ROS_DEBUG("  ranges.size      = %u", snapshot.ranges.size());
-  ROS_DEBUG("  intensities.size = %u", snapshot.intensities.size());
+  ROS_DEBUG("  ranges.size      = %lu", snapshot.ranges.size());
+  ROS_DEBUG("  intensities.size = %lu", snapshot.intensities.size());
 
   return true ;
 }
