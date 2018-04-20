@@ -56,7 +56,7 @@ include_directories(${orocos_kdl_INCLUDE_DIRS})
 # catkin_package parameters: http://ros.org/doc/groovy/api/catkin/html/dev_guide/generated_cmake_api.html#catkin-package
 # TODO: fill in what other packages will need to use this package
 catkin_package(
-    DEPENDS calibration_msgs kdl_parser geometry_msgs roscpp_serialization laser_joint_projector
+    DEPENDS calibration_msgs kdl_parser geometry_msgs roscpp_serialization
     CATKIN_DEPENDS # TODO
     INCLUDE_DIRS # TODO include
     LIBRARIES # TODO
