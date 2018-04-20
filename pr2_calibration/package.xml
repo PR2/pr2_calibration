@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>pr2_calibration</name>
-  <version>1.0.10</version>
+  <version>1.0.11</version>
   <description>The pr2_calibration package</description>
   <maintainer email="dave@cse.unr.edu">Dave Feil-Seifer</maintainer>
   <license>TODO</license>

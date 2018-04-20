@@ -2,8 +2,8 @@
 Changelog for package laser_joint_projector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.11 (2018-04-20)
+-------------------
 * updated CMakeLists to address warnings
 * Contributors: David Feil-Seifer
 
