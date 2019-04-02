@@ -16,8 +16,8 @@ catkin_package(
     LIBRARIES dense_laser_assembler
 )
 
-catkin_add_gtest(test test/dense_laser_assembler_unittest.cpp)
-target_link_libraries(test dense_laser_assembler ${Boost_LIBRARIES} ${catkin_LIBRARIES})
+catkin_add_gtest(dense_laser_assembler_unittest test/dense_laser_assembler_unittest.cpp)
+target_link_libraries(dense_laser_assembler_unittest dense_laser_assembler ${Boost_LIBRARIES} ${catkin_LIBRARIES})
 
 install(DIRECTORY include/${PROJECT_NAME}/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
