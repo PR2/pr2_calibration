@@ -38,8 +38,8 @@ find_package(catkin REQUIRED COMPONENTS calibration_msgs calibration_estimation 
 #set the default path for built libraries to the "lib" directory
 #set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
-find_package(Eigen)
-include_directories(SYSTEM ${Eigen_INCLUDE_DIRS})
+find_package(Eigen3)
+include_directories(SYSTEM ${Eigen3_INCLUDE_DIRS})
 
 #add_executable(pr2_fk_ref test/pr2_fk_ref.cpp)
 

@@ -1,10 +1,9 @@
 <package>
   <name>pr2_calibration_launch</name>
-  <version>1.0.9</version>
+  <version>1.0.11</version>
   <description>Launch files and configuration files needed to run the calibration pipeline on PR2. This package is
      still experimental. Expect large changes tp occur.</description>
-  <maintainer email="dash@clearpathrobotics.com">Devon Ash</maintainer>
-
+  <maintainer email="dave@cse.unr.edu">Dave Feil-Seifer</maintainer>
   <license>BSD</license>
 
   <url type="website">http://www.ros.org/wiki/pr2_calibration_launch</url>

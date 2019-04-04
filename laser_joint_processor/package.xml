@@ -1,10 +1,10 @@
 <package>
   <name>laser_joint_processor</name>
-  <version>1.0.9</version>
+  <version>1.0.11</version>
   <description>Computes joint angles associated with a specific set of detected checkerboard corners.
      This package is experimental and unstable.
      Expect its APIs to change.</description>
-  <maintainer email="dash@clearpathrobotics.com">Devon Ash</maintainer>
+  <maintainer email="dave@cse.unr.edu">Dave Feil-Seifer</maintainer>
   <license>BSD</license>
 
   <url type="website">http://www.ros.org/wiki/laser_joint_processor</url>

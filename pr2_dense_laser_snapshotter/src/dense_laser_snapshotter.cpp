@@ -95,9 +95,9 @@ public:
 
         ROS_DEBUG("header.stamp: %f", snapshot.header.stamp.toSec());
         ROS_DEBUG("header.frame_id: %s", snapshot.header.frame_id.c_str());
-        ROS_DEBUG("ranges.size()=%u", snapshot.ranges.size());
-        ROS_DEBUG("intensities.size()=%u", snapshot.intensities.size());
-        ROS_DEBUG("scan_start.size()=%u", snapshot.scan_start.size());
+        ROS_DEBUG("ranges.size()=%lu", snapshot.ranges.size());
+        ROS_DEBUG("intensities.size()=%lu", snapshot.intensities.size());
+        ROS_DEBUG("scan_start.size()=%lu", snapshot.scan_start.size());
         snapshot_pub_.publish(snapshot);
       }
       else

@@ -1,10 +1,10 @@
 <package>
   <name>pr2_dense_laser_snapshotter</name>
-  <version>1.0.9</version>
+  <version>1.0.11</version>
   <description>Stores the data from a series of laser scan messages in a dense representation, allowing
      users to easily perform image-like operations on intensity or range data. This package is
      experimental. Expect APIs to change.</description>
-  <maintainer email="dash@clearpathrobotics.com">Devon Ash</maintainer>
+  <maintainer email="dave@cse.unr.edu">Dave Feil-Seifer</maintainer>
   <license>BSD</license>
 
   <url type="website">http://www.ros.org/wiki/pr2_dense_laser_snapshotter</url>

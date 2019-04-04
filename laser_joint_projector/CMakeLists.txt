@@ -6,9 +6,9 @@ find_package(catkin REQUIRED COMPONENTS calibration_msgs roscpp geometry_msgs ro
 find_package(cmake_modules REQUIRED)
 
 find_package(kdl_parser REQUIRED)
-find_package(Eigen REQUIRED)
+find_package(Eigen3 REQUIRED)
 find_package(orocos_kdl REQUIRED)
-include_directories(SYSTEM ${Eigen_INCLUDE_DIRS})
+include_directories(SYSTEM ${Eigen3_INCLUDE_DIRS})
 include_directories(include ${catkin_INCLUDE_DIRS})
 include_directories(${kdl_parser_INCLUDE_DIRS})
 include_directories(${orocos_kdl_INCLUDE_DIRS})
@@ -56,7 +56,7 @@ include_directories(${orocos_kdl_INCLUDE_DIRS})
 # catkin_package parameters: http://ros.org/doc/groovy/api/catkin/html/dev_guide/generated_cmake_api.html#catkin-package
 # TODO: fill in what other packages will need to use this package
 catkin_package(
-    DEPENDS calibration_msgs kdl_parser geometry_msgs roscpp_serialization laser_joint_projector
+    DEPENDS calibration_msgs kdl_parser geometry_msgs roscpp_serialization
     CATKIN_DEPENDS # TODO
     INCLUDE_DIRS # TODO include
     LIBRARIES # TODO
@@ -65,12 +65,12 @@ add_library(${PROJECT_NAME} src/laser_joint_projector.cpp)
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 
 add_executable(laser_joint_projector_node src/laser_joint_projector_node.cpp)
-target_link_libraries(laser_joint_projector_node ${PROJECT_NAME} ${catkin_LIBRARIES} ${Eigen_LIBRARIES} ${kdl_parser_LIBRARIES} ${orocos_kdl_LIBRARIES})
+target_link_libraries(laser_joint_projector_node ${PROJECT_NAME} ${catkin_LIBRARIES} ${Eigen3_LIBRARIES} ${kdl_parser_LIBRARIES} ${orocos_kdl_LIBRARIES})
 
 add_executable(keyboard_float_generator src/keyboard_float_generator.cpp)
 target_link_libraries(keyboard_float_generator ${catkin_LIBRARIES})
 
 add_executable(time_alignment_node src/time_alignment_node.cpp)
-target_link_libraries(time_alignment_node ${PROJECT_NAME} ${catkin_LIBRARIES} ${Eigen_LIBRARIES} ${kdl_parser_LIBRARIES} ${orocos_kdl_LIBRARIES})
+target_link_libraries(time_alignment_node ${PROJECT_NAME} ${catkin_LIBRARIES} ${Eigen3_LIBRARIES} ${kdl_parser_LIBRARIES} ${orocos_kdl_LIBRARIES})
 
 

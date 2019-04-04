@@ -1,12 +1,12 @@
 <package>
   <name>dense_laser_assembler</name>
-  <version>1.0.9</version>
+  <version>1.0.11</version>
   <description>Stores streaming data from a laser sensor in a
     dense representation. This allows the user to do 'image-like'
     processing on the data, and can also be used for very fast approx
     neighborhood searches.  This package is still experimental and unstable.
     Expect its APIs to change.</description>
-  <maintainer email="dash@clearpathrobotics.com">Devon Ash</maintainer>
+  <maintainer email="dave@cse.unr.edu">Dave Feil-Seifer</maintainer>
   <license>BSD</license>
 
   <url type="website">http://www.ros.org/wiki/dense_laser_assembler</url>
