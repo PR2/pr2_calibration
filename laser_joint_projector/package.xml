@@ -29,7 +29,7 @@
   <run_depend>roscpp_serialization</run_depend>
   <run_depend>calibration_msgs</run_depend>
   <run_depend>kdl_parser</run_depend>
-  <run_depend>liborocos-kdl-ev/run_depend>
+  <run_depend>liborocos-kdl-dev</run_depend>
   <run_depend>geometry_msgs</run_depend>
 
   <!-- Dependencies needed only for running tests. -->
