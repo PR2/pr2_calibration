@@ -156,7 +156,7 @@ class DenseLaserCache() :
                           for x in key_rays]
         time_normalized = [ (x - time_before).to_seconds()/elapsed for x in time_during]
         if any( [x > 1 for x in time_normalized]) or any( [x < 0 for x in time_normalized] ) :
-            print 'Error computing normalized time'
+            print('Error computing normalized time')
         pos_during = [ pos_before * (1-x) + pos_after * x for x in time_normalized ]
 
         elem = LaserCacheElem()

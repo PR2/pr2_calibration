@@ -20,7 +20,7 @@ full_output_paths = [output_dir + "/" + x for x in sample_names]
 #TODO Add support for left OR right arm
 
 for cur_input_path, cur_output_path in zip(full_input_paths, full_output_paths):
-    print "On sample [%s]" % cur_input_path
+    print("On sample [%s]" % cur_input_path)
     cur_config = yaml.load(open(cur_input_path))
 
     # Don't use any of the l_forearm samples
@@ -49,6 +49,6 @@ for cur_input_path, cur_output_path in zip(full_input_paths, full_output_paths):
         yaml.dump(next_config, outfile)
         outfile.close()
     else:
-        print "Skipping"
+        print("Skipping")
 
 

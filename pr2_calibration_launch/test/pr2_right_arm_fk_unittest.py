@@ -73,22 +73,22 @@ class TestPR2Fk(LoadData):
 
     def run_test(self, full_chain, root, tip, cmds):
         for cmd in cmds:
-            print "On Command: %s" % cmd
+            print("On Command: %s" % cmd)
 
             expected_T = self.getExpected(root, tip, cmd)
             chain_state = JointState(position=cmd)
             actual_T = full_chain.calc_block.fk(chain_state)
 
-            print "Expected_T:"
-            print expected_T
-            print "Actual T:"
-            print actual_T
+            print("Expected_T:")
+            print(expected_T)
+            print("Actual T:")
+            print(actual_T)
 
             self.assertAlmostEqual(numpy.linalg.norm(expected_T-actual_T), 0.0, 6)
 
 
     def test_right_arm_fk(self):
-        print ""
+        print("")
         full_chain = FullChainRobotParams('right_arm_chain','r_wrist_roll_link')
         full_chain.update_config(self.robot_params)
         cmds = self.loadCommands('r_arm_commands')
@@ -96,7 +96,7 @@ class TestPR2Fk(LoadData):
 
 
     def test_right_forearm_roll_fk(self):
-        print ""
+        print("")
         full_chain = FullChainRobotParams('right_arm_chain','r_forearm_roll_link')
         full_chain.update_config(self.robot_params)
         cmds = self.loadCommands('r_arm_commands')
@@ -104,7 +104,7 @@ class TestPR2Fk(LoadData):
 
 
     def test_right_forearm_cam_fk(self):
-        print ""
+        print("")
         full_chain = FullChainRobotParams('right_arm_chain','r_forearm_cam_frame')
         full_chain.update_config(self.robot_params)
         cmds = self.loadCommands('r_arm_commands')
@@ -112,7 +112,7 @@ class TestPR2Fk(LoadData):
 
 
     def test_right_forearm_cam_optical_fk(self):
-        print ""
+        print("")
         full_chain = FullChainRobotParams('right_arm_chain','r_forearm_cam_optical_frame')
         full_chain.update_config(self.robot_params)
         cmds = self.loadCommands('r_arm_commands')

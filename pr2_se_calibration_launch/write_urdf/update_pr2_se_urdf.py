@@ -53,14 +53,14 @@ def update_urdf(initial_system, calibrated_system, xml_in):
 
     # Check that the chains are in fact in the yaml system config
     chains_to_remove = [x for x in dh_offsets.keys() if x not in initial_system['dh_chains'].keys()];
-    print "Need to ignore the following chains:", chains_to_remove
+    print("Need to ignore the following chains:", chains_to_remove)
     for chain_to_remove in chains_to_remove:
       del dh_offsets[chain_to_remove]
 
-    print "Computing All dh chain offsets"
+    print("Computing All dh chain offsets")
     for chain_name in dh_offsets.keys():
         dh_offsets[chain_name] = find_dh_param_offsets(chain_name, initial_system, calibrated_system)
-        print "%s offsets:" % chain_name, pplist(dh_offsets[chain_name])
+        print("%s offsets:" % chain_name, pplist(dh_offsets[chain_name]))
 
     # Need to be able to lookup the joint offset for each joint
     joint_offsets_list = []
@@ -115,10 +115,10 @@ def update_urdf(initial_system, calibrated_system, xml_in):
     #cur_cl = update_joint.update_transmission(xml_in, 'laser_tilt_mount_trans', reduction_scale)
     #changelist.extend(cur_cl)
 
-    print "jointnames never found: ", not_found
+    print("jointnames never found: ", not_found)
 
     for span, result in changelist:
-        print "\"%s\" -> \"%s\"" % (xml_in[span[0]:span[1]], result)
+        print("\"%s\" -> \"%s\"" % (xml_in[span[0]:span[1]], result))
 
     xml_out = process_changelist.process_changelist(changelist, xml_in)
 
@@ -149,7 +149,7 @@ def mixed_to_float(mixed):
         try:
             val = eval(mixed)
         except:
-            print >> sys.stderr, "bad value:", mixed, "substituting zero!!\n\n"
+            print("bad value:", mixed, "substituting zero!!\n\n", file=sys.stderr)
             val = 0.
     else:
         val = float(mixed)

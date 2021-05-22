@@ -47,10 +47,10 @@ import yaml
 from calibration_estimation.cal_bag_helpers import *
 
 def usage():
-    print "Usage: ./baseline_updater camera:=[camera_namespace] [calibration_bagfile] [system_filename] [config_camera_name]"
-    print "    camera_namespace: Ros name to prepend onto the call to set_calibration"
-    print "    config_filename: yaml file that stores the baseline shift"
-    print "    config_camera_name: Name of the camera in the configuration file. Tells script which baseline shift to use"
+    print("Usage: ./baseline_updater camera:=[camera_namespace] [calibration_bagfile] [system_filename] [config_camera_name]")
+    print("    camera_namespace: Ros name to prepend onto the call to set_calibration")
+    print("    config_filename: yaml file that stores the baseline shift")
+    print("    config_camera_name: Name of the camera in the configuration file. Tells script which baseline shift to use")
 
 def main():
     rospy.init_node('baseline_updater', anonymous=True)
@@ -67,12 +67,12 @@ def main():
 
     cam_info = get_cam_info(bag_filename, config_cam_name)
     if cam_info == None:
-        print "Could not find a camera of the name [%s]" % config_cam_name
+        print("Could not find a camera of the name [%s]" % config_cam_name)
         sys.exit(-1)
 
-    print "Original Projection Matrix:"
+    print("Original Projection Matrix:")
     for k in range(3):
-        print "  %s" % " ".join(["% 12.5f" % p for p in cam_info.P[k*4:k*4+4]])
+        print("  %s" % " ".join(["% 12.5f" % p for p in cam_info.P[k*4:k*4+4]]))
     original_baseline = cam_info.P[3]
 
     # ****** Get the baseline shift from the yaml ******
@@ -81,8 +81,8 @@ def main():
     target_cam_dict = cam_dict[config_cam_name]
     baseline_shift = target_cam_dict['baseline_shift']
 
-    print "Baseline Shift:"
-    print "  % 12.5f" % baseline_shift
+    print("Baseline Shift:")
+    print("  % 12.5f" % baseline_shift)
 
     # ****** Update the baseline ******
     updated_baseline = original_baseline + baseline_shift
@@ -92,23 +92,23 @@ def main():
     updated_P[3] = updated_baseline
     cam_info.P = updated_P
 
-    print "Updated Projection Matrix:"
+    print("Updated Projection Matrix:")
     for k in range(3):
-        print "  %s" % " ".join(["% 12.5f" % p for p in cam_info.P[k*4:k*4+4]])
+        print("  %s" % " ".join(["% 12.5f" % p for p in cam_info.P[k*4:k*4+4]]))
 
     # ****** Load new camera info onto camera eeprom ******
     cam_name = rospy.resolve_name("camera")
     set_cal_service_name = cam_name + "/set_camera_info"
 
-    print "Waiting for service [%s] to be available" % set_cal_service_name 
+    print("Waiting for service [%s] to be available" % set_cal_service_name) 
     rospy.wait_for_service(set_cal_service_name)
-    print "Writing camera info to camera memory..."
+    print("Writing camera info to camera memory...")
     set_cal_srv = rospy.ServiceProxy(set_cal_service_name, sensor_msgs.srv.SetCameraInfo)
     resp = set_cal_srv(cam_info)
     if resp.success:
-        print "Done writing to camera"
+        print("Done writing to camera")
     else:
-        print "**************** ERROR WRITING TO CAMERA. PLEASE RETRY ***********************"
+        print("**************** ERROR WRITING TO CAMERA. PLEASE RETRY ***********************")
         sys.exit(-1)
 
 if __name__ == "__main__":

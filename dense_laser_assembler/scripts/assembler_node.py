@@ -81,25 +81,25 @@ def signal_callback(msg) :
         laser_cache.add_interval_req(prev_signal.header.stamp, msg.header.stamp)
         laser_cache.process_interval_reqs()
     prev_signal = msg
-    print 'Got signal message!'
-    print '  Signal=%i' % msg.signal
+    print('Got signal message!')
+    print('  Signal=%i' % msg.signal)
     req_lock.release()
 
 def interval_req_callback(scans) :
 
     # Check data consistency
     if (len(scans) == 0) :
-        print 'Processed interval with no scans. Not publishing'
+        print('Processed interval with no scans. Not publishing')
         return
 
     rows = len(scans)
     cols = len(scans[0].scan.ranges)
     if any( [len(x.scan.ranges) != cols for x in scans] ) or any( [len(x.scan.intensities) != cols for x in scans]) :
-        print "# Readings aren't consistent across interval"
+        print("# Readings aren't consistent across interval")
         return
 
 
-    print 'About to process cloud with %u scans' % len(scans)
+    print('About to process cloud with %u scans' % len(scans))
 
     # Sort by tilting joint angle
     sorted_scans = sorted(scans, lambda x,y:cmp(x.pos[0],y.pos[0]))
@@ -161,15 +161,15 @@ def interval_req_callback(scans) :
     #image_pub.publish(image)
 
 
-    print '  Processed cloud with %u rays' % len(intensity_msg.data.data)
+    print('  Processed cloud with %u rays' % len(intensity_msg.data.data))
 
 if __name__ == '__main__':
 
     req_lock = threading.Lock()
 
-    print 'Initializing DenseLaserCache'
+    print('Initializing DenseLaserCache')
     laser_cache = DenseLaserCache(interval_req_callback, 200, 1000, 100) ;
-    print 'Done initializing'
+    print('Done initializing')
 
     rospy.init_node('dense_assembler', anonymous=False)
     signal_sub = rospy.Subscriber("laser_tilt_controller/laser_scanner_signal",
