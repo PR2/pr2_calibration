@@ -81,14 +81,14 @@ try:
 
     while not rospy.is_shutdown() and keep_collecting:
         print("Choose L,R, or F")
-        resp = raw_input("> ")
+        resp = input("> ")
         if string.upper(resp) == "L":
             print("Choose sample index")
-            resp = raw_input("> ")
+            resp = input("> ")
             cur_sample_path = samples_dir + "/left/" + left_sample_names[int(resp)]
         elif string.upper(resp) == "R":
             print("Choose sample index")
-            resp = raw_input("> ")
+            resp = input("> ")
             cur_sample_path = samples_dir + "/right/" + right_sample_names[int(resp)]
         elif string.upper(resp) == "F":
             cur_sample_path = samples_dir + "/far/" + far_sample_names[0]
@@ -102,7 +102,7 @@ try:
         cur_config = yaml.load(open(cur_sample_path))
 
         print("Choose Timeout")
-        timeout = raw_input("> ")
+        timeout = input("> ")
         if timeout == "":
             timeout = "1.0"
 

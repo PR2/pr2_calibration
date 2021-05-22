@@ -92,7 +92,7 @@ try:
         print("Please place the large 7x6 checkerboard approx 3m in front of the robot")
         print("in view of the head cameras and tilting laser.")
         print("Press <enter> when ready to collect data, or type \"N\" if done collecting large checkerboards")
-        resp = raw_input("> ")
+        resp = input("> ")
         if string.upper(resp) == "N":
             print("Done collecting far samples")
             keep_collecting = False
@@ -119,7 +119,7 @@ try:
         m_robot = executive.capture(cur_config, rospy.Duration(0.01))
 
         print("Please put the checkerboard in the left hand (open/close the gripper with the joystick's left/right D-Pad buttons). press <enter> to continue.  Type N to skip")
-        resp = raw_input("press <enter> ")
+        resp = input("press <enter> ")
         if string.upper(resp) == "N":
             print("Skipping left arm samples")
         else:
@@ -146,7 +146,7 @@ try:
         m_robot = executive.capture(cur_config, rospy.Duration(0.01))
 
         print("Please put the checkerboard in the right hand (open/close the gripper with the joystick's square/circle buttons). press <enter> to continue...")
-        resp = raw_input("press <enter> ")
+        resp = input("press <enter> ")
         if string.upper(resp) == "N":
             print("Skipping right arm samples")
         else:

@@ -52,25 +52,25 @@ def update_urdf(initial_system, calibrated_system, xml_in):
                       "head_chain"      : ['head_pan_joint', 'head_tilt_joint'] }
 
     # Check that the chains are in fact in the yaml system config
-    chains_to_remove = [x for x in dh_offsets.keys() if x not in initial_system['dh_chains'].keys()];
+    chains_to_remove = [x for x in list(dh_offsets.keys()) if x not in list(initial_system['dh_chains'].keys())];
     print("Need to ignore the following chains:", chains_to_remove)
     for chain_to_remove in chains_to_remove:
       del dh_offsets[chain_to_remove]
 
     print("Computing All dh chain offsets")
-    for chain_name in dh_offsets.keys():
+    for chain_name in list(dh_offsets.keys()):
         dh_offsets[chain_name] = find_dh_param_offsets(chain_name, initial_system, calibrated_system)
         print("%s offsets:" % chain_name, pplist(dh_offsets[chain_name]))
 
     # Need to be able to lookup the joint offset for each joint
     joint_offsets_list = []
-    for chain_name in dh_offsets.keys():
-        joint_offsets_list.extend(zip(dh_joint_names[chain_name], dh_offsets[chain_name]))
+    for chain_name in list(dh_offsets.keys()):
+        joint_offsets_list.extend(list(zip(dh_joint_names[chain_name], dh_offsets[chain_name])))
     joint_offsets = dict(joint_offsets_list)
 
     #convert transforms to rpy
     transformdict = dict()
-    for(name, rotvect) in calibrated_system['transforms'].iteritems():
+    for(name, rotvect) in calibrated_system['transforms'].items():
         floatvect = [mixed_to_float(x) for x in rotvect]
         #print name, pplist(floatvect), angle_axis_to_RPY(floatvect[3:6])
         transformdict[name] = [floatvect[0:3], angle_axis_to_RPY(floatvect[3:6])]
@@ -91,18 +91,18 @@ def update_urdf(initial_system, calibrated_system, xml_in):
 
 
     # Combine the transforms and joint offsets into a single dict
-    joints_dict = dict([(joint_name, [None, None, None]) for joint_name in transformdict.keys() + joint_offsets.keys()])
-    for joint_name, val in transformdict.items():
+    joints_dict = dict([(joint_name, [None, None, None]) for joint_name in list(transformdict.keys()) + list(joint_offsets.keys())])
+    for joint_name, val in list(transformdict.items()):
         joints_dict[joint_name][0] = val[0]
         joints_dict[joint_name][1] = val[1]
 
-    for joint_name, offset in joint_offsets.items():
+    for joint_name, offset in list(joint_offsets.items()):
         joints_dict[joint_name][2] = offset
 
-    not_found = joints_dict.keys()
+    not_found = list(joints_dict.keys())
     changelist = []
 
-    for joint_name, val in joints_dict.items():
+    for joint_name, val in list(joints_dict.items()):
         cur_cl = update_joint.update_joint(xml_in, joint_name, xyz=val[0], rpy=val[1], ref_shift=val[2])
         if cur_cl is not None:
             not_found.remove(joint_name)

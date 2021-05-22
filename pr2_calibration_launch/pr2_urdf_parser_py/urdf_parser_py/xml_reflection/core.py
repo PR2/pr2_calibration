@@ -126,13 +126,13 @@ class VectorType(ListType):
 	
 	def to_string(self, values):
 		self.check(values)
-		raw = map(str, values)
+		raw = list(map(str, values))
 		return ListType.to_string(self, raw)
 		
 	def from_string(self, text):
 		raw = ListType.from_string(self, text)
 		self.check(raw)
-		return map(float, raw)
+		return list(map(float, raw))
 
 class RawType(ValueType):
 	""" Simple, raw XML value. Need to bugfix putting this back into a document """
@@ -142,7 +142,7 @@ class RawType(ValueType):
 	def write_xml(self, node, value):
 		#!!! HACK Trying to insert an element at root level seems to screw up pretty printing
 		children = xml_children(value)
-		map(node.append, children)
+		list(map(node.append, children))
 
 class SimpleElementType(ValueType):
 	def __init__(self, attribute, value_type):
@@ -172,7 +172,7 @@ class FactoryType(ValueType):
 		self.name = name
 		self.typeMap = typeMap
 		self.nameMap = {}
-		for (key, value) in typeMap.iteritems():
+		for (key, value) in typeMap.items():
 			# Reverse lookup
 			self.nameMap[value] = key
 	
@@ -313,7 +313,7 @@ class AggregateElement(Element):
 class Info:
 	""" Small container for keeping track of what's been consumed """
 	def __init__(self, node):
-		self.attributes = node.attrib.keys()
+		self.attributes = list(node.attrib.keys())
 		self.children = xml_children(node)
 
 class Reflection(object):
@@ -379,7 +379,7 @@ class Reflection(object):
 			self.parent.set_from_xml(obj, node, info)
 		
 		# Make this a map instead? Faster access? {name: isSet} ?
-		unset_attributes = self.attribute_map.keys()
+		unset_attributes = list(self.attribute_map.keys())
 		unset_scalars = copy.copy(self.scalarNames)
 		
 		# Better method? Queues?
