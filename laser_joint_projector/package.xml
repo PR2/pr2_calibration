@@ -18,17 +18,18 @@
   <!-- Dependencies needed to compile this package. -->
   <build_depend>calibration_msgs</build_depend>
   <build_depend>kdl_parser</build_depend>
-  <build_depend>orocos_kdl</build_depend>
+  <build_depend>liborocos-kdl-dev</build_depend>
   <build_depend>geometry_msgs</build_depend>
   <build_depend>roscpp_serialization</build_depend>
   <build_depend>roscpp</build_depend>
   <build_depend>cmake_modules</build_depend>
+  <build_depend>calibration_msgs</build_depend>
   <run_depend>cmake_modules</run_depend>
   <!-- Dependencies needed after this package is compiled. -->
   <run_depend>roscpp_serialization</run_depend>
   <run_depend>calibration_msgs</run_depend>
   <run_depend>kdl_parser</run_depend>
-  <run_depend>orocos_kdl</run_depend>
+  <run_depend>liborocos-kdl-dev</run_depend>
   <run_depend>geometry_msgs</run_depend>
 
   <!-- Dependencies needed only for running tests. -->

@@ -1,4 +1,4 @@
-<package>
+<package format="3">
   <name>pr2_calibration_launch</name>
   <version>1.0.11</version>
   <description>Launch files and configuration files needed to run the calibration pipeline on PR2. This package is
@@ -32,31 +32,31 @@
   <build_depend>pr2_teleop</build_depend>
   <build_depend>rospy</build_depend>
   <build_depend>rostest</build_depend>
-  <build_depend>python_orocos_kdl</build_depend>
+  <!--<build_depend>python_orocos_kdl</build_depend>-->
   <build_depend>kdl_parser</build_depend>
   <build_depend>message_generation</build_depend>
 
   <!-- Dependencies needed after this package is compiled. -->
-  <run_depend>calibration_msgs</run_depend>
-  <run_depend>calibration_estimation</run_depend>
-  <run_depend>calibration_launch</run_depend>
-  <run_depend>pr2_dense_laser_snapshotter</run_depend>
-  <run_depend>laser_cb_detector</run_depend>
-  <run_depend>laser_joint_processor</run_depend>
-  <run_depend>laser_joint_projector</run_depend>
-  <run_depend>stereo_image_proc</run_depend>
-  <run_depend>image_cb_detector</run_depend>
-  <run_depend>monocam_settler</run_depend>
-  <run_depend>image_view</run_depend>
-  <run_depend>robot_mechanism_controllers</run_depend>
-  <run_depend>sensor_msgs</run_depend>
-  <run_depend>geometry_msgs</run_depend>
-  <run_depend>pr2_teleop</run_depend>
-  <run_depend>rospy</run_depend>
-  <run_depend>rostest</run_depend>
-  <run_depend>python_orocos_kdl</run_depend>
-  <run_depend>kdl_parser</run_depend>
-  <run_depend>message_runtime</run_depend>
+  <exec_depend>calibration_msgs</exec_depend>
+  <exec_depend>calibration_estimation</exec_depend>
+  <exec_depend>calibration_launch</exec_depend>
+  <exec_depend>pr2_dense_laser_snapshotter</exec_depend>
+  <exec_depend>laser_cb_detector</exec_depend>
+  <exec_depend>laser_joint_processor</exec_depend>
+  <exec_depend>laser_joint_projector</exec_depend>
+  <exec_depend>stereo_image_proc</exec_depend>
+  <exec_depend>image_cb_detector</exec_depend>
+  <exec_depend>monocam_settler</exec_depend>
+  <exec_depend>image_view</exec_depend>
+  <exec_depend>robot_mechanism_controllers</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>pr2_teleop</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>rostest</exec_depend>
+  <exec_depend condition="$ROS_PYTHON_VERSION == 2">python_orocos_kdl</exec_depend>
+  <exec_depend>kdl_parser</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
 
   <!-- Dependencies needed only for running tests. -->
   <!-- <test_depend>calibration_msgs</test_depend> -->

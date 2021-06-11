@@ -41,7 +41,7 @@ from calibration_msgs.msg import RobotMeasurement
 import os
 import string
 
-print "Starting executive..."
+print("Starting executive...")
 time.sleep(7.0)
 
 rospy.init_node("pr2_capture_executive_node")
@@ -62,9 +62,9 @@ left_sample_names.sort()
 right_sample_names.sort()
 far_sample_names.sort()
 
-print "Left Samples: \n - %s" % "\n - ".join(left_sample_names)
-print "Right Samples: \n - %s" % "\n - ".join(right_sample_names)
-print "Far Samples: \n - %s" % "\n - ".join(far_sample_names)
+print("Left Samples: \n - %s" % "\n - ".join(left_sample_names))
+print("Right Samples: \n - %s" % "\n - ".join(right_sample_names))
+print("Far Samples: \n - %s" % "\n - ".join(far_sample_names))
 
 pub = rospy.Publisher("robot_measurement", RobotMeasurement)
 
@@ -80,40 +80,40 @@ try:
     keep_collecting = True
 
     while not rospy.is_shutdown() and keep_collecting:
-        print "Choose L,R, or F"
-        resp = raw_input("> ")
+        print("Choose L,R, or F")
+        resp = input("> ")
         if string.upper(resp) == "L":
-            print "Choose sample index"
-            resp = raw_input("> ")
+            print("Choose sample index")
+            resp = input("> ")
             cur_sample_path = samples_dir + "/left/" + left_sample_names[int(resp)]
         elif string.upper(resp) == "R":
-            print "Choose sample index"
-            resp = raw_input("> ")
+            print("Choose sample index")
+            resp = input("> ")
             cur_sample_path = samples_dir + "/right/" + right_sample_names[int(resp)]
         elif string.upper(resp) == "F":
             cur_sample_path = samples_dir + "/far/" + far_sample_names[0]
         elif string.upper(resp) == "":
-            print "Repeating Previous Command"
+            print("Repeating Previous Command")
         else:
-            print "Unknown input. Exiting"
+            print("Unknown input. Exiting")
             break
 
-        print "On sample [%s]" % cur_sample_path
+        print("On sample [%s]" % cur_sample_path)
         cur_config = yaml.load(open(cur_sample_path))
 
-        print "Choose Timeout"
-        timeout = raw_input("> ")
+        print("Choose Timeout")
+        timeout = input("> ")
         if timeout == "":
             timeout = "1.0"
 
         m_robot = executive.capture(cur_config, rospy.Duration(float(timeout)))
         if m_robot is None:
-            print "--------------- Failed To Capture a Far Sample -----------------"
+            print("--------------- Failed To Capture a Far Sample -----------------")
         else:
-            print "++++++++++++++ Successfully Captured a Far Sample ++++++++++++++"
+            print("++++++++++++++ Successfully Captured a Far Sample ++++++++++++++")
             pub.publish(m_robot)
 
 
 except EOFError:
-    print "Exiting"
+    print("Exiting")
 

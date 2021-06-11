@@ -91,21 +91,21 @@ class TestPR2Fk(LoadData):
 
     def run_test(self, full_chain, root, tip, cmds):
         for cmd in cmds:
-            print "On Command: %s" % cmd
+            print("On Command: %s" % cmd)
 
             expected_T = self.getExpected(root, tip, cmd)
             chain_state = JointState(position=cmd)
             actual_T = full_chain.calc_block.fk(chain_state)
 
-            print "Expected_T:"
-            print expected_T
-            print "Actual T:"
-            print actual_T
+            print("Expected_T:")
+            print(expected_T)
+            print("Actual T:")
+            print(actual_T)
 
             self.assertAlmostEqual(numpy.linalg.norm(expected_T-actual_T), 0.0, 6)
 
     def test_head_tilt_link(self):
-        print ""
+        print("")
 
         config_str = '''
         before_chain: [head_pan_joint]
@@ -122,7 +122,7 @@ class TestPR2Fk(LoadData):
         self.run_test(full_chain, 'torso_lift_link', 'head_tilt_link', cmds)
 
     def test_head_plate(self):
-        print ""
+        print("")
         config_str = '''
         before_chain: [head_pan_joint]
         chain_id:     head_chain
@@ -134,7 +134,7 @@ class TestPR2Fk(LoadData):
         self.run_test(full_chain, 'torso_lift_link', 'head_plate_frame', cmds)
 
     def test_double_stereo(self):
-        print ""
+        print("")
         config_str = '''
         before_chain: [head_pan_joint]
         chain_id:     head_chain
@@ -146,7 +146,7 @@ class TestPR2Fk(LoadData):
         self.run_test(full_chain, 'torso_lift_link', 'double_stereo_link', cmds)
 
     def test_wide_stereo(self):
-        print ""
+        print("")
         config_str = '''
         before_chain: [head_pan_joint]
         chain_id:     head_chain
@@ -158,7 +158,7 @@ class TestPR2Fk(LoadData):
         self.run_test(full_chain, 'torso_lift_link', 'wide_stereo_link', cmds)
 
     def test_wide_stereo_optical(self):
-        print ""
+        print("")
         config_str = '''
         before_chain: [head_pan_joint]
         chain_id:     head_chain
@@ -170,7 +170,7 @@ class TestPR2Fk(LoadData):
         self.run_test(full_chain, 'torso_lift_link', 'wide_stereo_optical_frame', cmds)
 
     def test_narrow_stereo(self):
-        print ""
+        print("")
         config_str = '''
         before_chain: [head_pan_joint]
         chain_id:     head_chain
@@ -182,7 +182,7 @@ class TestPR2Fk(LoadData):
         self.run_test(full_chain, 'torso_lift_link', 'narrow_stereo_link', cmds)
 
     def test_narrow_stereo_optical(self):
-        print ""
+        print("")
         config_str = '''
         before_chain: [head_pan_joint]
         chain_id:     head_chain
@@ -194,7 +194,7 @@ class TestPR2Fk(LoadData):
         self.run_test(full_chain, 'torso_lift_link', 'narrow_stereo_optical_frame', cmds)
 
     def test_high_def(self):
-        print ""
+        print("")
         config_str = '''
         before_chain: [head_pan_joint]
         chain_id:     head_chain
@@ -206,7 +206,7 @@ class TestPR2Fk(LoadData):
         self.run_test(full_chain, 'torso_lift_link', 'high_def_frame', cmds)
 
     def test_high_def_optical(self):
-        print ""
+        print("")
         config_str = '''
         before_chain: [head_pan_joint]
         chain_id:     head_chain
@@ -267,15 +267,15 @@ class TestPR2Fk(LoadData):
         actual_T = self.robot_params.tilting_lasers["tilt_laser"].compute_pose([cmd])
         expected_T = self.getExpected("torso_lift_link", "laser_tilt_link", [cmd])
 
-        print "Expected_T:"
-        print expected_T
-        print "Actual T:"
-        print actual_T
+        print("Expected_T:")
+        print(expected_T)
+        print("Actual T:")
+        print(actual_T)
 
         self.assertAlmostEqual(numpy.linalg.norm(expected_T-actual_T), 0.0, 6)
 
     def test_tilt_laser(self):
-        print ""
+        print("")
         self.check_tilt_laser(0)
         self.check_tilt_laser(1)
 

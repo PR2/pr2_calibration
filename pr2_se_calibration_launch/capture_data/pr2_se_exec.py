@@ -43,7 +43,7 @@ from calibration_msgs.msg import RobotMeasurement
 import os
 import string
 
-print "Starting executive..."
+print("Starting executive...")
 time.sleep(7.0)
 
 rospy.init_node("pr2_capture_executive_node")
@@ -64,9 +64,9 @@ left_sample_names.sort()
 right_sample_names.sort()
 far_sample_names.sort()
 
-print "Left Samples: \n - %s" % "\n - ".join(left_sample_names)
-print "Right Samples: \n - %s" % "\n - ".join(right_sample_names)
-print "Far Samples: \n - %s" % "\n - ".join(far_sample_names)
+print("Left Samples: \n - %s" % "\n - ".join(left_sample_names))
+print("Right Samples: \n - %s" % "\n - ".join(right_sample_names))
+print("Far Samples: \n - %s" % "\n - ".join(far_sample_names))
 
 pub = rospy.Publisher("robot_measurement", RobotMeasurement)
 
@@ -89,25 +89,25 @@ try:
 
     while not rospy.is_shutdown() and keep_collecting:
 
-        print "Please place the large 7x6 checkerboard approx 3m in front of the robot"
-        print "in view of the head cameras and tilting laser."
-        print "Press <enter> when ready to collect data, or type \"N\" if done collecting large checkerboards"
-        resp = raw_input("> ")
+        print("Please place the large 7x6 checkerboard approx 3m in front of the robot")
+        print("in view of the head cameras and tilting laser.")
+        print("Press <enter> when ready to collect data, or type \"N\" if done collecting large checkerboards")
+        resp = input("> ")
         if string.upper(resp) == "N":
-            print "Done collecting far samples"
+            print("Done collecting far samples")
             keep_collecting = False
         else:
             for cur_sample_path in full_paths:
-                print "On far sample [%s]" % cur_sample_path
+                print("On far sample [%s]" % cur_sample_path)
                 cur_config = yaml.load(open(cur_sample_path))
                 m_robot = executive.capture(cur_config, rospy.Duration(40))
                 if m_robot is None:
-                    print "--------------- Failed To Capture a Far Sample -----------------"
+                    print("--------------- Failed To Capture a Far Sample -----------------")
                 else:
-                    print "++++++++++++++ Successfully Captured a Far Sample ++++++++++++++"
+                    print("++++++++++++++ Successfully Captured a Far Sample ++++++++++++++")
                     far_success_count += 1
                     pub.publish(m_robot)
-                print "Succeeded on %u far samples" % far_success_count
+                print("Succeeded on %u far samples" % far_success_count)
                 if rospy.is_shutdown():
                     break
 
@@ -118,23 +118,23 @@ try:
         cur_config = yaml.load(open(full_paths[0]))
         m_robot = executive.capture(cur_config, rospy.Duration(0.01))
 
-        print "Please put the checkerboard in the left hand (open/close the gripper with the joystick's left/right D-Pad buttons). press <enter> to continue.  Type N to skip"
-        resp = raw_input("press <enter> ")
+        print("Please put the checkerboard in the left hand (open/close the gripper with the joystick's left/right D-Pad buttons). press <enter> to continue.  Type N to skip")
+        resp = input("press <enter> ")
         if string.upper(resp) == "N":
-            print "Skipping left arm samples"
+            print("Skipping left arm samples")
         else:
             for cur_sample_path in full_paths:
-                print "On left arm sample [%s]" % cur_sample_path
+                print("On left arm sample [%s]" % cur_sample_path)
                 cur_config = yaml.load(open(cur_sample_path))
                 m_robot = executive.capture(cur_config, rospy.Duration(40))
                 if m_robot is None:
-                    print "--------------- Failed To Capture a Left Hand Sample -----------------"
+                    print("--------------- Failed To Capture a Left Hand Sample -----------------")
                     left_fail_count += 1
                 else:
-                    print "++++++++++++++ Successfully Captured a Left Hand Sample ++++++++++++++"
+                    print("++++++++++++++ Successfully Captured a Left Hand Sample ++++++++++++++")
                     left_success_count += 1
                     pub.publish(m_robot)
-                print "Succeded on %u/%u left arm samples" % (left_success_count, left_fail_count + left_success_count)
+                print("Succeded on %u/%u left arm samples" % (left_success_count, left_fail_count + left_success_count))
                 if rospy.is_shutdown():
                     break
 
@@ -145,34 +145,34 @@ try:
         cur_config = yaml.load(open(full_paths[0]))
         m_robot = executive.capture(cur_config, rospy.Duration(0.01))
 
-        print "Please put the checkerboard in the right hand (open/close the gripper with the joystick's square/circle buttons). press <enter> to continue..."
-        resp = raw_input("press <enter> ")
+        print("Please put the checkerboard in the right hand (open/close the gripper with the joystick's square/circle buttons). press <enter> to continue...")
+        resp = input("press <enter> ")
         if string.upper(resp) == "N":
-            print "Skipping right arm samples"
+            print("Skipping right arm samples")
         else:
             for cur_sample_path in full_paths:
-                print "On right arm sample [%s]" % cur_sample_path
+                print("On right arm sample [%s]" % cur_sample_path)
                 cur_config = yaml.load(open(cur_sample_path))
                 m_robot = executive.capture(cur_config, rospy.Duration(40))
                 if m_robot is None:
-                    print "--------------- Failed To Capture a Right Hand Sample -----------------"
+                    print("--------------- Failed To Capture a Right Hand Sample -----------------")
                     right_fail_count += 1
                 else:
-                    print "++++++++++++++ Successfully Captured a Right Hand Sample ++++++++++++++"
+                    print("++++++++++++++ Successfully Captured a Right Hand Sample ++++++++++++++")
                     right_success_count += 1
                     pub.publish(m_robot)
-                print "Succeded on %u/%u right arm samples" % (right_success_count, right_fail_count + right_success_count)
+                print("Succeded on %u/%u right arm samples" % (right_success_count, right_fail_count + right_success_count))
                 if rospy.is_shutdown():
                     break
 
 except EOFError:
-    print "Exiting"
+    print("Exiting")
 
 time.sleep(1)
 
-print "Calibration data collection has completed!"
-print "Far Samples: %u" % far_success_count
-print "Left Arm Samples: %u/%u" % (left_success_count, left_fail_count + left_success_count)
-print "Right Arm Samples: %u/%u" % (right_success_count, right_fail_count + right_success_count)
-print ""
-print "You can now kill this node, along with any other calibration nodes that are running."
+print("Calibration data collection has completed!")
+print("Far Samples: %u" % far_success_count)
+print("Left Arm Samples: %u/%u" % (left_success_count, left_fail_count + left_success_count))
+print("Right Arm Samples: %u/%u" % (right_success_count, right_fail_count + right_success_count))
+print("")
+print("You can now kill this node, along with any other calibration nodes that are running.")
