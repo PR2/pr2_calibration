@@ -2,8 +2,8 @@
 Changelog for package dense_laser_assembler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.12 (2021-06-12)
+-------------------
 * Merge pull request `#19 <https://github.com/UNR-RoboticsResearchLab/pr2_calibration/issues/19>`_ from k-okada/kinetic-devel
 * fixes for python3 compatibility
 * Merge pull request `#17 <https://github.com/UNR-RoboticsResearchLab/pr2_calibration/issues/17>`_ from UNR-RoboticsResearchLab/kinetic-devel

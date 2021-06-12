@@ -2,8 +2,8 @@
 Changelog for package pr2_calibration_launch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.12 (2021-06-12)
+-------------------
 * Merge pull request `#19 <https://github.com/UNR-RoboticsResearchLab/pr2_calibration/issues/19>`_ from k-okada/kinetic-devel
 * removed dependency on python_orocos_kdl for python3
 * 2to3 -w -p .

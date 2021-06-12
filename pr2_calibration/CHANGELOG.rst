@@ -2,8 +2,8 @@
 Changelog for package pr2_calibration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.12 (2021-06-12)
+-------------------
 * Merge pull request `#17 <https://github.com/UNR-RoboticsResearchLab/pr2_calibration/issues/17>`_ from UNR-RoboticsResearchLab/kinetic-devel
   Kinetic devel
 * Contributors: Dave Feil-Seifer
