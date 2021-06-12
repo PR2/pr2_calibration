@@ -2,6 +2,14 @@
 Changelog for package laser_joint_processor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request `#19 <https://github.com/UNR-RoboticsResearchLab/pr2_calibration/issues/19>`_ from k-okada/kinetic-devel
+* updated package configuration and CMake for noetic compile; updated travis config file
+* Merge pull request `#17 <https://github.com/UNR-RoboticsResearchLab/pr2_calibration/issues/17>`_ from UNR-RoboticsResearchLab/kinetic-devel
+  Kinetic devel
+* Contributors: Dave Feil-Seifer, Kei Okada
+
 1.0.11 (2018-04-20)
 -------------------
 

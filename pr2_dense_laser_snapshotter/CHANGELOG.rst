@@ -2,6 +2,12 @@
 Changelog for package pr2_dense_laser_snapshotter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request `#17 <https://github.com/UNR-RoboticsResearchLab/pr2_calibration/issues/17>`_ from UNR-RoboticsResearchLab/kinetic-devel
+  Kinetic devel
+* Contributors: Dave Feil-Seifer
+
 1.0.11 (2018-04-20)
 -------------------
 
