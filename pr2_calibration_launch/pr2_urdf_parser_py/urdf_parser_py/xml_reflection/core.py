@@ -1,3 +1,4 @@
+from __future__ import print_function
 from urdf_parser_py.xml_reflection.basics import *
 import sys
 import copy
