@@ -2,6 +2,17 @@
 Changelog for package dense_laser_assembler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.12 (2021-06-12)
+-------------------
+* Merge pull request `#19 <https://github.com/UNR-RoboticsResearchLab/pr2_calibration/issues/19>`_ from k-okada/kinetic-devel
+* fixes for python3 compatibility
+* Merge pull request `#17 <https://github.com/UNR-RoboticsResearchLab/pr2_calibration/issues/17>`_ from UNR-RoboticsResearchLab/kinetic-devel
+  Kinetic devel
+* Merge pull request `#15 <https://github.com/UNR-RoboticsResearchLab/pr2_calibration/issues/15>`_ from k-okada/add_travis
+  update travis.yml
+* Fix No rule to make target CMakeFiles/tests.dir/all'
+* Contributors: Dave Feil-Seifer, Kei Okada
+
 1.0.11 (2018-04-20)
 -------------------
 * updated CMakeLists to address warnings
